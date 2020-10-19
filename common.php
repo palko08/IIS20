@@ -5,21 +5,56 @@
 	{
 	?>
 		<!DOCTYPE html>
-		<html>
-		<head>
-			<meta hhtp-equiv="content-type" content="text/html"; charset="utf-8">
-			<title><?php echo $title;?></title>
+        <html lang="sk-SK">
+        <head>
+			<meta charset="utf-8">
+			<title>IIS Projekt 2020</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		</head>
 		<body>
+  		<header>
+			<!-- Navigation bar -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="#home">DOMOV</a></li>
+					<li><a href="#festivaly">FESTIVALY</a></li>
+					<li><a href="#interpreti">INTERPRETI</a></li>
+					<li><a href="#contact">KONTAKT</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#signin">PRIHLÁSENIE</a></li>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
+					<li><a href="#cart">KOŠÍK</a></li>
+				</ul>
+			</div>
+		</nav>
+		</header>
 	<?php
 	}
 
 	function make_footer()
 	{
 	?>
-		<footer>&copy; IIS 2020</footer>
-		</body>
-		</html>
+		<footer class="text-center">
+           <p>Daša Nosková - xnosko05<br/>Matúš Paľko - xpalko08<br/>Patrik Šuba - xsubap00</p>
+        </footer>
+      </body>
+      <style>
+          .container-fluid{
+             background-color: rgb(18, 17, 24);
+             color: whitesmoke;  
+          }
+          /* Add a dark background color to the footer */
+          footer {
+			background-color: rgb(18, 17, 24);;
+			color: rgba(245, 245, 245,0.5);
+			padding: 32px;
+          }
+     </style>
+    </html>
 	<?php
 	}
 

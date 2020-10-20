@@ -4,12 +4,12 @@ require "common.php";
 make_header();
 ?>
 
-<body id="festivals">
+<body>
      <div class="bg-1">
 		<div class="container">
 			<h3 class="text-center" style="margin-top:150px; color:white; position:relative">FESTIVALY</h3>
 			<input type="text" class="form-control form-rounded" placeholder="Nájsť festival"> 
-			<div class="row text-center" style="background-color:rgb(31, 29, 30)">
+			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<div class="col-sm-4">
 					<div class="thumbnail">
 					<img src="img/lir3.jpg" alt="Paris">

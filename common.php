@@ -1,4 +1,5 @@
 <?php 
+    //TO DO HEADER prekryva ine prvky ked sa okno zmensi 
 	session_start();
 
 	function make_header()
@@ -25,7 +26,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="index.php">DOMOV</a></li>
 					<li><a href="festivals.php">FESTIVALY</a></li>
-					<li><a href="#interpreti">INTERPRETI</a></li>
+					<li><a href="artists.php">INTERPRETI</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="signin.php"> 

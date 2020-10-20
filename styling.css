@@ -89,6 +89,9 @@
   margin-bottom: 20px;
   margin-top:20px; 
 } 
+.col-sm-4 {
+  margin-bottom: 25px; margin-top:25px
+}
 /********************* Shopping Demo-2 **********************/
 
 .demo{padding:45px 0}

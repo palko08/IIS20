@@ -1,7 +1,7 @@
 <?php
 require "common.php";
 
-make_header('Login');
+make_header();
 ?>
 
 <h1>Login</h1>

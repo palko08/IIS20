@@ -2,7 +2,7 @@
 require "common.php";
 
 require_admin();
-make_header('Page for admins');
+make_header();
 ?>
 
 <h1>Admin Page</h1>

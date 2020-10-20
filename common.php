@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 
-	function make_header($title)
+	function make_header()
 	{
 	?>
 		<!DOCTYPE html>
@@ -20,13 +20,12 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#home">DOMOV</a></li>
-					<li><a href="#festivaly">FESTIVALY</a></li>
+					<li><a href="index.php">DOMOV</a></li>
+					<li><a href="festivals.php">FESTIVALY</a></li>
 					<li><a href="#interpreti">INTERPRETI</a></li>
-					<li><a href="#contact">KONTAKT</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#signin">PRIHLÁSENIE</a></li>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
+					<li><a href="signin.php">PRIHLÁSENIE</a></li>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
 					<li><a href="#cart">KOŠÍK</a></li>
 				</ul>
 			</div>

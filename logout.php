@@ -4,7 +4,7 @@ require "common.php";
 unset($_SESSION['user']);
 redirect('index.php');
 
-make_header('Logout');
+make_header();
 ?>
 
 <h1>Logout</h1>

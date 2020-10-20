@@ -1,7 +1,7 @@
 <?php
 require "common.php";
 
-make_header("Festival overview");
+make_header();
 
 if (isset($_SESSION['user'])) {
  	echo 'Current user: <strong>' . $_SESSION['user'] . '</strong>';

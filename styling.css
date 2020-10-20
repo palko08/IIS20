@@ -1,0 +1,67 @@
+.container-fluid{
+    background-color: rgb(18, 17, 24);
+    color: whitesmoke;  
+ }
+ /* Add a dark background color to the footer */
+ footer {
+   background-color: rgb(18, 17, 24);;
+   color: rgba(245, 245, 245,0.5);
+   height: 200px;
+   padding: 70px 0;
+   clear: both;
+   position: relative;
+   bottom:0px;
+   width: 100%;
+   margin-top: 0px;
+ }
+ 
+ /* Carousel Styling */
+.slide1{
+    background-image: url(img/lir.jpg);
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .slide2{
+    background-image: url(img/lir2.jpg);
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .slide3{
+    background-image: url(img/lir3.jpg);
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .login-form {
+    width: 340px;
+    margin: 200px auto;
+    margin-bottom: 250px;
+    font-size: 15px;
+    background-size: auto;
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+.signin{
+    background-image: url(img/signin.png);
+    background-position-x: center;
+}

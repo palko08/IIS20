@@ -8,7 +8,7 @@ make_header();
 
 <?php 
 
-$login = $_POST['login'];
+$login = $_POST['username'];
 $password = $_POST['password'];
 
 if (($login == 'subik' && $password == '123') || ($login == 'admin' && $password == '123')) {

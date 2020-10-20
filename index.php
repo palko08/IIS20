@@ -4,7 +4,7 @@
 	make_header();
  ?>
 
-<main>
+<main class="main">
 <!-- Carousel -->
 <div id="theCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

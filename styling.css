@@ -84,10 +84,11 @@
 .bg-1{
   background-color: rgb(31, 29, 30);
 }
-.container-fest{
-  background: green;
-}
-
+.form-rounded { 
+  border-radius: 1rem;
+  margin-bottom: 20px;
+  margin-top:20px; 
+} 
 /********************* Shopping Demo-2 **********************/
 
 .demo{padding:45px 0}

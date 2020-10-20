@@ -11,7 +11,7 @@ make_header();
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
                 <thead>
-                    <tr><h1>Košík</h1></tr>
+                    <tr><th><h1>Košík</h1></th></tr>
                     <tr>
                         <th>Product</th>
                         <th>Quantity</th>

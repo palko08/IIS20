@@ -78,8 +78,18 @@
 .row{
   background-color: white;
 }
+.thumbnail{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.bg-1{
+  background-color: rgb(31, 29, 30);
+}
+.container-fest{
+  background: green;
+}
 
 /********************* Shopping Demo-2 **********************/
+
 .demo{padding:45px 0}
 .product-grid2{font-family:'Open Sans',sans-serif;position:relative}
 .product-grid2 .product-image2{overflow:hidden;position:relative}

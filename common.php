@@ -32,7 +32,7 @@
 						<?php 
 						  if (isset($_SESSION['user'])) {
 							echo 'ÚČET</a></li>';
-						} else echo 'PRIHLÁSIŤ SA</a></li>';?>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
+						} else echo 'PRIHLÁSIŤ SA</a></li>';?> 
 					<li><a href="cart.php">KOŠÍK</a></li>
 				</ul>
 			</div>

@@ -28,7 +28,11 @@
 					<li><a href="#interpreti">INTERPRETI</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="signin.php">PRIHLÁSENIE</a></li>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
+					<li><a href="signin.php"> 
+						<?php 
+						  if (isset($_SESSION['user'])) {
+							echo 'ÚČET</a></li>';
+						} else echo 'PRIHLÁSIŤ SA</a></li>';?>   <!-- TOTO SA BUDE MENIT PODLA TOHO CI JE PRIHLASENY --> 
 					<li><a href="#cart">KOŠÍK</a></li>
 				</ul>
 			</div>

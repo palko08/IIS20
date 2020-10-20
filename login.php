@@ -14,6 +14,7 @@ $password = $_POST['password'];
 if (($login == 'subik' && $password == '123') || ($login == 'admin' && $password == '123')) {
 	echo "<p>Login successful</p>";
 	$_SESSION['user'] = $login;
+	make_header();
 }
 else {
 	echo "<p>Incorrect Login</p>";

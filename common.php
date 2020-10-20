@@ -29,11 +29,10 @@
 					<li><a href="artists.php">INTERPRETI</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="signin.php"> 
-						<?php 
+					<li> <?php
 						  if (isset($_SESSION['user'])) {
-							echo 'ÚČET</a></li>';
-						} else echo 'PRIHLÁSIŤ SA</a></li>';?> 
+							echo '<a href="profile.php">ÚČET</a></li>';
+						} else echo '<a href="signin.php">PRIHLÁSIŤ SA</a></li>';?> 
 					<li><a href="cart.php">KOŠÍK</a></li>
 				</ul>
 			</div>

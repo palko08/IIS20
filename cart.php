@@ -88,11 +88,13 @@ make_header();
                         <td>   </td>
                         <td>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <a href="festivals.php">Continue Shopping</a>
                         </button></td>
                         <td>
                         <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
+                            <a href="checkout.php">Checkout</a>
+                             <span class="glyphicon glyphicon-play"></span>
                         </button></td>
                     </tr>
                 </tbody>

@@ -3,7 +3,7 @@
 
     make_header();
  ?>
- <link rel="stylesheet" href="style_profile.css">
+<link rel="stylesheet" href="style_profile.css">
 <body class="profile-body">
 <div class="container emp-profile">
             <form method="post">

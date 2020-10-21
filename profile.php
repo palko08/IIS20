@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        
+                    <div class="col-md-4" style="padding-left: 10%;">
+                    <a href="tickets.php">Spravovať rezervácie</a>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">

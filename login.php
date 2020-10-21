@@ -4,15 +4,13 @@ require "common.php";
 make_header();
 ?>
 
-<h1>Login</h1>
-
 <?php 
 
 $login = $_POST['username'];
 $password = $_POST['password'];
 
 if (($login == 'subik' && $password == '123') || ($login == 'admin' && $password == '123')) {
-	echo "<p>Login successful</p>";
+	echo "<br><br><h4>Login successful</h4>";
 	$_SESSION['user'] = $login;
 	make_header();
 }
@@ -22,8 +20,11 @@ else {
 
 ?>
 
+<a href="profile.php">Účet</a><br>
+<a href="#">Vstupenky</a><br>
 <a href="index.php">Back to home page</a>
 <br><a href="admin.php">Admin Page</a>
+<br><br><br>
 
 <?php 
 make_footer();

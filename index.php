@@ -35,30 +35,6 @@
       </a>
 </div>
 </main>
-<style>
-/* Carousel Styling */
-.slide1{
-  background-image: url(img/lir.jpg);
-  height: 1000px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.slide2{
-  background-image: url(img/lir2.jpg);
-  height: 1000px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.slide3{
-  background-image: url(img/lir3.jpg);
-  height: 1000px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-</style>
 
  
 <?php

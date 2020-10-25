@@ -12,6 +12,5 @@ DROP TABLE Clovek;
 DROP TABLE Interpret_vystupuje_na_Podium;
 DROP TABLE Interpret;
 DROP TABLE Podium;
-DROP TABLE Miesto;
 DROP TABLE Festival;
 DROP DATABASE IIS2020;

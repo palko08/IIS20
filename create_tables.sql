@@ -5,13 +5,9 @@ CREATE TABLE Festival(
 	festival_ID			INT 			NOT NULL AUTO_INCREMENT,
     kapacita			INT				NOT NULL,
     datum				DATETIME		NOT NULL,
+    adresa				VARCHAR(100)	NOT NULL,
     popis				VARCHAR(1000)	DEFAULT NULL,
     PRIMARY KEY(festival_ID)
-);
-
-CREATE TABLE Miesto(
-	adresa				VARCHAR(100)	NOT NULL,
-    PRIMARY KEY(adresa)
 );
 
 CREATE TABLE Podium(
@@ -29,7 +25,7 @@ CREATE TABLE Podium(
 CREATE TABLE Interpret(
 	interpret_ID 		INT				NOT NULL AUTO_INCREMENT,
     nazov				VARCHAR(50)  	NOT NULL,
-    hodnotenie			DECIMAL			DEFAULT NULL,
+    hodnotenie			DECIMAL(2,1)	DEFAULT NULL,
     -- logo si este nie som isty ako riesit
     PRIMARY KEY(interpret_ID)
 );

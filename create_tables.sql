@@ -48,7 +48,7 @@ CREATE TABLE Interpret_vystupuje_na_Podium(
 
 CREATE TABLE Clovek(
     clovek_ID           INT             NOT NULL AUTO_INCREMENT,
-    meno                CHAR(50)     NOT NULL,
+    meno                VARCHAR(50)     NOT NULL,
     PRIMARY KEY (clovek_ID)
 );
 

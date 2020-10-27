@@ -5,16 +5,16 @@ CREATE TABLE Festival(
 	festival_ID			INT 			NOT NULL AUTO_INCREMENT,
     kapacita			INT				NOT NULL,
     datum				DATETIME		NOT NULL,
-    adresa				CHAR(100)	NOT NULL,
-    popis				CHAR(1000)	DEFAULT NULL,
+    adresa				VARCHAR(100)	NOT NULL,
+    popis				VARCHAR(1000)	DEFAULT NULL,
     PRIMARY KEY(festival_ID)
 );
 
 CREATE TABLE Podium(
 	podium_ID			INT				NOT NULL AUTO_INCREMENT,
     festival_ID			INT 			NOT NULL,
-    nazov				CHAR(50) 	NOT NULL,
-    popis				CHAR(1000) 	DEFAULT NULL,
+    nazov				VARCHAR(50) 	NOT NULL,
+    popis				VARCHAR(1000) 	DEFAULT NULL,
     PRIMARY KEY(podium_ID),
     CONSTRAINT Podium_FK
         FOREIGN KEY (festival_ID)
@@ -24,7 +24,7 @@ CREATE TABLE Podium(
 
 CREATE TABLE Interpret(
 	interpret_ID 		INT				NOT NULL AUTO_INCREMENT,
-    nazov				CHAR(50)  	NOT NULL,
+    nazov				VARCHAR(50)  	NOT NULL,
     hodnotenie			DECIMAL(2,1)	DEFAULT NULL,
     -- logo si este nie som isty ako riesit
     PRIMARY KEY(interpret_ID)
@@ -54,9 +54,9 @@ CREATE TABLE Clovek(
 
 CREATE TABLE Registrovany(
     registrovany_ID   	INT             NOT NULL,
-    email				CHAR(50)		NOT NULL,
-    login				CHAR(50)		NOT NULL,
-    heslo				CHAR(60)		NOT NULL,
+    email				VARCHAR(50)		NOT NULL,
+    login				VARCHAR(50)		NOT NULL,
+    heslo				VARCHAR(60)		NOT NULL,
     level_opravnenia	ENUM('admin', 'poradatel', 'pokladni', 'divak')		NOT NULL,
     PRIMARY KEY (registrovany_ID),
     CONSTRAINT Registrovany_FK
@@ -85,7 +85,7 @@ CREATE TABLE Clen(
 
 CREATE TABLE Zaner(
 	zaner_ID			INT 			NOT NULL AUTO_INCREMENT,
-    zaner_nazov			CHAR(50)		NOT NULL,
+    zaner_nazov			VARCHAR(50)		NOT NULL,
     PRIMARY KEY(zaner_ID)
 );
 

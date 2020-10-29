@@ -78,7 +78,7 @@
 			exit();
 		}
 	}
-
+	//To Do nefunguje ako ma
 	function require_admin()
 	{
 		if (trim($_SESSION['user']) == 'subik') {

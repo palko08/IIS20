@@ -1,0 +1,4 @@
+#spustenie
+sudo systemctl start mysqld
+#prihlasenie
+mysql -u root -p 

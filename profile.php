@@ -1,7 +1,10 @@
 <?php 
 	require "common.php";
+    require "services.php";
 
     make_header();
+
+    $serv = new AccountService();
  ?>
 <link rel="stylesheet" href="style_profile.css">
 <body class="profile-body">
@@ -20,7 +23,11 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Kshiti Ghelani
+                                        <?php
+                                            $person = $serv->getAccount($_SESSION['user']);
+                                            $name = $serv->getName($_SESSION['user']);
+                                            echo $name;
+                                        ?>
                                     </h5>
                                     <h6>
                                         nejake bio
@@ -42,6 +49,13 @@
                 <div class="row">
                     <div class="col-md-4" style="padding-left: 10%;">
                     <a href="tickets.php">Spravovať rezervácie</a>
+                    <br>
+                    <?php
+                        if ($person['level_opravnenia'] == 'admin') {
+                            echo '<a href="admin.php">Admin Page</a><br>';
+                        }
+                    ?>
+                    <a href="logout.php">Logout</a>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -51,7 +65,11 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p>
+                                                    <?php
+                                                        echo $person['login'];
+                                                    ?>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -59,7 +77,11 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p>
+                                                    <?php
+                                                        echo $name;
+                                                    ?>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -67,7 +89,11 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <p>
+                                                    <?php
+                                                        echo $person['email'];
+                                                    ?>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -97,5 +123,4 @@
 <?php
   
     make_footer();
-    echo '<p><a href="logout.php">Logout</a>';
  ?>

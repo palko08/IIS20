@@ -31,6 +31,7 @@
             <a href="#" class="float-right">Forgot Password?</a>
         </div>        
     </form>
+    <p class="text-center"><a href="register.php">Zaregistrovat sa</a></p>
     <p class="text-center"><a href="festivals.php">Pokračovať bez prihlásenia</a></p>
 </div>
 </body>

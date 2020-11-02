@@ -20,21 +20,21 @@
  
  /* Carousel Styling */
 .slide1{
-    background-image: url(img/lir.jpg);
+    background-image: url(../img/lir.jpg);
     height: 1000px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
   .slide2{
-    background-image: url(img/lir2.jpg);
+    background-image: url(../img/lir2.jpg);
     height: 1000px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
   .slide3{
-    background-image: url(img/lir3.jpg);
+    background-image: url(../img/lir3.jpg);
     height: 1000px;
     background-repeat: no-repeat;
     background-position: center;
@@ -65,7 +65,7 @@
     font-weight: bold;
 }
 .signin{
-    background-image: url(img/signin.png);
+    background-image: url(../img/signin.png);
     background-position-x: center;
 }
 .list-header{
@@ -74,7 +74,7 @@
   font-family: sans-serif;
 }
 .cart-wrap{
-  background-image:url(img/cart.png);
+  background-image:url(../img/cart.png);
   background-position-x: center;
   
 }

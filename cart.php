@@ -77,7 +77,7 @@ make_header();
                         </button></td>
                         <td>
                         <button type="button" class="btn btn-success">
-                            <a href="checkout.php">Checkout</a>
+                            <a href="checkout.php">Rezervovať</a>
                              <span class="glyphicon glyphicon-play"></span>
                         </button></td>
                     </tr>

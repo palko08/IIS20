@@ -17,7 +17,7 @@ if ($serv->isValidAccount($login, $password))
 	$_SESSION['user'] = $login;
 	make_header();
 	echo '<a href="profile.php">Účet</a><br>
-<a href="#">Vstupenky</a><br>
+<a href="tickets.php">Vstupenky</a><br>
 <a href="index.php">Back to home page</a>
 <br><a href="admin.php">Admin Page</a>
 <br><br><br>';

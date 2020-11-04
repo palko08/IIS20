@@ -35,12 +35,12 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>*Meno:</strong>
-                                    <input required type="text" name="first_name" class="form-control" value="" />
+                                    <input required type="text" name="first_name" class="form-control" value=""/>
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
                                     <strong>*Priezvisko:</strong>
-                                    <input required type="text" name="last_name" class="form-control" value="" />
+                                    <input type="text" name="last_name" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -63,29 +63,20 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Telefónne číslo:</strong></div>
-                                <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
+                                <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value=""/></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>*Email:</strong></div>
-                                <div class="col-md-12"><input required type="text" name="email_address" class="form-control" value="" /></div>
+                                <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="" required></div>
 							</div>
 						</div>
-					</div>
-					<!--SHIPPING METHOD END-->
-					<div class="form-group">
-						<div class="col-md-6 col-sm-6 col-xs-12">
-                            <button type="submit" class="btn btn-secondary">
-                                <a href="reservation_done.php">Rezervovať lístky</a>
-                            </button>
-						</div>
-                    </div>
+                        <button type="submit" class="btn btn-secondary btn-block">
+                            <a href="reservation_done.php">Rezervovať lístky</a>
+                        </button>
                 </div>
-                
                 </form>
             </div>
-            <div class="row cart-footer">
-        
-            </div>
+
     </div>
 </body>
 

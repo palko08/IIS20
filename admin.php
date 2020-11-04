@@ -6,7 +6,6 @@ make_head();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/admin_page.css">
 <body>
-<div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 col-xss-12">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" id="admin-page" href="#">Admin page</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,18 +74,9 @@ make_head();
         </div>
     </div>
 </nav>
-</div>
 </body>
 
-    <script>
-        $(document).ready(function(){
-            $('.dropdown-submenu a.test').on("click", function(e){
-                $(this).next('ul').toggle();
-                e.stopPropagation();
-                e.preventDefault();
-            });
-        });
-    </script>
+
 
 <?php
 make_footer();

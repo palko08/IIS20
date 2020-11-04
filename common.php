@@ -2,10 +2,9 @@
     //TO DO HEADER prekryva ine prvky ked sa okno zmensi 
 	session_start();
 
-	function make_header()
-	{
-	?>
-		<!DOCTYPE html>
+	function make_head(){
+    ?>
+        <!DOCTYPE html>
         <html lang="sk-SK">
         <head>
 			<meta charset="utf-8">
@@ -16,6 +15,13 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		</head>
+        <?php
+    }
+
+	function make_header()
+	{
+        make_head();
+	?>
 		<body>
 		<div id="page-container">
           <div id="content-wrap">
@@ -90,6 +96,6 @@
 				exit();
 			}
 		}
-		echo '<p>'.$_SESSION['user'];
+		//echo '<p>'.$_SESSION['user'];
 	}
 	?>

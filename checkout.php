@@ -35,12 +35,12 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>*Meno:</strong>
-                                    <input type="text" name="first_name" class="form-control" value="" />
+                                    <input required type="text" name="first_name" class="form-control" value="" />
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
                                     <strong>*Priezvisko:</strong>
-                                    <input type="text" name="last_name" class="form-control" value="" />
+                                    <input required type="text" name="last_name" class="form-control" value="" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>*Email:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
+                                <div class="col-md-12"><input required type="text" name="email_address" class="form-control" value="" /></div>
 							</div>
 						</div>
 					</div>

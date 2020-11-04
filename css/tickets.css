@@ -1,0 +1,43 @@
+
+.class{
+    background-color: white;
+}
+
+#container{
+    background-color: rgba(219,112,147,0.7);
+    margin-bottom: 50px;
+    margin-top: 20px;
+    position: center;
+}
+
+#tickets_cols{
+    background-color: floralwhite;
+    position: center;
+    margin-top: 20px;
+}
+
+#header{
+    margin-top: 70px;
+    text-align: center;
+}
+
+.no_color_change_link:visited{
+    color:black;
+    text-decoration: none;
+}
+
+.no_color_change_link:hover{
+    color:black;
+    text-decoration: none;
+}
+
+.no_color_change_link{
+    text-decoration: none;
+    color:black;
+}
+
+th{
+    color: #2d2b2b;
+    font-size: 22px;
+}
+

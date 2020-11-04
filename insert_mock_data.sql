@@ -192,12 +192,12 @@ VALUES(11, "email 11", "login 11", "heslo 11", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(12, "email 12", "login 12", "heslo 12", 'divak');
 
-INSERT INTO Neregistrovany(neregistrovany_ID)
-VALUES(13);
-INSERT INTO Neregistrovany(neregistrovany_ID)
-VALUES(14);
-INSERT INTO Neregistrovany(neregistrovany_ID)
-VALUES(15);
+INSERT INTO Neregistrovany(neregistrovany_ID, email)
+VALUES(13, "email 13");
+INSERT INTO Neregistrovany(neregistrovany_ID, email)
+VALUES(14, "email 14");
+INSERT INTO Neregistrovany(neregistrovany_ID, email)
+VALUES(15, "email 15");
 
 INSERT INTO Clen(clen_ID)
 VALUES(16);

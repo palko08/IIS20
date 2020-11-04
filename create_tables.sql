@@ -69,6 +69,7 @@ CREATE TABLE Registrovany(
 
 CREATE TABLE Neregistrovany(
     neregistrovany_ID  	INT             NOT NULL,
+    email               VARCHAR(50)     NOT NULL,
     PRIMARY KEY (neregistrovany_ID),
     CONSTRAINT Neregistrovany_FK
         FOREIGN KEY (neregistrovany_ID)

@@ -36,30 +36,20 @@ make_head();
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Pridať festival</a></li>
-                    <li><a href="#">Upraviť festival</a></li>
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Upraviť festival</span><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Zmeniť dátum festivalu</a></li>
-                            <li><a href="#">Vytvoriť rozpis</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Odstániť festival</a></li>
+                    <li><a onclick=showItems("tickets") >Upraviť festival</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Správa Interpretov
+                <a class="nav-link dropdown-toggle" onclick=showItems("interprets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Správa interpretov
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Pridať interpreta</a>
                     <a class="dropdown-item" href="#">Upraviť interpreta</a>
-                    <a class="dropdown-item" href="#">Prihlásiť interpreta na festival</a>
-                    <a class="dropdown-item" href="#">Odstániť interpreta</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" onclick=showItems("users") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Správa užívateľov</a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Pridať užívateľa</a></li>
@@ -69,7 +59,6 @@ make_head();
                             <li><a href="#">Zmeniť oprávnenie</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Odstániť užívateľa</a></li>
                 </ul>
             </li>
         </ul>
@@ -98,6 +87,20 @@ make_head();
             ?>
         </table>
     </div>
+    <div class="col-sm" id="interprets">
+        <table class="table">
+            <?php
+            show_interprets();
+            ?>
+        </table>
+    </div>
+    <div class="col-sm" id="users">
+        <table class="table">
+            <?php
+            show_users();
+            ?>
+        </table>
+    </div>
 </div>
 
 </body>
@@ -118,7 +121,7 @@ function show_tickets(){
             </tr>
             </thead>
             <tbody>
-            <!-- TOTO SA HODI DO FUNKCIE -->
+            <!-- TOTO SA HODI DO CLASS FUNKCIE -->
             <tr>
                 <td>
                     <a class="no_color_change_link" id="ticket" href="#">vstupenka</a>
@@ -185,13 +188,13 @@ function show_festivals(){
             <input type="file" name="file"/>
         </td>
         <td>
-            <button type="button" id="align-right"> potvrdiť zmeny</button>
+            <button type="button" id="align-right"> Potvrdiť zmeny</button>
         </td>
         <td>
-            <button type="button" id="align-right"> odstrániť </button>
+            <button type="button" id="align-right" href="#rozpis"> Vytvoriť rozpis</button>
         </td>
         <td>
-            <button type="button" id="align-right" href="#rozpis"> Vytvoriť rozpis pre festival </button>
+            <button type="button" id="align-right"> Odstrániť </button>
         </td>
     </tr>
     <!-- TOTO SA HODI DO FUNKCIE -->
@@ -199,4 +202,105 @@ function show_festivals(){
     </tbody>
     <?php
 }
+
+function show_interprets(){
+    ?>
+    <thead>
+    <h1>Interpreti</h1>
+    <tr>
+        <th>ID</th>
+        <th>Meno</th>
+        <th>Hodnotenie</th>
+        <th>Fotka</th>
+        <th> Pridať na festival </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- TOTO SA HODI DO CLASS FUNKCIE -->
+    <tr>
+        <td>
+            <input type="text" placeholder="intrepretID" id="interpret_id">
+        </td>
+        <td>
+            <input type="text" placeholder="meno" id="interpret_name">
+        </td>
+        <td>
+            <input type="text" placeholder="hodnotenie" id="interpret_rating">
+        </td>
+        <td>
+            <input type="file" name="file"/>
+        </td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select">
+                    <option value="">Vybrať festival</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+        </td>
+        <td>
+            <button type="button" id="align-right"> vymazať </button>
+            <button type="button" id="align-right"> potvrdiť zmeny </button>
+        </td>
+    </tr>
+    <!-- TOTO SA HODI DO FUNKCIE -->
+
+    </tbody>
+    <?php
+}
+
+function show_users(){
+    ?>
+    <thead>
+    <h1>Užívatelia</h1>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Meno</th>
+        <th>Login</th>
+        <th>Heslo</th>
+        <th>Oprávnenie</th>
+        <th>Fotka</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- TOTO SA HODI DO CLASS FUNKCIE -->
+    <tr>
+        <td>
+            <input type="text" placeholder="USERID" id="user_id">
+        </td>
+        <td>
+            <input type="email" placeholder="email" id="user_email">
+        </td>
+        <td>
+            <input type="text" placeholder="Meno" id="user_name">
+        </td>
+        <td>
+            <input type="text" placeholder="login" id="user_login">
+        </td>
+        <td> <input type="password" placeholder="password" id="user_password" ></td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select">
+                    <option value="">Vybrať level oprávnenia</option>
+                    <option value="0">admin</option>
+                    <option value="1">poradatel</option>
+                    <option value="2">pokladní</option>
+                    <option value="3">divák</option>
+                </select>
+        </td>
+        <td>
+            <input type="file" name="file"/>
+        </td>
+        <td>
+            <button type="button" id="align-right"> vymazať </button>
+            <button type="button" id="align-right"> potvrdiť zmeny </button>
+        </td>
+    </tr>
+    </tbody>
+    <?php
+}
+
 ?>

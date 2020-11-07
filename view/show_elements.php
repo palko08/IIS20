@@ -114,6 +114,7 @@ function show_festivals(){
     <!-- TOTO SA HODI DO FUNKCIE -->
 
     </tbody>
+    </table>
     <?php
 }
 

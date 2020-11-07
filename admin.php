@@ -3,6 +3,18 @@ require "common.php";
 require_admin();
 make_head();
 ?>
+
+<script>
+    function showItems(itemID) {
+        var x = document.getElementById(itemID);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/admin_page.css">
 <body>
@@ -13,15 +25,10 @@ make_head();
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Domov</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item active">
+                <a class="nav-link" onclick=showItems("tickets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Správa vstupeniek
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Potvrdiť rezerváciu</a>
-                    <a class="dropdown-item" href="#">Stornovať rezerváciu</a>
-                    <a class="dropdown-item" href="#">Vydať vstupenky</a>
-                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,10 +81,57 @@ make_head();
         </div>
     </div>
 </nav>
+
+<div class="container" id="container">
+    <div class="col-sm" id="tickets">
+        <table class="table">
+            <?php
+            show_tickets();
+            ?>
+        </table>
+    </div>
+</div>
+
 </body>
 
 
 
 <?php
 make_footer();
+function show_tickets(){
+    ?>
+    <thead>
+            <h1>Vstupenky</h1>
+            <tr>
+                <th>ID</th>
+                <th>email</th>
+                <th>Stav</th>
+                <th>Cena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- TOTO SA HODI DO FUNKCIE -->
+            <tr>
+                <td>
+                    <a class="no_color_change_link" id="ticket" href="#">vstupenka</a>
+                </td>
+                <td>
+                    <a class="no_color_change_link" id="ticket_email">email</a>
+                </td>
+                <td>
+                    <a class="no_color_change_link" id="stav">stav</a>
+                    <button type="button" id="align-right"> potvrdiť </button>
+                    <button type="button" id="align-right"> stornovať </button>
+
+                </td>
+                <td>
+                    <a class="no_color_change_link" id="cena">cena</a>
+                    <button type="button" id="align-right"> vydať </button>
+                </td>
+            </tr>
+            <!-- TOTO SA HODI DO FUNKCIE -->
+
+            </tbody>
+    <?php
+}
 ?>

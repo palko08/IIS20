@@ -31,11 +31,12 @@ make_head();
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" onclick=showItems("festivals") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Správa festivalov
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Pridať festival</a></li>
+                    <li><a href="#">Upraviť festival</a></li>
                     <li class="dropdown-submenu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Upraviť festival</span><span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -90,6 +91,13 @@ make_head();
             ?>
         </table>
     </div>
+    <div class="col-sm" id="festivals">
+        <table class="table">
+            <?php
+            show_festivals();
+            ?>
+        </table>
+    </div>
 </div>
 
 </body>
@@ -132,6 +140,63 @@ function show_tickets(){
             <!-- TOTO SA HODI DO FUNKCIE -->
 
             </tbody>
+    <?php
+}
+
+function show_festivals(){
+    ?>
+    <thead>
+    <h1>Festivaly</h1>
+    <tr>
+        <th>ID</th>
+        <th>Názov</th>
+        <th>Dátum Od</th>
+        <th>Dátum Do</th>
+        <th>Max. kapacita</th>
+        <th>Popis</th>
+        <th>Obrázok</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- TOTO SA HODI DO FUNKCIE -->
+    <tr>
+        <td>
+            <a class="no_color_change_link" id="festival_id" href="#">ID</a>
+        </td>
+        <td>
+            <a class="no_color_change_link" id="festival_name">festival</a>
+        </td>
+        <td>
+            <input placeholder="aktualny datum festivalu od" type="date" id="festival_date_from" class="form-control">
+        </td>
+        <td>
+            <input placeholder="daktualny datum festivalu do" type="date" id="festival_date_to" class="form-control">
+        </td>
+        <td>
+            <input placeholder="aktuálna kapacita festivalu" id="festival_capacity" class="form-control">
+        </td>
+        <td>
+            <input placeholder="aktuálny popis festivalu" id="festival_description" class="form-control">
+        </td>
+        <td>
+            <input type="file" name="file"/>
+        </td>
+        <td>
+            <button type="button" id="align-right"> potvrdiť zmeny</button>
+        </td>
+        <td>
+            <button type="button" id="align-right"> odstrániť </button>
+        </td>
+        <td>
+            <button type="button" id="align-right" href="#rozpis"> Vytvoriť rozpis pre festival </button>
+        </td>
+    </tr>
+    <!-- TOTO SA HODI DO FUNKCIE -->
+
+    </tbody>
     <?php
 }
 ?>

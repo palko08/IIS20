@@ -65,6 +65,14 @@
     margin-right: 10px;
 }
 
-#tickets, #festivals, #interprets,#users{
+#tickets, #festivals, #interprets,#users, #add_user{
     display: none;
+}
+.custom-select{
+    height: 30px;
+    width: 120px;
+}
+
+.centering {
+    text-align: center;
 }

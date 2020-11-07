@@ -6,7 +6,7 @@ make_header();
 
 $serv = new AccountService();
 ?>
-<link rel="stylesheet" href="css/style_profile.css">
+<link rel="stylesheet" href="view/css/style_profile.css">
 <body class="profile-body">
 <div class="container emp-profile">
     <form method="post">

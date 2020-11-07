@@ -5,7 +5,7 @@ require "services.php";
 make_header();
 ?>
 
-<link rel="stylesheet" href="css/tickets.css">
+<link rel="stylesheet" href="view/css/tickets.css">
 
 <body class="tickets_body">
 <div class="" id="header">
@@ -25,7 +25,7 @@ make_header();
             <!-- TOTO SA HODI DO FUNKCIE -->
             <tr>
                 <td>
-                    <a class="no_color_change_link" id="ticket" href="#festival">vstupenka</a>
+                    <a class="no_color_change_link" id="ticket" href="#festival">vstupenkaID</a>
                 </td>
                 <td>
                     <a class="no_color_change_link" id="stav">stav</a>

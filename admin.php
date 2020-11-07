@@ -3,11 +3,11 @@ require "common.php";
 //require "show_elements.php";
 require_admin();
 make_head();
-require "show_elements.php";
+require "view/show_elements.php";
 ?>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/admin_page.css">
+    <link rel="stylesheet" href="view/css/admin_page.css">
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" id="admin-page" href="#">Admin page</a>

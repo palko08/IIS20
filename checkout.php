@@ -3,7 +3,7 @@
 
 	make_header();
  ?>
-<link rel="stylesheet" href="../css/style_checkout.css">
+<link rel="stylesheet" href="view/css/style_checkout.css">
 <body class="checkout-body">
 
 <div class="container wrapper" >

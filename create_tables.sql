@@ -3,8 +3,10 @@ USE IIS2020;
 
 CREATE TABLE Festival(
 	festival_ID			INT 			NOT NULL AUTO_INCREMENT,
+    nazov               VARCHAR(100)    NOT NULL,
     kapacita			INT				NOT NULL,
-    datum				DATETIME		NOT NULL,
+    datum_Od			DATETIME		NOT NULL,
+    datum_Do            DATETIME        NOT NULL,
     adresa				VARCHAR(100)	NOT NULL,
     popis				VARCHAR(1000)	DEFAULT NULL,
     obrazok				VARCHAR(200)	DEFAULT NULL,

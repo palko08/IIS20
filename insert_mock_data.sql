@@ -1,13 +1,13 @@
 USE IIS2020;
 
-INSERT INTO Festival(kapacita, datum, adresa)
-VALUES(100, '2020-11-05 18:00:00', "Niekde 26");
-INSERT INTO Festival(kapacita, datum, adresa)
-VALUES(500, '2020-10-25 20:00:00', "Dakde 44");
-INSERT INTO Festival(kapacita, datum, adresa)
-VALUES(2500, '2020-11-02 20:30:00', "Tuto 17");
-INSERT INTO Festival(kapacita, datum, adresa)
-VALUES(5000, '2020-11-14 22:00:00', "Ulica 7");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
+VALUES("festival 1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', "Niekde 26");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
+VALUES("festival 2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', "Dakde 44");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
+VALUES("festival 3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', "Tuto 17");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
+VALUES("festival 4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', "Ulica 7");
 
 INSERT INTO Podium(festival_ID, nazov)
 VALUES(1, "prve podium");

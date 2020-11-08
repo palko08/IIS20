@@ -1,6 +1,5 @@
 <?php
 require "common.php";
-//require "show_elements.php";
 require_admin();
 make_head();
 require "view/show_elements.php";

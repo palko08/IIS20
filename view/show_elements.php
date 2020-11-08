@@ -60,7 +60,7 @@ function show_tickets(){
 }
 
 function show_festivals(){
-    //TODO POPIS, OBRazok zmena pri profile festivalu
+    //TODO POPIS, OBRazok a hodnotenie zmena pri profile festivalu
     ?>
     <table class="table">
     <thead>
@@ -68,43 +68,44 @@ function show_festivals(){
     <tr>
         <th>ID</th>
         <th>Názov</th>
+        <th>Adresa</th>
         <th>Dátum Od</th>
         <th>Dátum Do</th>
         <th>Max. kapacita</th>
         <th>Cena</th>
-        <th>Popis</th>
-        <th>Obrázok</th>
         <th></th>
         <th></th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <!-- TOTO SA HODI DO FUNKCIE -->
+    <!-- TOTO SA HODI DO FUNKCIE, placeholderi budu aktualne hodnoty -->
     <tr>
         <td>
             <a class="no_color_change_link" id="festival_id" href="#">ID</a>
         </td>
         <td>
-            <input type="text" id="festival_name" placeholder="festival_name"></a>
+            <input type="text" id="festival_name" placeholder="festival name"></a>
         </td>
         <td>
-            <input placeholder="aktualny datum festivalu od" type="date" id="festival_date_from" class="form-control">
+            <select class="form-control" name="festival_address">
+                <option value="">Aktualna adresa</option>
+                <option value="1">Niekde 26</option>
+                <option value="2">Dakde 44</option>
+                <option value="3">Tuto 17</option>
+            </select>
         </td>
         <td>
-            <input placeholder="daktualny datum festivalu do" type="date" id="festival_date_to" class="form-control">
+            <input type="date" id="festival_date_from" class="form-control">
+        </td>
+        <td>
+            <input type="date" id="festival_date_to" class="form-control">
         </td>
         <td>
             <input placeholder="aktuálna kapacita festivalu" id="festival_capacity" class="form-control">
         </td>
         <td>
-            <input placeholder="aktuálny popis festivalu" id="festival_description" class="form-control">
-        </td>
-        <td>
             <input type="number" placeholder="cena" id="festival_price" class="form-control">
-        </td>
-        <td>
-            <input type="file" name="festival_foto"/>
         </td>
         <td>
             <button type="button" id="align-right"> Potvrdiť zmeny</button>
@@ -236,10 +237,11 @@ function add_user_popup(){
     <div class="jumbotron">
     <div class="span8 centering">
     <h2>Pridať nového užívateľa</h2>
-    <form action="#" class="form-container">
+    <form action="account_insert.php" method="post" class="form-container">
     <input type="text" placeholder="login" name="login" required>
+        <input type="text" placeholder="meno" name="meno" required>
     <input type="password" placeholder="password" name="password" required>
-    <input type="email" placeholder="email@email.com" name="email" required>
+    <input type="email" placeholder="email@email.com" name="email">
     <select class="custom-select">
                     <option value="">Vybrať level oprávnenia</option>
                     <option value="0">admin</option>
@@ -248,7 +250,7 @@ function add_user_popup(){
                     <option value="3">divák</option>
     </select>
     <br>
-    <button type="submit" class="btn btn-info">Pridať</button>
+    <button type="submit" class="btn btn-info" value="Register">Pridať</button>
     <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
     </form>
         </div>

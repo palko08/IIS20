@@ -276,7 +276,7 @@ function add_artist_popup(){
                 </select>
                 <br>
                 <button type="submit" class="btn btn-info">Pridať</button>
-                <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
+                <button type="submit" class="btn btn-danger" onclick=closeForm("add_interprets")>Zatvoriť</button>
             </form>
         </div>
     </div>
@@ -318,7 +318,7 @@ function add_festival_popup(){
                 </tr>
         </table>
                 <button type="submit" class="btn btn-info">Pridať</button>
-                <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
+                <button type="submit" class="btn btn-danger" onclick=closeForm("add_festivals")>Zatvoriť</button>
             </form>
     </div>
     </div>

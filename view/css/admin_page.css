@@ -65,7 +65,7 @@
     margin-right: 10px;
 }
 
-#tickets, #festivals, #interprets,#users, #add_user, #add_interprets{
+#tickets, #festivals, #interprets,#users{
     display: none;
 }
 .custom-select{

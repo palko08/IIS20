@@ -26,7 +26,7 @@ require "view/show_elements.php";
                     Správa festivalov
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Pridať festival</a></li>
+                    <li><a onclick=openForm("add_festivals")>Pridať festival</a></li>
                     <li><a onclick=showItems("festivals") >Upraviť festival</a></li>
                 </ul>
             </li>
@@ -35,7 +35,7 @@ require "view/show_elements.php";
                     Správa interpretov
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pridať interpreta</a>
+                    <a class="dropdown-item" onclick=openForm("add_interprets")>Pridať interpreta</a>
                     <a class="dropdown-item" onclick=showItems("interprets")>Upraviť interpreta</a>
                 </div>
             </li>

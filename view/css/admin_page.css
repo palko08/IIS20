@@ -65,7 +65,7 @@
     margin-right: 10px;
 }
 
-#tickets, #festivals, #interprets,#users, #add_user{
+#tickets, #festivals, #interprets,#users, #add_user, #add_interprets{
     display: none;
 }
 .custom-select{
@@ -76,3 +76,15 @@
 .centering {
     text-align: center;
 }
+
+.form-control{
+    box-sizing: border-box;
+    width: 120px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+

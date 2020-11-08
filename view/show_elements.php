@@ -60,6 +60,7 @@ function show_tickets(){
 }
 
 function show_festivals(){
+    //TODO POPIS, OBRazok zmena pri profile festivalu
     ?>
     <table class="table">
     <thead>
@@ -70,6 +71,7 @@ function show_festivals(){
         <th>Dátum Od</th>
         <th>Dátum Do</th>
         <th>Max. kapacita</th>
+        <th>Cena</th>
         <th>Popis</th>
         <th>Obrázok</th>
         <th></th>
@@ -99,7 +101,10 @@ function show_festivals(){
             <input placeholder="aktuálny popis festivalu" id="festival_description" class="form-control">
         </td>
         <td>
-            <input type="file" name="file"/>
+            <input type="number" placeholder="cena" id="festival_price" class="form-control">
+        </td>
+        <td>
+            <input type="file" name="festival_foto"/>
         </td>
         <td>
             <button type="button" id="align-right"> Potvrdiť zmeny</button>
@@ -145,15 +150,13 @@ function show_interprets(){
             <input type="text" placeholder="hodnotenie" id="interpret_rating">
         </td>
         <td>
-            <input type="file" name="file"/>
+            <input type="file" name="artist_foto"/>
         </td>
         <td>
             <div class="form-group">
-                <select class="custom-select">
-                    <option value="">Vybrať festival</option>
+                <select class="custom-select" multiple>
                     <option value="1">One</option>
                     <option value="2">Two</option>
-                    <option value="3">Three</option>
                 </select>
         </td>
         <td>
@@ -212,7 +215,7 @@ function show_users(){
                 </select>
         </td>
         <td>
-            <input type="file" name="file"/>
+            <input type="file" name="users_foto"/>
         </td>
         <td>
             <button type="button" id="align-right"> vymazať </button>
@@ -237,7 +240,6 @@ function add_user_popup(){
     <input type="text" placeholder="login" name="login" required>
     <input type="password" placeholder="password" name="password" required>
     <input type="email" placeholder="email@email.com" name="email" required>
-    <input type="password" placeholder="Enter Password" name="psw" required>
     <select class="custom-select">
                     <option value="">Vybrať level oprávnenia</option>
                     <option value="0">admin</option>
@@ -252,5 +254,74 @@ function add_user_popup(){
         </div>
      </div>
    <?php
+}
+
+function add_artist_popup(){
+    //TODO pridat clenov
+?>
+    <div class="jumbotron">
+        <div class="span8 centering">
+            <h2>Pridať nového interpreta</h2>
+            <form action="#" class="form-container">
+                <input type="text" placeholder="meno" name="artist_name" required>
+                <input type="text" placeholder="hodnotenie" name="interpret_rating">
+                <center>
+                <input type="file" name="artist_foto" id="artist_align">
+                </center>
+                <select name="artist_genre" id="artist_genre" multiple>
+                    <!--  TU BUDE FUNKCIA Z TRIEDY ZANROV -->
+                    <option value="rock">Rock</option>
+                    <option value="pop">Pop</option>
+                    <option value="dnb">Drum and Bass</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-info">Pridať</button>
+                <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
+            </form>
+        </div>
+    </div>
+    <?php
+}
+
+function add_festival_popup(){
+?>
+    <div class="jumbotron">
+        <div class="span8 centering">
+            <h2>Pridať nový festival</h2>
+            <form action="#" class="form-container">
+                <table class="center">
+                <tr>
+                <td><input class="form-control" type="text" placeholder="meno" name="festival_name" required></td>
+                <td><select class="form-control" name="festival_address" id="festival_address">
+                    <option value="">Adresa</option>
+                    <option value="1">Niekde 26</option>
+                    <option value="2">Dakde 44</option>
+                    <option value="3">Tuto 17</option>
+                </select></td>
+                   <td> <input class="form-control" type="date" placeholder="od" name="festival_date_from"></td>
+                  <td>  <input class="form-control" type="date" placeholder="do" name="festival_date_to"></td>
+                    <td><input class="form-control" type="text" placeholder="hodnotenie" name="festival_rating"></td>
+                    <td><input class="form-control" type="number" placeholder="kapacita" name="festival_capacity"></td>
+                    <td><input class="form-control" type="number" placeholder="cena" name="festival_price"></td>
+                    <td> <input type="file" name="festival_foto" id="artist_align"></td>
+                </tr>
+                <tr>
+                    <td><select class="form-control" name="festival_genre" id="festival_genre" multiple>
+                    <!--  TU BUDE FUNKCIA Z TRIEDY ZANROV -->
+                    <option value="rock">Rock</option>
+                    <option value="pop">Pop</option>
+                    <option value="dnb">Drum and Bass</option>
+                </select> </td>
+
+                <td><textarea placeholder="Popis..." class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></td>
+
+                </tr>
+        </table>
+                <button type="submit" class="btn btn-info">Pridať</button>
+                <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
+            </form>
+    </div>
+    </div>
+    <?php
 }
 ?>

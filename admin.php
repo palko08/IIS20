@@ -58,6 +58,18 @@ require "view/show_elements.php";
     </div>
 </nav>
 
+<div class="form-popup" id="add_festivals">
+    <?php
+    add_festival_popup();
+    ?>
+</div>
+
+<div class="form-popup" id="add_interprets">
+    <?php
+    add_artist_popup();
+    ?>
+</div>
+
 <div class="form-popup" id="add_user">
     <?php
     add_user_popup();

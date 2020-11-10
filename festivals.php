@@ -11,12 +11,14 @@ make_header();
 			<input type="text" class="form-control form-rounded" placeholder="Nájsť festival"> 
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<div class="col-sm-4">
+                    <a href="festival_page.php">
 					<div class="thumbnail">
 					<img src="img/lir3.jpg" alt="Paris">
 					<p style="margin-top:5px"><strong>Paris</strong></p>
 					<p>1-3 August 2020</p>
 					<button class="btn">Buy Tickets</button>
 					</div>
+                    </a>
 				</div>
 				<div class="col-sm-4">
 					<div class="thumbnail">

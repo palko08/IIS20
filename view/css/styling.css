@@ -87,6 +87,21 @@
 .bg-1{
   background-color: rgb(31, 29, 30);
 }
+a:visited{
+    color:black;
+    text-decoration: none;
+}
+
+a:hover{
+    color:black;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
 .form-rounded { 
   border-radius: 1rem;
   margin-bottom: 20px;

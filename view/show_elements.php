@@ -232,8 +232,9 @@ function show_users(){
 /* ADD NEW ITEMS TO DATABASE FUNCTIONS  */
 
 function add_user_popup(){
+    //TODO typ oprávnenia
     ?>
-  <!-- <form action="/action_page.php" class="form-container"> -->
+
     <div class="jumbotron">
     <div class="span8 centering">
     <h2>Pridať nového užívateľa</h2>

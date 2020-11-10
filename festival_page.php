@@ -1,6 +1,7 @@
 <?php
 require "common.php";
 make_header();
+//TODO rozpis na podiach pridat
 ?>
 <script>
     $(document).ready(function(){
@@ -32,7 +33,7 @@ make_header();
                     <h5>Hodnotenie: </h5>
                     <h3>DD/MM/YYYY - DD/MM/YYYY</h3>
                     <h4>Adresa</h4>
-                    <h6>štýl dnb</h6>
+                    <h6>štýl</h6>
                     <div class="buy-ticket">
                     <div class="qty mt-5">
                         <span class="minus bg-dark">-</span>

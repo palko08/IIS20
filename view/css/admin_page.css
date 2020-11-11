@@ -60,12 +60,12 @@
     border-radius: 6px 0 6px 6px;
 }
 
-#align-right{
+.align-right{
     float: right;
     margin-right: 10px;
 }
 
-#tickets, #festivals, #interprets,#users{
+#tickets, #interprets,#users,#festivals{
     display: none;
 }
 .custom-select{
@@ -87,4 +87,18 @@
     margin-right: auto;
 }
 
+.create_lineup{
+    padding-bottom: 50px;
+}
 
+.borders{
+    border: 1px solid black;
+    padding-left: 5px;
+}
+
+#lineup-table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

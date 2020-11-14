@@ -2,9 +2,8 @@
 require "common.php";
 require_admin();
 make_head();
-require "view/show_elements.php";
 ?>
-
+    <script type="text/javascript" src="view/show_elements.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="view/css/admin_page.css">
 <body>
@@ -59,41 +58,41 @@ require "view/show_elements.php";
 
 <div class="form-popup" id="add_festivals">
     <?php
-    add_festival_popup();
+    require("view/add_festival.php");
     ?>
 </div>
 
 <div class="form-popup" id="add_interprets">
     <?php
-    add_artist_popup();
+    require("view/add_artist.php");
     ?>
 </div>
 
 <div class="form-popup" id="add_user">
     <?php
-    add_user_popup();
+    require("view/add_user.php");
     ?>
 </div>
 
 <div class="container" id="container">
     <div class="col-sm" id="tickets">
             <?php
-            show_tickets();
+            require("view/show_tickets.php");
             ?>
     </div>
     <div class="col-sm" id="festivals">
             <?php
-            show_festivals();
+            require("view/show_festivals.php");
             ?>
     </div>
     <div class="col-sm" id="interprets">
             <?php
-            show_interprets();
+            require("view/show_interprets.php");
             ?>
     </div>
     <div class="col-sm" id="users">
             <?php
-            show_users();
+            require("view/show_users.php");
             ?>
     </div>
 </div>

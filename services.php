@@ -14,8 +14,8 @@ class AccountService
 	function connect_db()
 	{
 		$dsn = 'mysql:host=localhost;port=3306;dbname=IIS2020';
-		$username = 'xsubap00';
-		$password = "SekierZ00*";
+		$username = 'dasa';
+		$password = "Mandarinka";
 		$options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
 		$pdo = new PDO($dsn, $username, $password, $options);
@@ -75,6 +75,13 @@ class AccountService
 		$stmt->execute([$login]);
 		return $stmt->fetch();
 	}
+
+	function getAccounts(){
+        $stmt = $this->pdo->query('SELECT * FROM Registrovany',MYSQLI_USE_RESULT);
+
+        return $stmt;
+    }
+
 
 	function isValidAccount($login, $password)
 	{

@@ -1,59 +1,59 @@
 USE IIS2020;
 
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
-VALUES("festival 1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', "Niekde 26");
+VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', "Niekde 26");
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
-VALUES("festival 2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', "Dakde 44");
+VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', "Dakde 44");
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
-VALUES("festival 3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', "Tuto 17");
+VALUES("festival3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', "Tuto 17");
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
-VALUES("festival 4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', "Ulica 7");
+VALUES("festival4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', "Ulica 7");
 
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(1, "prve podium");
+VALUES(1, "podium1");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(2, "druhe podium");
+VALUES(2, "podium2");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(2, "tretie podium");
+VALUES(2, "podium3");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(3, "stvrte podium");
+VALUES(3, "podium4");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(3, "piate podium");
+VALUES(3, "podium5");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(4, "podium 6");
+VALUES(4, "podium6");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(4, "podium 7");
+VALUES(4, "podium7");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(4, "podium 8");
+VALUES(4, "podium8");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(4, "podium 9");
+VALUES(4, "podium9");
 INSERT INTO Podium(festival_ID, nazov)
-VALUES(4, "podium 10");
+VALUES(4, "podium10");
 
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 1", 3.5);
+VALUES("interpret1", 3.5);
 INSERT INTO Interpret(nazov)
-VALUES("interpret 2");
+VALUES("interpret2");
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 3", 3.7);
+VALUES("interpret3", 3.7);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 4", 3.2);
+VALUES("interpret4", 3.2);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 5", 4.5);
+VALUES("interpret5", 4.5);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 6", 4.1);
+VALUES("interpret6", 4.1);
 INSERT INTO Interpret(nazov)
-VALUES("interpret 7");
+VALUES("interpret7");
 INSERT INTO Interpret(nazov)
-VALUES("interpret 8");
+VALUES("interpret8");
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 9", 3.7);
+VALUES("interpret9", 3.7);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 10", 3.3);
+VALUES("interpret10", 3.3);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 11", 4.4);
+VALUES("interpret11", 4.4);
 INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret 12", 2.9);
+VALUES("interpret12", 2.9);
 
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
 VALUES(1, 1, '2020-11-05 18:00:00');
@@ -103,101 +103,101 @@ INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupeni
 VALUES(11, 10, '2020-11-15 01:00:00');
 
 INSERT INTO Clovek(meno)
-VALUES("meno 1");
+VALUES("meno1");
 INSERT INTO Clovek(meno)
-VALUES("meno 2");
+VALUES("meno2");
 INSERT INTO Clovek(meno)
-VALUES("meno 3");
+VALUES("meno3");
 INSERT INTO Clovek(meno)
-VALUES("meno 4");
+VALUES("meno4");
 INSERT INTO Clovek(meno)
-VALUES("meno 5");
+VALUES("meno5");
 INSERT INTO Clovek(meno)
-VALUES("meno 6");
+VALUES("meno6");
 INSERT INTO Clovek(meno)
-VALUES("meno 7");
+VALUES("meno7");
 INSERT INTO Clovek(meno)
-VALUES("meno 8");
+VALUES("meno8");
 INSERT INTO Clovek(meno)
-VALUES("meno 9");
+VALUES("meno9");
 INSERT INTO Clovek(meno)
-VALUES("meno 10");
+VALUES("meno10");
 INSERT INTO Clovek(meno)
-VALUES("meno 11");
+VALUES("meno11");
 INSERT INTO Clovek(meno)
-VALUES("meno 12");
+VALUES("meno12");
 INSERT INTO Clovek(meno)
-VALUES("meno 13");
+VALUES("meno13");
 INSERT INTO Clovek(meno)
-VALUES("meno 14");
+VALUES("meno14");
 INSERT INTO Clovek(meno)
-VALUES("meno 15");
+VALUES("meno15");
 INSERT INTO Clovek(meno)
-VALUES("meno 16");
+VALUES("meno16");
 INSERT INTO Clovek(meno)
-VALUES("meno 17");
+VALUES("meno17");
 INSERT INTO Clovek(meno)
-VALUES("meno 18");
+VALUES("meno18");
 INSERT INTO Clovek(meno)
-VALUES("meno 19");
+VALUES("meno19");
 INSERT INTO Clovek(meno)
-VALUES("meno 20");
+VALUES("meno20");
 INSERT INTO Clovek(meno)
-VALUES("meno 21");
+VALUES("meno21");
 INSERT INTO Clovek(meno)
-VALUES("meno 22");
+VALUES("meno22");
 INSERT INTO Clovek(meno)
-VALUES("meno 23");
+VALUES("meno23");
 INSERT INTO Clovek(meno)
-VALUES("meno 24");
+VALUES("meno24");
 INSERT INTO Clovek(meno)
-VALUES("meno 25");
+VALUES("meno25");
 INSERT INTO Clovek(meno)
-VALUES("meno 26");
+VALUES("meno26");
 INSERT INTO Clovek(meno)
-VALUES("meno 27");
+VALUES("meno27");
 INSERT INTO Clovek(meno)
-VALUES("meno 28");
+VALUES("meno28");
 INSERT INTO Clovek(meno)
-VALUES("meno 29");
+VALUES("meno29");
 INSERT INTO Clovek(meno)
-VALUES("meno 30");
+VALUES("meno30");
 INSERT INTO Clovek(meno)
-VALUES("meno 31");
+VALUES("meno31");
 INSERT INTO Clovek(meno)
-VALUES("meno 32");
+VALUES("meno32");
 
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(1, "email 1", "login 1", "heslo 1", 'admin');
+VALUES(1, "email1", "login1", "heslo1", 'admin');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(2, "email 2", "login 2", "heslo 2", 'poradatel');
+VALUES(2, "email2", "login2", "heslo2", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(3, "email 3", "login 3", "heslo 3", 'poradatel');
+VALUES(3, "email3", "login3", "heslo3", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(4, "email 4", "login 4", "heslo 4", 'pokladni');
+VALUES(4, "email4", "login4", "heslo4", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(5, "email 5", "login 5", "heslo 5", 'pokladni');
+VALUES(5, "email5", "login5", "heslo5", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(6, "email 6", "login 6", "heslo 6", 'pokladni');
+VALUES(6, "email6", "login6", "heslo6", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(7, "email 7", "login 7", "heslo 7", 'divak');
+VALUES(7, "email7", "login7", "heslo7", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(8, "email 8", "login 8", "heslo 8", 'divak');
+VALUES(8, "email8", "login8", "heslo8", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(9, "email 9", "login 9", "heslo 9", 'divak');
+VALUES(9, "email9", "login9", "heslo9", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(10, "email 10", "login 10", "heslo 10", 'divak');
+VALUES(10, "email10", "login10", "heslo10", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(11, "email 11", "login 11", "heslo 11", 'divak');
+VALUES(11, "email11", "login11", "heslo11", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(12, "email 12", "login 12", "heslo 12", 'divak');
+VALUES(12, "email12", "login12", "heslo12", 'divak');
 
 INSERT INTO Neregistrovany(neregistrovany_ID, email)
-VALUES(13, "email 13");
+VALUES(13, "email13");
 INSERT INTO Neregistrovany(neregistrovany_ID, email)
-VALUES(14, "email 14");
+VALUES(14, "email14");
 INSERT INTO Neregistrovany(neregistrovany_ID, email)
-VALUES(15, "email 15");
+VALUES(15, "email15");
 
 INSERT INTO Clen(clen_ID)
 VALUES(16);
@@ -235,17 +235,17 @@ INSERT INTO Clen(clen_ID)
 VALUES(32);
 
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 1");
+VALUES("zaner1");
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 2");
+VALUES("zaner2");
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 3");
+VALUES("zaner3");
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 4");
+VALUES("zaner4");
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 5");
+VALUES("zaner5");
 INSERT INTO Zaner(zaner_nazov)
-VALUES("zaner 6");
+VALUES("zaner6");
 
 INSERT INTO Vstupenka(cena, festival_ID, registrovany_ID)
 VALUES(10, 1, 7);

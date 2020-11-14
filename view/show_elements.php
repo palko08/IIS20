@@ -15,6 +15,7 @@
     function closeForm(itemID) {
         document.getElementById(itemID).style.display = "none";
     }
+
 </script>
 
 <!-- HIDDEN ELEMENTS FUNCTIONS  -->
@@ -315,7 +316,6 @@ function add_user_popup(){
 }
 
 function add_artist_popup(){
-    //TODO pridat clenov
 ?>
     <div class="jumbotron">
         <div class="span8 centering">
@@ -333,8 +333,18 @@ function add_artist_popup(){
                     <option value="dnb">Drum and Bass</option>
                 </select>
                 <br>
+                <label>Clenovia</label>
+                <br>
+                <text id="members">clen1</text>
+                <br>
                 <button type="submit" class="btn btn-info">Pridať</button>
                 <button type="submit" class="btn btn-danger" onclick=closeForm("add_interprets")>Zatvoriť</button>
+                <br>
+            </form>
+            <form action="#" method="post">
+                <input name="member_name" type="text" class="input-sm" placeholder="Meno">
+                <input name="member_surname" type="text" class="input-sm" placeholder="Priezvisko">
+                <button type="submit" class="btn btn-primary">Pridat člena</button>
             </form>
         </div>
     </div>

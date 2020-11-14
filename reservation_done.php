@@ -10,7 +10,7 @@ make_header();
 if (isset($_SESSION['user'])) {
    echo '<br><a href="tickets.php">Zarezervované vstupenky</a>';
 } else{
-      include("register.html"); } ?>
+    include ("view/register.html"); } ?>
 
 <?php
 

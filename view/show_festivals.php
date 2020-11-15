@@ -1,3 +1,6 @@
+<?php
+
+?>
     <table class="table">
     <thead>
     <h1>Festivaly</h1>

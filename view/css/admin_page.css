@@ -65,7 +65,7 @@
     margin-right: 10px;
 }
 
-#tickets, #interprets,#users,#festivals{
+#tickets, #interprets,#festivals{
     display: none;
 }
 .custom-select{

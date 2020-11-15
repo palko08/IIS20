@@ -20,9 +20,15 @@ $query = $serv->getAccounts();
     </thead>
     <tbody>
     <?php
+
     while($row = $query->fetch()) {
         $name = $serv->getName($row["login"]);
+        if(isset($_POST['delete_btn'])) {
+            $ret = $serv->deleteAccount($row["registrovany_ID"]);
+            //TODO add javascript pop_up with return value
+        }
     print "
+    <form method=\"post\"> 
     <tr><td> <a class=\"no_color_change_link\" id=\"user_id\">".$row["registrovany_ID"]."</a></td>
         <td><input type=\"email\" id=\"user_email\" value=".$row["email"]."></td>
         <td><input type=\"text\"id=\"user_name\" value=".$name."></td>
@@ -36,12 +42,14 @@ $query = $serv->getAccounts();
                     <option value=\"3\">divák</option>
                     <option value=\"4\">admin</option>
                 </select>
-        </td>
-        <td><input type=\"file\" name=\"users_foto\"/></td>
-        <td><button type=\"button\" id=\"align-right\"> vymazať </button></td>
-        <td><button type=\"button\" id=\"align-right\"> potvrdiť zmeny </button></td>
-    </tr>";
-        }
+        </td>"; ?>
+        <td><button type="button" id="align-right" name="delete_btn" onclick="location.href='delete.php?id=<?php echo $row["registrovany_ID"];?>'"> vymazať </button></td>
+        <td><button type="button" id="align-right"> potvrdiť zmeny </button></td>
+    </tr>
+    </form>
+    <?php
+    }
     ?>
     </tbody>
 </table>
+

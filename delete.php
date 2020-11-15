@@ -7,10 +7,12 @@ if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 }
 if (empty($id)) {
-    throw  new Exception('ID je prazdne');
+    throw new Exception('ID je prazdne');
 }
 $account = new AccountService();
-$account->deleteAccount($id);
+if ($account->deleteAccount($id) == FALSE){
+    throw new Exception('Problem pri odstranovani uzivatela');
+}
 
 header("Location: /admin.php");
 die;

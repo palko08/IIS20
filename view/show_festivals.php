@@ -5,8 +5,6 @@ $pdo = connect_db();
 $idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
 $idSelect->execute();
 
-//echo $idSelect->rowCount() . "<br>";
-
 $results = $idSelect->fetchAll();
 
 $festivals = array();
@@ -65,7 +63,7 @@ foreach($results as $row) {
             <input id="festival_capacity" class="form-control" placeholder="<?php echo $festival->getKapacita($pdo);?>">
         </td>
         <td>
-            <input type="number" id="festival_price" class="form-control" placeholder="cena">
+            <input type="number" id="festival_price" class="form-control" placeholder=<?php echo $festival->getCena($pdo);?>>
         </td>
         <td>
             <button type="button" class="align-right" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>

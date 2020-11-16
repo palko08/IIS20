@@ -39,13 +39,13 @@ make_header();
                     <h2><?php echo $festival->getNazov($pdo);?></h2>
                     <h5>Kapacita:<?php echo $festival->getKapacita($pdo);?></h5>
                     <h3><?php echo $festival->getDatum_Od($pdo);?> - <?php echo $festival->getDatum_Do($pdo);?></h3>
-                    <h4><?php echo $festival->getAdresa($pdo);?></h4>
+                    <h4>Adresa: <?php echo $festival->getAdresa($pdo);?></h4>
                     <h6><?php echo $festival->getZanre($pdo);?></h6>
+                    <h3>Cena: <?php echo $festival->getCena($pdo);?></h3>
                 </div>
             </div>
         </div>
     <div class="row">
-
         <div class="qty mt-5 col-sm-6">
             <span class="minus bg-dark">-</span>
             <input type="number" class="count" name="qty" value="1">

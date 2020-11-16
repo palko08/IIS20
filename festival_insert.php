@@ -9,6 +9,7 @@ $adresa = $_POST['adresa'];
 $datum_od = $_POST['od'];
 $datum_do = $_POST['do'];
 $cena = $_POST['cena'];
+$hodnotenie = '';
 $popis = '';
 
 $festival = new Festival();
@@ -17,13 +18,20 @@ if ($error == -1)
 {
     throw new Exception("Ucet sa nepodarilo vytvorit");
 }
-
+$id = $festival->getID();
 if (!(empty($_POST['popis']))) {
     $popis = $_POST['popis'];
-    $id = $festival->getID();
     $error = $festival->setPopis($pdo, $popis);
     if ($error == 1) {
         throw new Exception("popis sa neda pridat");
+    }
+}
+
+if (!(empty($_POST['hodnotenie']))) {
+    $popis = $_POST['hodnotenie'];
+    $error = $festival->setHodnotenie($pdo, $hodnotenie);
+    if ($error == 1) {
+        throw new Exception("hodnotenie sa neda pridat");
     }
 }
 

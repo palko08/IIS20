@@ -1,20 +1,20 @@
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nový festival</h2>
-        <form action="#" class="form-container">
+        <form action="../festival_insert.php" class="form-container" method="post">
             <table class="center">
                 <tr>
-                    <td><input class="form-control" type="text" placeholder="meno" name="festival_name" required></td>
-                    <td><select class="form-control" name="festival_address" id="festival_address">
+                    <td><input name="nazov" class="form-control" type="text" placeholder="meno" required></td>
+                    <td><select name="adresa" class="form-control"id="festival_address">
                             <option value="">Adresa</option>
                             <option value="1">Niekde 26</option>
                             <option value="2">Dakde 44</option>
                             <option value="3">Tuto 17</option>
                         </select></td>
-                    <td> <input class="form-control" type="date" placeholder="od" name="festival_date_from"></td>
-                    <td>  <input class="form-control" type="date" placeholder="do" name="festival_date_to"></td>
-                    <td><input class="form-control" type="text" placeholder="hodnotenie" name="festival_rating"></td>
-                    <td><input class="form-control" type="number" placeholder="kapacita" name="festival_capacity"></td>
+                    <td> <input class="form-control" type="date" placeholder="od" name="od"></td>
+                    <td>  <input class="form-control" type="date" placeholder="do" name="do"></td>
+                    <td><input class="form-control" type="text" placeholder="hodnotenie" name="hodnotenie"></td>
+                    <td><input class="form-control" type="number" placeholder="kapacita" name="kapacita"></td>
                     <td><input class="form-control" type="number" placeholder="cena" name="festival_price"></td>
                     <td> <input type="file" name="festival_foto" id="artist_align"></td>
                 </tr>

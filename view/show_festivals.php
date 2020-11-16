@@ -68,10 +68,10 @@ foreach($results as $row) {
             <input type="number" id="festival_price" class="form-control" placeholder="cena">
         </td>
         <td>
-            <button type="button" class="align-right"> Potvrdiť zmeny</button>
+            <button type="button" class="align-right" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>
         </td>
         <td>
-            <button type="button" class="align-right" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>
+            <button type="button" class="align-right"> Potvrdiť zmeny</button>
         </td>
     </tr>
     </form>

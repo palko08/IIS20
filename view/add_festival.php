@@ -5,17 +5,17 @@
             <table class="center">
                 <tr>
                     <td><input name="nazov" class="form-control" type="text" placeholder="meno" required></td>
-                    <td><select name="adresa" class="form-control"id="festival_address">
+                    <td><select name="adresa" class="form-control" id="festival_address" required>
                             <option value="">Adresa</option>
-                            <option value="1">Niekde 26</option>
-                            <option value="2">Dakde 44</option>
-                            <option value="3">Tuto 17</option>
+                            <option value="Niekde 26">Niekde 26</option>
+                            <option value="Dakde 44">Dakde 44</option>
+                            <option value="Tuto 17">Tuto 17</option>
                         </select></td>
-                    <td> <input class="form-control" type="date" placeholder="od" name="od"></td>
-                    <td>  <input class="form-control" type="date" placeholder="do" name="do"></td>
+                    <td> <input class="form-control" type="date" placeholder="od" name="od" required></td>
+                    <td>  <input class="form-control" type="date" placeholder="do" name="do" required></td>
                     <td><input class="form-control" type="text" placeholder="hodnotenie" name="hodnotenie"></td>
-                    <td><input class="form-control" type="number" placeholder="kapacita" name="kapacita"></td>
-                    <td><input class="form-control" type="number" placeholder="cena" name="festival_price"></td>
+                    <td><input class="form-control" type="number" placeholder="kapacita" name="kapacita" required></td>
+                    <td><input class="form-control" type="number" placeholder="cena" name="cena" required></td>
                     <td> <input type="file" name="festival_foto" id="artist_align"></td>
                 </tr>
                 <tr>
@@ -26,11 +26,11 @@
                             <option value="dnb">Drum and Bass</option>
                         </select> </td>
 
-                    <td><textarea placeholder="Popis..." class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></td>
+                    <td><textarea placeholder="Popis..." class="form-control" id="exampleFormControlTextarea1" rows="3" name="popis"></textarea></td>
 
                 </tr>
             </table>
-            <button type="submit" class="btn btn-info">Pridať</button>
+            <button type="submit" class="btn btn-info" value="Register">Pridať</button>
             <button type="submit" class="btn btn-danger" onclick=closeForm("add_festivals")>Zatvoriť</button>
         </form>
     </div>

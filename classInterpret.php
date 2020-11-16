@@ -36,7 +36,7 @@ class Interpret{
      *  @brief Funkcia pre vytvorenie noveho rowu v databaze v tabulke Interpret a priradenie daneho Interpretu do instancie classy Interpret
      *
      *  @param pdo Nadviazane PDO spojenie s databazou
-     *  @param nazov, kapacita, datum_Od, datum_Do, adresa Parametre reprezentujuce data vkladane do tabulky
+     *  @param nazov Parametre reprezentujuce data vkladane do tabulky
      *
      *  @return ID vlozeneho rowu, alebo ID uz existujuceho rowu, -1 ak sa nepodarilo vlozit dany row
      */

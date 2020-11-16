@@ -40,7 +40,7 @@ $query = $serv->getAccounts();
                     <option value="4">admin</option>
                 </select>
         </td>
-        <td><button type="button" id="align-right" name="delete_btn" onclick="location.href='delete.php?id=<?php echo $row["registrovany_ID"]?>'"> vymazať </button></td>
+        <td><button type="button" id="align-right" name="delete_btn" onclick="location.href='delete.php?type=USER&id=<?php echo $row["registrovany_ID"]?>'"> vymazať </button></td>
         <td><button type="submit" id="align-right" name="update" > potvrdiť zmeny </button></td>
     </tr>
     </form>

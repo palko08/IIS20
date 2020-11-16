@@ -1,5 +1,23 @@
 <?php
+require "classFestival.php";
+require_once "connect_db.php";
+$pdo = connect_db();
+$idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
+$idSelect->execute();
 
+//echo $idSelect->rowCount() . "<br>";
+
+$results = $idSelect->fetchAll();
+
+$festivals = array();
+
+foreach($results as $row) {
+    $festival = new Festival();
+    if($festival->initExistingFestival($pdo, $row[0]) == -1){
+        echo "nenasli sme v databazke dany row<br>";
+    }
+    $festivals[] = $festival;
+}
 ?>
     <table class="table">
     <thead>
@@ -18,45 +36,53 @@
     </tr>
     </thead>
     <tbody>
-    <!-- TOTO SA HODI DO FUNKCIE, placeholderi budu aktualne hodnoty -->
+    <?php
+        foreach ($festivals as $festival){
+    ?>
+    <form name="change_festival" method="post" action="">
     <tr>
         <td>
-            <a class="no_color_change_link" id="festival_id" href="#">ID</a>
+            <a class="no_color_change_link" id="festival_id" href="#"><?php echo $festival->getID();?></a>
         </td>
         <td>
-            <input type="text" id="festival_name" placeholder="festival name"></a>
+            <input type="text" id="festival_name" placeholder=<?php echo $festival->getNazov($pdo);?>></a>
         </td>
         <td>
             <select class="form-control" name="festival_address">
-                <option value="">Aktualna adresa</option>
+                <option value=""><?php echo $festival->getAdresa($pdo);?></option>
                 <option value="1">Niekde 26</option>
                 <option value="2">Dakde 44</option>
                 <option value="3">Tuto 17</option>
             </select>
         </td>
         <td>
-            <input type="date" id="festival_date_from" class="form-control">
+            <input type="date" id="festival_date_from" class="form-control" value=<?php echo $festival->getDatum_Od($pdo);?>>
         </td>
         <td>
-            <input type="date" id="festival_date_to" class="form-control">
+            <input type="date" id="festival_date_to" class="form-control" value=<?php echo $festival->getDatum_Do($pdo);?>>
         </td>
         <td>
-            <input placeholder="aktuálna kapacita festivalu" id="festival_capacity" class="form-control">
+            <input id="festival_capacity" class="form-control" placeholder="<?php echo $festival->getKapacita($pdo);?>">
         </td>
         <td>
-            <input type="number" placeholder="cena" id="festival_price" class="form-control">
+            <input type="number" id="festival_price" class="form-control" placeholder="cena">
         </td>
         <td>
             <button type="button" class="align-right"> Potvrdiť zmeny</button>
         </td>
         <td>
-            <button type="button" class="align-right"> Odstrániť </button>
+            <button type="button" class="align-right" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>
         </td>
     </tr>
-    <!-- TOTO SA HODI DO FUNKCIE -->
-
+    </form>
+    <?php
+        }
+    ?>
     </tbody>
     </table>
+
+
     <?php
-    require("create_lineup.php");
+
+    //require("create_lineup.php");
     ?>

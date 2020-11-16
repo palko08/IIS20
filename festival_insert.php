@@ -21,7 +21,7 @@ if ($error == -1)
 if (!(empty($_POST['popis']))) {
     $popis = $_POST['popis'];
     $id = $festival->getID();
-    $error = $festival->setPopis($pdo, $id);
+    $error = $festival->setPopis($pdo, $popis);
     if ($error == 1) {
         throw new Exception("popis sa neda pridat");
     }

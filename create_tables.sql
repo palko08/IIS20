@@ -9,6 +9,7 @@ CREATE TABLE Festival(
     datum_Do            DATETIME        NOT NULL,
     cena				DECIMAL(7,2)	NOT NULL,
     adresa				VARCHAR(100)	NOT NULL,
+    hodnotenie			DECIMAL(2,1)	DEFAULT NULL,
     popis				VARCHAR(1000)	DEFAULT NULL,
     obrazok				VARCHAR(200)	DEFAULT NULL,
     PRIMARY KEY(festival_ID)

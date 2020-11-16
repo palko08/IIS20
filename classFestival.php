@@ -129,6 +129,12 @@ class Festival{
     	return $select->fetchColumn();
     }
 
+    function getHodnotenie($pdo){
+        $select = $pdo->prepare("SELECT hodnotenie FROM Festival WHERE festival_ID = ?");
+        $select->execute([$this->festivalID]);
+        return $select->fetchColumn();
+    }
+
     function getPopis($pdo){
     	$select = $pdo->prepare("SELECT popis FROM Festival WHERE festival_ID = ?");
     	$select->execute([$this->festivalID]);
@@ -243,6 +249,17 @@ class Festival{
     		echo $e->getMessage() . "<br>";
     		return 1;
     	}
+    }
+
+    function setHodnotenie($pdo, $data){
+        try{
+            $select = $pdo->prepare("UPDATE Festival SET hodnotenie = ? WHERE festival_ID = ?");
+            $select->execute([$data, $this->festivalID]);
+            return 0;
+        }catch(PDOException $e){
+            echo $e->getMessage() . "<br>";
+            return 1;
+        }
     }
 
     function setPopis($pdo, $data){

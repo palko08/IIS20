@@ -25,7 +25,7 @@ class Interpret{
     	$idSelect->execute([$id]);
 
     	if($idSelect->rowCount() == 1){
-    		$this->InterpretID = $idSelect->fetchColumn();
+    		$this->interpretID = $idSelect->fetchColumn();
     		return 0;
     	}else{
     		return -1;
@@ -54,8 +54,8 @@ class Interpret{
             $select->execute([$nazov]);
 
             if($select->rowCount() == 1){
-                $this->InterpretID = $select->fetchColumn();
-                return $this->InterpretID;
+                $this->interpretID = $select->fetchColumn();
+                return $this->interpretID;
             }else{
                 return -1;
             }
@@ -71,10 +71,10 @@ class Interpret{
      */
     function deleteInterpret($pdo){
         $delete = $pdo->prepare("DELETE FROM Interpret WHERE interpret_ID = ?");
-        $delete->execute([$this->InterpretID]);
+        $delete->execute([$this->interpretID]);
 
         $select = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
-        $select->execute([$this->InterpretID]);
+        $select->execute([$this->interpretID]);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -95,19 +95,19 @@ class Interpret{
 
     function getNazov($pdo){
     	$select = $pdo->prepare("SELECT nazov FROM Interpret WHERE interpret_ID = ?");
-    	$select->execute([$this->InterpretID]);
+    	$select->execute([$this->interpretID]);
     	return $select->fetchColumn();
     }
 
     function getHodnotenie($pdo){
         $select = $pdo->prepare("SELECT hodnotenie FROM Interpret WHERE interpret_ID = ?");
-        $select->execute([$this->InterpretID]);
+        $select->execute([$this->interpretID]);
         return $select->fetchColumn();
     }
 
     function getLogo($pdo){
         $select = $pdo->prepare("SELECT logo FROM Interpret WHERE interpret_ID = ?");
-        $select->execute([$this->InterpretID]);
+        $select->execute([$this->interpretID]);
         return $select->fetchColumn();
     }
 
@@ -146,7 +146,7 @@ class Interpret{
     function setNazov($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Interpret SET nazov = ? WHERE interpret_ID = ?");
-    		$select->execute([$data, $this->InterpretID]);
+    		$select->execute([$data, $this->interpretID]);
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -157,7 +157,7 @@ class Interpret{
     function setHodnotenie($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Interpret SET hodnotenie = ? WHERE interpret_ID = ?");
-            $select->execute([$data, $this->InterpretID]);
+            $select->execute([$data, $this->interpretID]);
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -168,7 +168,7 @@ class Interpret{
     function setLogo($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Interpret SET logo = ? WHERE interpret_ID = ?");
-            $select->execute([$data, $this->InterpretID]);
+            $select->execute([$data, $this->interpretID]);
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";

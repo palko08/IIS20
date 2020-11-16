@@ -1,12 +1,6 @@
 <?php
-require "common.php";
 require "services.php";
-make_header();
-?>
-<br><br>
-<h1>Vytvorit novy ucet</h1>
 
-<?php
 $serv = new AccountService();
 
 $newperson = array(
@@ -17,16 +11,10 @@ $newperson = array(
 );
 
 $error = $serv->addAccount($newperson);
- if ($error)
+ if (!$error)
  {
- 	echo '<p>Ucet bol vytvoreny.</p>';
+     throw new Exception("Ucet sa nepodarilo vytvorit");
  }
- else 
- {
- 	echo '<p>Ucet sa nepodarilo vyrvorit.</p>';
- }
-?>
-<p><a href="index.php">Spat na domovsku stranku</a></p>
-<?php
-make_footer();
+header("Location: /signin.php");
+die;
 ?>

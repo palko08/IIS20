@@ -31,7 +31,6 @@ switch ($type) {
             throw new Exception('Problem pri odstranovani festivalu');
         }
         break;
-
 }
 
 header("Location: /admin.php");

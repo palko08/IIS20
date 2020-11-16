@@ -13,7 +13,6 @@ $query = $serv->getAccounts();
         <th>Login</th>
         <th>Heslo</th>
         <th>Oprávnenie</th>
-        <th>Fotka</th>
         <th></th>
         <th></th>
     </tr>

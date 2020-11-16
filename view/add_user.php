@@ -3,7 +3,7 @@
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nového užívateľa</h2>
-        <form name="add_user" action="account_insert.php" method="post" class="form-container" target="dummyframe">
+        <form name="add_user" action="../account_insert.php" method="post" class="form-container" target="dummyframe">
             <input type="text" placeholder="login" name="login" id="add_user_login" required>
             <input type="text" placeholder="meno" name="meno" id="add_user_name" required>
             <input type="password" placeholder="password" name="password" id="add_user_psw" required>

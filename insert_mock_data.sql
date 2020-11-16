@@ -1,7 +1,7 @@
 USE IIS2020;
 
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
-VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', "Niekde 26");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa, obrazok)
+VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', "Niekde 26", "img/lir.jpg");
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)
 VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', "Dakde 44");
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa)

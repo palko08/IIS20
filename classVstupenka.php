@@ -36,12 +36,12 @@ class Vstupenka{
      *  @brief Funkcia pre vytvorenie noveho rowu v databaze v tabulke Vstupenka a priradenie daneho Vstupenkau do instancie classy Vstupenka
      *
      *  @param pdo Nadviazane PDO spojenie s databazou
-     *  @param cena, festival_ID Parametre reprezentujuce data vkladane do tabulky
+     *  @param festival_ID Parametre reprezentujuce data vkladane do tabulky
      *  @param registrovany_ID, neregistrovany_ID jeden z tychto bude neplatny, do neplatneho vlozte hodnotu -1
      *
      *  @return ID vlozeneho rowu, alebo ID uz existujuceho rowu, -1 ak sa nepodarilo vlozit dany row
      */
-    function createNewVstupenka($pdo, $cena, $festival_ID, $registrovany_ID, $neregistrovany_ID){
+    function createNewVstupenka($pdo, $festival_ID, $registrovany_ID, $neregistrovany_ID){
         $testID = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
         $testID->execute([$festival_ID]);
         if($testID->rowCount() == 0){
@@ -56,17 +56,17 @@ class Vstupenka{
                 return -1;
             }
 
-            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE cena = ? AND festival_ID = ? AND registrovany_ID = ?");
-            $testSelect->execute([$cena, $festival_ID, $registrovany_ID]);
+            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
+            $testSelect->execute([$festival_ID, $registrovany_ID]);
     
             if($testSelect->rowCount() == 1){
                 return $testSelect->fetchColumn();
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(cena, festival_ID, registrovany_ID) VALUES(?, ?, ?)");
-                $insert->execute([$cena, $festival_ID, $registrovany_ID]);
+                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID) VALUES(?, ?, ?)");
+                $insert->execute([$festival_ID, $registrovany_ID]);
     
-                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE cena = ? AND festival_ID = ? AND registrovany_ID = ?");
-                $select->execute([$cena, $festival_ID, $registrovany_ID]);
+                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
+                $select->execute([$festival_ID, $registrovany_ID]);
     
                 if($select->rowCount() == 1){
                     $this->vstupenkaID = $select->fetchColumn();
@@ -84,17 +84,17 @@ class Vstupenka{
                 return -1;
             }
 
-            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE cena = ? AND festival_ID = ? AND neregistrovany_ID = ?");
-            $testSelect->execute([$cena, $festival_ID, $neregistrovany_ID]);
+            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
+            $testSelect->execute([$festival_ID, $neregistrovany_ID]);
     
             if($testSelect->rowCount() == 1){
                 return $testSelect->fetchColumn();
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(cena, festival_ID, neregistrovany_ID) VALUES(?, ?, ?)");
-                $insert->execute([$cena, $festival_ID, $neregistrovany_ID]);
+                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID) VALUES(?, ?, ?)");
+                $insert->execute([$festival_ID, $neregistrovany_ID]);
     
-                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE cena = ? AND festival_ID = ? AND neregistrovany_ID = ?");
-                $select->execute([$cena, $festival_ID, $neregistrovany_ID]);
+                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
+                $select->execute([$festival_ID, $neregistrovany_ID]);
     
                 if($select->rowCount() == 1){
                     $this->vstupenkaID = $select->fetchColumn();
@@ -140,12 +140,6 @@ class Vstupenka{
         return $this->vstupenkaID;
     }
 
-    function getCena($pdo){
-    	$select = $pdo->prepare("SELECT cena FROM Vstupenka WHERE vstupenka_ID = ?");
-    	$select->execute([$this->vstupenkaID]);
-    	return $select->fetchColumn();
-    }
-
     function getFestival_ID($pdo){
         $select = $pdo->prepare("SELECT festival_ID FROM Vstupenka WHERE vstupenka_ID = ?");
         $select->execute([$this->vstupenkaID]);
@@ -172,17 +166,6 @@ class Vstupenka{
  	 *
  	 *	@return 0 ak sa update podari, 1 ak sa nepodari
  	 */
-    function setCena($pdo, $data){
-    	try{
-    		$select = $pdo->prepare("UPDATE Vstupenka SET cena = ? WHERE vstupenka_ID = ?");
-    		$select->execute([$data, $this->vstupenkaID]);
-    		return 0;
-    	}catch(PDOException $e){
-    		echo $e->getMessage() . "<br>";
-    		return 1;
-    	}
-    }
-
     function setFestival_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET festival_ID = ? WHERE vstupenka_ID = ?");

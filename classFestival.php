@@ -36,22 +36,22 @@ class Festival{
      *  @brief Funkcia pre vytvorenie noveho rowu v databaze v tabulke Festival a priradenie daneho festivalu do instancie classy festival
      *
      *  @param pdo Nadviazane PDO spojenie s databazou
-     *  @param nazov, kapacita, datum_Od, datum_Do, adresa Parametre reprezentujuce data vkladane do tabulky
+     *  @param nazov, kapacita, datum_Od, datum_Do, cena, adresa Parametre reprezentujuce data vkladane do tabulky
      *
      *  @return ID vlozeneho rowu, alebo ID uz existujuceho rowu, -1 ak sa nepodarilo vlozit dany row
      */
-    function createNewFestival($pdo, $nazov, $kapacita, $datum_Od, $datum_Do, $adresa){
-        $testSelect = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND adresa = ?");
-        $testSelect->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+    function createNewFestival($pdo, $nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa){
+        $testSelect = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND cena = ? AND adresa = ?");
+        $testSelect->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
-            $insert = $pdo->prepare("INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, adresa) VALUES(?, ?, ?, ?, ?)");
-            $insert->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+            $insert = $pdo->prepare("INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa) VALUES(?, ?, ?, ?, ?, ?)");
+            $insert->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
 
-            $select = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND adresa = ?");
-            $select->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+            $select = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND cena = ? AND adresa = ?");
+            $select->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
 
             if($select->rowCount() == 1){
                 $this->festivalID = $select->fetchColumn();
@@ -115,6 +115,12 @@ class Festival{
     	$select = $pdo->prepare("SELECT datum_Do FROM Festival WHERE festival_ID = ?");
     	$select->execute([$this->festivalID]);
     	return $select->fetchColumn();
+    }
+
+    function getCena($pdo){
+        $select = $pdo->prepare("SELECT cena FROM Festival WHERE festival_ID = ?");
+        $select->execute([$this->festivalID]);
+        return $select->fetchColumn();
     }
 
     function getAdresa($pdo){
@@ -215,6 +221,17 @@ class Festival{
     		echo $e->getMessage() . "<br>";
     		return 1;
     	}
+    }
+
+    function setCena($pdo, $data){
+        try{
+            $select = $pdo->prepare("UPDATE Festival SET cena = ? WHERE festival_ID = ?");
+            $select->execute([$data, $this->festivalID]);
+            return 0;
+        }catch(PDOException $e){
+            echo $e->getMessage() . "<br>";
+            return 1;
+        }
     }
 
     function setAdresa($pdo, $data){

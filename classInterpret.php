@@ -111,6 +111,12 @@ class Interpret{
         return $select->fetchColumn();
     }
 
+    function getCas_vystupenia($pdo, $podium_ID){
+        $select = $pdo->prepare("SELECT cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
+        $select->execute([$this->interpretID, $podium_ID]);
+        return $select->fetchColumn();
+    }
+
     function getZanre(){
         
     }

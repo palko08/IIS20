@@ -102,3 +102,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+a, a:link, a:visited, a:hover{
+    color: black;
+}
+

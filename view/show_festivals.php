@@ -71,6 +71,8 @@ foreach($results as $row) {
         <td>
             <button type="button" class="align-right"> Potvrdiť zmeny</button>
         </td>
+        <td>
+            <a href="../create_lineup.php?id=<?php echo $festival->getID()?>"><button type="button" class="align-right">Vytvoriť rozpis</button></a>
     </tr>
     </form>
     <?php

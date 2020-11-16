@@ -11,6 +11,7 @@ $datum_do = $_POST['do'];
 $cena = $_POST['cena'];
 $hodnotenie = '';
 $popis = '';
+$obr = '';
 
 $festival = new Festival();
 $error = $festival->createNewFestival($pdo,$nazov,$kapacita, $datum_od, $datum_do,$cena,$adresa);
@@ -32,6 +33,14 @@ if (!(empty($_POST['hodnotenie']))) {
     $error = $festival->setHodnotenie($pdo, $hodnotenie);
     if ($error == 1) {
         throw new Exception("hodnotenie sa neda pridat");
+    }
+}
+
+if (!(empty($_POST['obr']))) {
+    $popis = $_POST['obr'];
+    $error = $festival->setObrazok($pdo, $obr);
+    if ($error == 1) {
+        throw new Exception("obrazok sa neda pridat");
     }
 }
 

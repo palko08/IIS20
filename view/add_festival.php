@@ -16,7 +16,7 @@
                     <td><input class="form-control" type="text" placeholder="hodnotenie" name="hodnotenie"></td>
                     <td><input class="form-control" type="number" placeholder="kapacita" name="kapacita" required></td>
                     <td><input class="form-control" type="number" placeholder="cena" name="cena" required></td>
-                    <td> <input type="file" name="festival_foto" id="artist_align"></td>
+                    <td> <input type="file" name="obr" id="artist_align"></td>
                 </tr>
                 <tr>
                     <td><select class="form-control" name="festival_genre" id="festival_genre" multiple>

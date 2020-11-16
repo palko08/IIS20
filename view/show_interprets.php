@@ -1,3 +1,23 @@
+<?php
+require "classInterpret.php";
+require_once "connect_db.php";
+$pdo = connect_db();
+$idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret");
+$idSelect->execute();
+
+$results = $idSelect->fetchAll();
+
+$interprets = array();
+
+foreach($results as $row) {
+    $interpret = new Interpret();
+    if($interpret->initExistingInterpret($pdo, $row[0]) == -1){
+        echo "nenasli sme v databazke dany row<br>";
+    }
+    $interprets[] = $interpret;
+}
+?>
+
 <table class="table">
     <thead>
     <h1>Interpreti</h1>
@@ -11,7 +31,10 @@
     </tr>
     </thead>
     <tbody>
-    <!-- TOTO SA HODI DO CLASS FUNKCIE -->
+    <?php
+    foreach ($interprets as $interpret){
+    ?>
+    <form name="change_festival" method="post" action="">
     <tr>
         <td>
             <a class="no_color_change_link" id="interpret_id">ID</a>
@@ -37,8 +60,9 @@
             <button type="button" id="align-right"> potvrdiť zmeny </button>
         </td>
     </tr>
-    <!-- TOTO SA HODI DO FUNKCIE -->
-
+        <?php
+        }
+        ?>
     </tbody>
 </table>
 </table>

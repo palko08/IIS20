@@ -34,19 +34,19 @@ foreach($results as $row) {
     <?php
     foreach ($interprets as $interpret){
     ?>
-    <form name="change_festival" method="post" action="">
+    <form name="change_interpret" method="post" action="">
     <tr>
         <td>
-            <a class="no_color_change_link" id="interpret_id">ID</a>
+            <a class="no_color_change_link" id="interpret_id"><?php echo $interpret->getID();?></a>
         </td>
         <td>
-            <input type="text" placeholder="meno" id="interpret_name">
+            <input type="text" placeholder=<?php echo $interpret->getNazov($pdo);?> id="meno">
         </td>
         <td>
-            <input type="text" placeholder="hodnotenie" id="interpret_rating">
+            <input type="text" placeholder=<?php echo $interpret->getHodnotenie($pdo);?> id="interpret_rating">
         </td>
         <td>
-            <input type="file" name="artist_foto"/>
+            <input type="file" name="artist_foto" value="<?php echo $interpret->getLogo($pdo);?>"/>
         </td>
         <td>
             <div class="form-group">
@@ -64,5 +64,4 @@ foreach($results as $row) {
         }
         ?>
     </tbody>
-</table>
 </table>

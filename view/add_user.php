@@ -16,14 +16,8 @@
                 <option value="3">divák</option>
             </select>
             <br>
-            <button type="submit" class="btn btn-info" value="Register" onclick=clean_forms()>Pridať</button>
+            <button type="submit" class="btn btn-info" value="Register" onClick="window.location.reload();">Pridať</button>
             <button type="submit" class="btn btn-danger" onclick=closeForm("add_user")>Zatvoriť</button>
         </form>
     </div>
 </div>
-
-<script>
-    function clean_forms(){
-        document.forms['add_user'].reset();
-    }
-</script>

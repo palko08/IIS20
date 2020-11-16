@@ -40,18 +40,18 @@ class Interpret{
      *
      *  @return ID vlozeneho rowu, alebo ID uz existujuceho rowu, -1 ak sa nepodarilo vlozit dany row
      */
-    function createNewInterpret($pdo, $nazov, $kapacita, $datum_Od, $datum_Do, $adresa){
-        $testSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND adresa = ?");
-        $testSelect->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+    function createNewInterpret($pdo, $nazov){
+        $testSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE nazov = ?");
+        $testSelect->execute([$nazov]);
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
-            $insert = $pdo->prepare("INSERT INTO Interpret(nazov, kapacita, datum_Od, datum_Do, adresa) VALUES(?, ?, ?, ?, ?)");
+            $insert = $pdo->prepare("INSERT INTO Interpret(nazov) VALUES(?)");
             $insert->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
 
-            $select = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND adresa = ?");
-            $select->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+            $select = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE nazov = ?");
+            $select->execute([$nazov]);
 
             if($select->rowCount() == 1){
                 $this->InterpretID = $select->fetchColumn();

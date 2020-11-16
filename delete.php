@@ -2,6 +2,7 @@
 require_once 'connect_db.php';
 require 'services.php';
 require 'classFestival.php';
+require 'classInterpret.php';
 
 $id = '';
 $type = $_GET['type'];
@@ -29,6 +30,15 @@ switch ($type) {
         }
         if ($festival->deleteFestival($pdo)){
             throw new Exception('Problem pri odstranovani festivalu');
+        }
+        break;
+    case 'INTERPRET':
+        $interpret = new Interpret();
+        if($interpret->initExistingInterpret($pdo, $id) == -1){
+            throw new Exception('nenasiel sa interpret s danym id.');
+        }
+        if ($interpret->deleteInterpret($pdo)){
+            throw new Exception('Problem pri odstranovani interpreta');
         }
         break;
 }

@@ -66,18 +66,18 @@ foreach($results as $row) {
             <input type="number" id="festival_price" class="form-control" placeholder=<?php echo $festival->getCena($pdo);?>>
         </td>
         <td>
-            <button type="button" class="align-right" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>
+            <button type="button" id="align-right" class="btn btn-danger" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>
         </td>
         <td>
-            <button type="button" class="align-right"> Potvrdiť zmeny</button>
+            <button type="button" id="align-right" class="btn btn-info" > Potvrdiť zmeny</button>
         </td>
         <td>
-            <a href="../create_lineup.php?id=<?php echo $festival->getID()?>"><button type="button" class="align-right">Vytvoriť rozpis</button></a>
+            <a href="../create_lineup.php?id=<?php echo $festival->getID()?>"><button type="button" class="btn btn-warning">Vytvoriť rozpis</button></a>
     </tr>
-    </form>
     <?php
         }
     ?>
+    </form>
     </tbody>
     </table>
 

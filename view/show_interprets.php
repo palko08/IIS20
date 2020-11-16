@@ -26,7 +26,8 @@ foreach($results as $row) {
         <th>Meno</th>
         <th>Hodnotenie</th>
         <th>Fotka</th>
-        <th> Pridať na festival </th>
+        <th> Festivaly </th>
+        <th></th>
         <th></th>
     </tr>
     </thead>
@@ -56,12 +57,12 @@ foreach($results as $row) {
                 </select>
         </td>
         <td>
-            <button type="button" id="align-right"> vymazať </button>
-            <button type="button" id="align-right"> potvrdiť zmeny </button>
-        </td>
+            <button type="button" id="align-right" class="btn btn-danger" onclick="location.href='delete.php?type=INTERPRET&id=<?php echo $interpret->getID()?>'"> Odstrániť </button> </td>
+        <td><button type="button" id="align-right" class="btn btn-info"> Potvrdiť zmeny </button></td>
     </tr>
         <?php
         }
         ?>
+    </form>
     </tbody>
 </table>

@@ -41,17 +41,19 @@ make_header();
                     <h3><?php echo $festival->getDatum_Od($pdo);?> - <?php echo $festival->getDatum_Do($pdo);?></h3>
                     <h4><?php echo $festival->getAdresa($pdo);?></h4>
                     <h6><?php echo $festival->getZanre($pdo);?></h6>
-                    <div class="buy-ticket">
-                    <div class="qty mt-5">
-                        <span class="minus bg-dark">-</span>
-                        <input type="number" class="count" name="qty" value="1">
-                        <span class="plus bg-dark">+</span>
-                        <button type="button" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
-                    </div>
-                    </div>
                 </div>
             </div>
         </div>
+    <div class="row">
+
+        <div class="qty mt-5 col-sm-6">
+            <span class="minus bg-dark">-</span>
+            <input type="number" class="count" name="qty" value="1">
+            <span class="plus bg-dark">+</span>
+            <button type="button" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
+            <br><br>
+        </div>
+    </div>
     <div class="row">
         <div class="festival-description">
         <p>POPIS<br>

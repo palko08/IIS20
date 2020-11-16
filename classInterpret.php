@@ -228,7 +228,7 @@ class Interpret{
      *
      *  @return 0 ak sa update podari, -1 ak sa nepodari
      */
-    function addZaner($pdo, $zaner_ID)){
+    function addZaner($pdo, $zaner_ID){
         $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
         $testID->execute([$zaner_ID]);
         if($testID->rowCount() == 0){
@@ -240,7 +240,7 @@ class Interpret{
         return 0;
     }
 
-    function deleteZaner($pdo, $zaner_ID)){
+    function deleteZaner($pdo, $zaner_ID){
         $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
         $testID->execute([$zaner_ID]);
         if($testID->rowCount() == 0){

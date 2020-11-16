@@ -3,11 +3,14 @@ USE IIS2020;
 
 CREATE TABLE Festival(
 	festival_ID			INT 			NOT NULL AUTO_INCREMENT,
+    nazov               VARCHAR(100)    NOT NULL,
     kapacita			INT				NOT NULL,
-    datum				DATETIME		NOT NULL,
+    datum_Od			DATETIME		NOT NULL,
+    datum_Do            DATETIME        NOT NULL,
+    cena				DECIMAL(7,2)	NOT NULL,
     adresa				VARCHAR(100)	NOT NULL,
     popis				VARCHAR(1000)	DEFAULT NULL,
-    obrazok				LONGBLOB		DEFAULT NULL,
+    obrazok				VARCHAR(200)	DEFAULT NULL,
     PRIMARY KEY(festival_ID)
 );
 
@@ -27,7 +30,7 @@ CREATE TABLE Interpret(
 	interpret_ID 		INT				NOT NULL AUTO_INCREMENT,
     nazov				VARCHAR(50)  	NOT NULL,
     hodnotenie			DECIMAL(2,1)	DEFAULT NULL,
-    logo				LONGBLOB		DEFAULT NULL,
+    logo				VARCHAR(200)    DEFAULT NULL,
     PRIMARY KEY(interpret_ID)
 );
 
@@ -59,7 +62,7 @@ CREATE TABLE Registrovany(
     login				VARCHAR(50)		NOT NULL,
     heslo				VARCHAR(60)		NOT NULL,
     level_opravnenia	ENUM('admin', 'poradatel', 'pokladni', 'divak')		NOT NULL,
-    foto				LONGBLOB		DEFAULT NULL,
+    foto				VARCHAR(200)    DEFAULT NULL,
     PRIMARY KEY (registrovany_ID),
     CONSTRAINT Registrovany_FK
         FOREIGN KEY (registrovany_ID)
@@ -69,6 +72,7 @@ CREATE TABLE Registrovany(
 
 CREATE TABLE Neregistrovany(
     neregistrovany_ID  	INT             NOT NULL,
+    email               VARCHAR(50)     NOT NULL,
     PRIMARY KEY (neregistrovany_ID),
     CONSTRAINT Neregistrovany_FK
         FOREIGN KEY (neregistrovany_ID)
@@ -78,7 +82,7 @@ CREATE TABLE Neregistrovany(
 
 CREATE TABLE Clen(
     clen_ID			  	INT             NOT NULL,
-    foto				LONGBLOB		DEFAULT NULL,
+    foto				VARCHAR(200)    DEFAULT NULL,
     PRIMARY KEY (clen_ID),
     CONSTRAINT Clen_ID_FK
         FOREIGN KEY (clen_ID)
@@ -94,7 +98,6 @@ CREATE TABLE Zaner(
 
 CREATE TABLE Vstupenka(
 	vstupenka_ID		INT 			NOT NULL AUTO_INCREMENT,
-    cena				DECIMAL			NOT NULL,
     festival_ID			int				NOT NULL,
     registrovany_ID		int				DEFAULT NULL,
     neregistrovany_ID	int				DEFAULT NULL,

@@ -86,7 +86,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET nazov = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -96,7 +97,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET kapacita = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -106,7 +108,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET datum_Od = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -116,7 +119,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET datum_Do = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -126,7 +130,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET adresa = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -136,7 +141,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET popis = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }
@@ -146,7 +152,8 @@ class Festival{
     		$select = $pdo->prepare("UPDATE Festival SET obrazok = ? WHERE festival_ID = ?");
     		$select->execute([$data, $this->festivalID]);
     		return 0;
-    	}catch{
+    	}catch(PDOException $e){
+    		echo $e->getMessage() . "<br>";
     		return 1;
     	}
     }

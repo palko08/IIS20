@@ -22,6 +22,9 @@ if (!(empty($_POST['popis']))) {
     $popis = $_POST['popis'];
     $id = $festival->getID();
     $error = $festival->setPopis($pdo, $id);
+    if ($error == 1) {
+        throw new Exception("popis sa neda pridat");
+    }
 }
 
 header("Location: /admin.php");

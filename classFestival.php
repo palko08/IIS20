@@ -89,6 +89,10 @@ class Festival{
  	 *
  	 *	@return Najdene data, pri nenajdeni by hodnota mala byt NULL
  	 */
+    function getID(){
+        return $this->festivalID;
+    }
+
     function getNazov($pdo){
     	$select = $pdo->prepare("SELECT nazov FROM Festival WHERE festival_ID = ?");
     	$select->execute([$this->festivalID]);
@@ -132,7 +136,7 @@ class Festival{
     }
 
     function getZanre(){
-        
+
     }
 
     function checkZaner(){

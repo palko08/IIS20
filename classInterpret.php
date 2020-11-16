@@ -89,6 +89,10 @@ class Interpret{
  	 *
  	 *	@return Najdene data, pri nenajdeni by hodnota mala byt NULL
  	 */
+    function getID(){
+        return $this->interpretID;
+    }
+
     function getNazov($pdo){
     	$select = $pdo->prepare("SELECT nazov FROM Interpret WHERE interpret_ID = ?");
     	$select->execute([$this->InterpretID]);

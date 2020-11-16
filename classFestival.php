@@ -135,12 +135,34 @@ class Festival{
     	return $select->fetchColumn();
     }
 
-    function getZanre(){
-
+    /**
+     *  @brief Funkcie pre vytahovanie dat z databazy
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *
+     *  @return Array dat, pri nenajdeni by hodnota mala byt NULL
+     */
+    function getZanre($pdo){
+        $select = $pdo->prepare("SELECT zaner_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ?");
+        $select->execute([$this->festivalID]);
+        return $select->fetchAll();
     }
 
-    function checkZaner(){
-
+    /**
+     *  @brief Funkcie pre zistenie, ci su dane IDs prepojene
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *
+     *  @return 1 ak ano, 0 ak nie
+     */
+    function checkZaner($pdo, $zaner_ID){
+        $select = $pdo->prepare("SELECT zaner_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
+        $select->execute([$this->festivalID, $zaner_ID]);
+        if($select->rowCount() == 0){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     /**
@@ -228,12 +250,44 @@ class Festival{
     	}
     }
 
-    function addZaner(){
+    /**
+     *  @brief Funkcie pre updatovanie dat v databaze
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *  @param zaner_ID Data vkladane do databazy ako update
+     *
+     *  @return 0 ak sa update podari, -1 ak sa nepodari
+     */
+    function addZaner($pdo, $zaner_ID){
+        $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
+        $testID->execute([$zaner_ID]);
+        if($testID->rowCount() == 0){
+            return -1;
+        }
 
+        $insert = $pdo->prepare("INSERT INTO Festival_patri_do_Zaner(zaner_ID, festival_ID) VALUES(?, ?)");
+        $insert->execute([$zaner_ID, $this->festivalID]);
+        return 0;
     }
 
-    function deleteZaner(){
 
+    function deleteZaner($pdo, $zaner_ID){
+        $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
+        $testID->execute([$zaner_ID]);
+        if($testID->rowCount() == 0){
+            return -1;
+        }
+
+        $delete = $pdo->prepare("DELETE FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
+        $delete->execute([$this->festivalID, $zaner_ID]);
+        
+        $select = $pdo->prepare("SELECT festival_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
+        $select->execute([$this->festivalID, $zaner_ID]);
+        if($select->rowCount() == 0){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 
 }

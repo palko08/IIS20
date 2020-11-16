@@ -111,6 +111,42 @@ class Podium{
     	return $select->fetchColumn();
     }
 
+    function getCas_vystupenia($pdo, $interpret_ID){
+        $select = $pdo->prepare("SELECT cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
+        $select->execute([$this->podiumID, $interpret_ID]);
+        return $select->fetchColumn();
+    }
+
+    /**
+     *  @brief Funkcie pre vytahovanie dat z databazy
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *
+     *  @return Array dat, pri nenajdeni by hodnota mala byt NULL
+     */
+    function getVystupenia($pdo){
+        $select = $pdo->prepare("SELECT interpret_ID AND cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
+        $select->execute([$this->podiumID]);
+        return $select->fetchAll();
+    }
+
+    /**
+     *  @brief Funkcie pre zistenie, ci su dane IDs prepojene
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *
+     *  @return 1 ak ano, 0 ak nie
+     */
+    function checkVystupenie($pdo, $interpret_ID){
+        $select = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
+        $select->execute([$this->podiumID, $interpret_ID]);
+        if($select->rowCount() == 0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
     /**
  	 *  @brief Funkcie pre updatovanie dat v databaze
  	 *
@@ -139,6 +175,46 @@ class Podium{
     		echo $e->getMessage() . "<br>";
     		return 1;
     	}
+    }
+
+    /**
+     *  @brief Funkcie pre updatovanie dat v databaze
+     *
+     *  @param pdo Nadviazane PDO spojenie s databazou
+     *  @param interpret_ID, cas_vystupenia Data vkladane do databazy ako update
+     *
+     *  @return 0 ak sa update podari, -1 ak sa nepodari
+     */
+    function addVystupenie($pdo, $interpret_ID, $cas_vystupenia){
+        $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
+        $testID->execute([$interpret_ID]);
+        if($testID->rowCount() == 0){
+            return -1;
+        }
+
+        $insert = $pdo->prepare("INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia) VALUES(?, ?, ?)");
+        $insert->execute([$interpret_ID, $this->podiumID, $cas_vystupenia]);
+        return 0;
+    }
+
+
+    function deleteVystupenie($pdo, $interpret_ID){
+        $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
+        $testID->execute([$interpret_ID]);
+        if($testID->rowCount() == 0){
+            return -1;
+        }
+
+        $delete = $pdo->prepare("DELETE FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
+        $delete->execute([$this->podiumID, $interpret_ID]);
+        
+        $select = $pdo->prepare("SELECT podium_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
+        $select->execute([$this->podiumID, $interpret_ID]);
+        if($select->rowCount() == 0){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 
 }

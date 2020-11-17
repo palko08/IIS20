@@ -48,7 +48,7 @@ class Interpret{
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Interpret(nazov) VALUES(?)");
-            $insert->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $adresa]);
+            $insert->execute([$nazov]);
 
             $select = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE nazov = ?");
             $select->execute([$nazov]);

@@ -1,5 +1,5 @@
 <?php
-require "services.php";
+require_once "services.php";
 $serv = new AccountService();
 $query = $serv->getAccounts();
 ?>

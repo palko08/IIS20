@@ -16,7 +16,6 @@ require("view/admin_body.php");
     //require("view/add_ticket_admin.php");
     ?>
 </div>
-
 <div class="form-popup" id="add_festivals">
     <?php
     require("view/add_festival.php");
@@ -34,7 +33,11 @@ require("view/admin_body.php");
     require("view/add_user.php");
     ?>
 </div>
-
+<div class="form-popup" id="add_interpret_festival">
+    <?php
+    require_once ("view/add_interpret_to_festival.php");
+    ?>
+</div>
 <div class="container" id="container">
     <div class="col-sm" id="tickets">
         <?php

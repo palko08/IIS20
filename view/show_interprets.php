@@ -1,21 +1,9 @@
 <?php
-require "classInterpret.php";
+require_once "classInterpret.php";
 require_once "connect_db.php";
+require_once "get_all.php";
 $pdo = connect_db();
-$idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret");
-$idSelect->execute();
-
-$results = $idSelect->fetchAll();
-
-$interprets = array();
-
-foreach($results as $row) {
-    $interpret = new Interpret();
-    if($interpret->initExistingInterpret($pdo, $row[0]) == -1){
-        echo "nenasli sme v databazke dany row<br>";
-    }
-    $interprets[] = $interpret;
-}
+$interprets = get_interprets($pdo);
 ?>
 
 <table class="table">

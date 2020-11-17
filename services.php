@@ -75,6 +75,17 @@ class AccountService
         }
     }
 
+    function update($login,$email,$level_opravnenia, $id){
+        try{
+            $select = $this->pdo->prepare("UPDATE Registrovany SET login = ?, SET email = ?, SET level_opravnenia = ?  WHERE registrovany_ID = ?");
+            $select->execute([$login,$email, $level_opravnenia, $id]);
+            return 0;
+        }catch(PDOException $e){
+            echo $e->getMessage() . "<br>";
+            return 1;
+        }
+    }
+
 
 	function isValidAccount($login, $password)
 	{

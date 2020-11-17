@@ -1,6 +1,6 @@
 <?php
 require "common.php";
-require "classFestival.php";
+require_once "classFestival.php";
 require "connect_db.php";
 
 $pdo = connect_db();

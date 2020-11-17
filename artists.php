@@ -1,7 +1,7 @@
 <?php
 require "common.php";
-require "classFestival.php";
-require "connect_db.php";
+require_once "classFestival.php";
+require_once "connect_db.php";
 
 make_header();
 ?>

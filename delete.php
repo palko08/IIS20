@@ -1,9 +1,8 @@
 <?php
 require_once 'connect_db.php';
-require 'services.php';
-require 'classFestival.php';
-require 'classInterpret.php';
-require 'classVstupenka.php';
+require_once 'services.php';
+require_once 'classFestival.php';
+require_once 'classInterpret.php';
 
 $id = '';
 $type = $_GET['type'];

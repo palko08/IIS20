@@ -80,9 +80,3 @@ foreach($results as $row) {
     </form>
     </tbody>
     </table>
-
-
-    <?php
-
-    //require("create_lineup.php");
-    ?>

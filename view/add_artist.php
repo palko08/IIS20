@@ -1,11 +1,11 @@
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nového interpreta</h2>
-        <form action="#" class="form-container">
-            <input type="text" placeholder="meno" name="artist_name" required>
-            <input type="text" placeholder="hodnotenie" name="interpret_rating">
+        <form action="../interpret_insert.php" class="form-container" method="post">
+            <input type="text" placeholder="meno" name="nazov" required>
+            <input type="text" placeholder="hodnotenie" name="hodnotenie">
             <center>
-                <input type="file" name="artist_foto" id="artist_align">
+                <input type="file" name="obr" id="artist_align">
             </center>
             <select name="artist_genre" id="artist_genre" multiple>
                 <!--  TU BUDE FUNKCIA Z TRIEDY ZANROV -->
@@ -18,7 +18,7 @@
             <br>
             <text id="members">clen1</text>
             <br>
-            <button type="submit" class="btn btn-info">Pridať</button>
+            <button type="submit" class="btn btn-info" >Pridať</button>
             <button type="submit" class="btn btn-danger" onclick=closeForm("add_interprets")>Zatvoriť</button>
             <br>
         </form>

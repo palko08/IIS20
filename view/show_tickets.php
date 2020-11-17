@@ -49,12 +49,12 @@ foreach($results as $row) {
             <a class="no_color_change_link" id="stav"><?php echo $ticket->getStav($pdo); ?></a>
         </td>
         <td>
-            <button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button>
-            <button type="button" id="align-right" class="btn btn-danger" onclick="location.href='delete.php?type=TICKET&id=<?php echo $ticket->getID();?>'"> Stornovať </button>
+            <a href="../tickets_functions.php?func=stav&stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>
+            <a href="../tickets_functions.php?func=stav&stav=stornovana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-danger"> Stornovať </button></a>
         </td>
         <td>
             <a class="no_color_change_link" id="cena"><?php echo get_cena($ticket,$pdo); ?></a></td>
-         <td>   <button type="button" id="align-right" class="btn btn-primary"> Vydať </button>
+         <td>  <a href="../tickets_functions.php?func=stav&stav=vydana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-primary"> Vydať </button></>
         </td>
     </tr>
         <?php
@@ -93,12 +93,6 @@ function get_email($ticket,$pdo){
     }
 
     return $customer->getEmail($pdo);
-}
-
-function change_stav($ticket, $pdo, $stav){
-        if ($ticket->setStav($pdo,$stav)){
-            throw new Exception('Problem pri odstranovani vstupenkz');
-        }
 }
 ?>
 

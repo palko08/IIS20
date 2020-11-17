@@ -26,7 +26,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" onclick=openForm("add_interprets")>Pridať interpreta</a>
                     <a class="dropdown-item" onclick=gotoDiv("interprets")>Upraviť interpreta</a>
-                  <a class="dropdown-item" onclick=openForm("interpret_member")>Pridať člena</a>
+                  <a class="dropdown-item" onclick=openForm("add_interpret_member")>Pridať člena</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

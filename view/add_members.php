@@ -24,10 +24,5 @@ $interprets = get_interprets($pdo);
             <button type="submit" class="btn btn-info">Pridať člena</button>
             <button class="btn btn-danger" onclick=closeForm("add_interpret_member")>Zatvoriť</button>
         </form>
-        <?php
-            $interpret = new Interpret();
-            $interpret->initExistingInterpret($pdo,1);
-            $clenovia = $interpret->getClenov($pdo);
-        ?><h2><?php var_dump($clenovia);?></h2>
     </div>
 </div>

@@ -1,3 +1,6 @@
+#add_interpret_festival, #add_festivals,#add_interprets,#add_user {
+    display: none;
+}
 
 .nav-link{
     font-size: 22px;

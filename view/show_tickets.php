@@ -1,5 +1,6 @@
 <?php
 require "classVstupenka.php";
+require_once ("classFestival.php");
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 require_once "connect_db.php";
@@ -36,7 +37,7 @@ foreach($results as $row) {
     <?php
     foreach ($tickets as $ticket){
     ?>
-    <form name="change_ticket" method="post" action="">
+    <form name="change_ticket" method="post" action="../admin.php">
     <tr>
         <td>
             <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
@@ -52,7 +53,7 @@ foreach($results as $row) {
             <button type="button" id="align-right" class="btn btn-danger" onclick="location.href='delete.php?type=TICKET&id=<?php echo $ticket->getID();?>'"> Stornovať </button>
         </td>
         <td>
-            <a class="no_color_change_link" id="cena">cena</a></td>
+            <a class="no_color_change_link" id="cena"><?php echo get_cena($ticket,$pdo); ?></a></td>
          <td>   <button type="button" id="align-right" class="btn btn-primary"> Vydať </button>
         </td>
     </tr>
@@ -64,6 +65,15 @@ foreach($results as $row) {
 </table>
 
 <?php
+function get_cena($ticket,$pdo){
+    $festival_id = $ticket->getFestival_ID($pdo);
+    $festival = new Festival();
+    if ($festival->initExistingFestival($pdo, $festival_id) == -1) {
+        echo "festival nenadjeny";
+    }
+    return $festival->getCena($pdo);
+}
+
 function get_email($ticket,$pdo){
     $customer = null;
 
@@ -84,4 +94,11 @@ function get_email($ticket,$pdo){
 
     return $customer->getEmail($pdo);
 }
+
+function change_stav($ticket, $pdo, $stav){
+        if ($ticket->setStav($pdo,$stav)){
+            throw new Exception('Problem pri odstranovani vstupenkz');
+        }
+}
 ?>
+

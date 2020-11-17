@@ -42,16 +42,6 @@ switch ($type) {
             throw new Exception('Problem pri odstranovani interpreta');
         }
         break;
-
-    case 'TICKET':
-        $ticket = new Vstupenka();
-        if($ticket->initExistingVstupenka($pdo, $id) == -1){
-            throw new Exception('nenasla sa vstupenka s danym id.');
-        }
-        if ($ticket->setStav($pdo,"stornovana")){
-            throw new Exception('Problem pri odstranovani vstupenkz');
-        }
-        break;
 }
 
 header("Location: /admin.php");

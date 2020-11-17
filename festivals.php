@@ -38,11 +38,21 @@ make_header();
      <div class="bg-1">
 		<div class="container">
 			<h3 class="text-center" style="margin-top:150px; color:white; position:relative">FESTIVALY</h3>
-			<input type="text" class="form-control form-rounded" placeholder="Nájsť festival"> 
+			<form action="festivals.php" method="GET">
+			<input id="search" name="search" type="text" class="form-control form-rounded" placeholder="Nájsť festival"> 
+			<input id="submit" type="submit" value="Search">
+			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php
 					foreach ($festivalArray as $fest) {
-						make_festival($fest,$pdo);
+						if ($_GET['search'] != NULL) {
+							if (strstr($fest->getNazov($pdo),$_GET['search']) != FALSE) {
+							make_festival($fest,$pdo);
+							}
+						}
+						else {
+							make_festival($fest,$pdo);
+						}
 					}
 				?>
 			</div>

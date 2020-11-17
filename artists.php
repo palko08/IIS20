@@ -1,5 +1,7 @@
 <?php
 require "common.php";
+require "classFestival.php";
+require "connect_db.php";
 
 make_header();
 ?>

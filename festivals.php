@@ -40,7 +40,7 @@ make_header();
 			<h3 class="text-center" style="margin-top:150px; color:white; position:relative">FESTIVALY</h3>
 			<form action="festivals.php" method="GET">
 			<input id="search" name="search" type="text" class="form-control form-rounded" placeholder="Nájsť festival"> 
-			<input id="submit" type="submit" value="Search">
+			<input id="submit" type="submit" value="Search" class="btn btn-secondary">
 			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php

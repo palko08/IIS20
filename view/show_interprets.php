@@ -35,16 +35,16 @@ foreach($results as $row) {
     <?php
     foreach ($interprets as $interpret){
     ?>
-    <form name="change_interpret" method="post" action="">
+    <form name="change_interpret" method="post" action="../update_interprets.php?id=<?php echo $interpret->getID();?>">
     <tr>
         <td>
             <a class="no_color_change_link" id="interpret_id"><?php echo $interpret->getID();?></a>
         </td>
         <td>
-            <input type="text" placeholder=<?php echo $interpret->getNazov($pdo);?> id="meno">
+            <input name="meno" type="text" placeholder=<?php echo $interpret->getNazov($pdo);?> id="meno">
         </td>
         <td>
-            <input type="text" placeholder=<?php echo $interpret->getHodnotenie($pdo);?> id="interpret_rating">
+            <input name="rating" type="text" placeholder=<?php echo $interpret->getHodnotenie($pdo);?> id="interpret_rating">
         </td>
         <td>
             <input type="file" name="artist_foto" value="<?php echo $interpret->getLogo($pdo);?>"/>
@@ -58,11 +58,11 @@ foreach($results as $row) {
         </td>
         <td>
             <button type="button" id="align-right" class="btn btn-danger" onclick="location.href='delete.php?type=INTERPRET&id=<?php echo $interpret->getID()?>'"> Odstrániť </button> </td>
-        <td><button type="button" id="align-right" class="btn btn-info"> Potvrdiť zmeny </button></td>
+        <td><button type="submit" id="align-right" class="btn btn-info" onclick=""> Potvrdiť zmeny </button></td>
     </tr>
-        <?php
-        }
-        ?>
     </form>
+        <?php
+    }
+    ?>
     </tbody>
 </table>

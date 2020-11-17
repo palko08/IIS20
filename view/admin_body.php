@@ -6,7 +6,7 @@
                 <a class="nav-link" href="../index.php">Domov</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" onclick=showItems("tickets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" onclick=gotoDiv("tickets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Správa vstupeniek
                 </a>
             </li>
@@ -16,7 +16,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a onclick=openForm("add_festivals")>Pridať festival</a></li>
-                    <li><a onclick=showItems("festivals") >Upraviť festival</a></li>
+                    <li><a onClick=gotoDiv("festivals") >Upraviť festival</a></li>
                     <li><a onclick=openForm("add_interpret_festival")>Pridať interpreta na festival</a></li>
                 </ul>
             </li>
@@ -26,7 +26,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" onclick=openForm("add_interprets")>Pridať interpreta</a>
-                    <a class="dropdown-item" onclick=showItems("interprets")>Upraviť interpreta</a>
+                    <a class="dropdown-item" onclick=gotoDiv("interprets")>Upraviť interpreta</a>
                   <a class="dropdown-item" onclick=openForm("add_interpret_festival")>Pridať interpreta na festival</a>
                 </div>
             </li>
@@ -35,7 +35,7 @@
                     Správa užívateľov</a>
                 <ul class="dropdown-menu">
                     <li><a onclick=openForm("add_user")>Pridať užívateľa</a></li>
-                    <li><a onclick=showItems("users")>Upraviť užívateľa</a></li>
+                    <li><a onclick=gotoDiv("users")>Upraviť užívateľa</a></li>
                 </ul>
             </li>
         </ul>

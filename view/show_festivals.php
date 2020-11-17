@@ -1,21 +1,9 @@
 <?php
 require "classFestival.php";
+require "get_festivals.php";
 require_once "connect_db.php";
 $pdo = connect_db();
-$idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
-$idSelect->execute();
-
-$results = $idSelect->fetchAll();
-
-$festivals = array();
-
-foreach($results as $row) {
-    $festival = new Festival();
-    if($festival->initExistingFestival($pdo, $row[0]) == -1){
-        echo "nenasli sme v databazke dany row<br>";
-    }
-    $festivals[] = $festival;
-}
+$festivals = get_festivals($pdo);
 ?>
     <table class="table">
     <thead>

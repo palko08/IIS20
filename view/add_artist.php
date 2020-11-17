@@ -14,7 +14,7 @@
                 <option value="dnb">Drum and Bass</option>
             </select>
             <br>
-            <label>Clenovia</label>
+            <label>clenovia TODO</label>
             <br>
             <text id="members">clen1</text>
             <br>

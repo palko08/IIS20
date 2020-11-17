@@ -31,9 +31,9 @@ require("view/admin_body.php");
 
 <div class="container" id="container">
     <div class="col-sm" id="tickets">
-            <?php
-            require("view/show_tickets.php");
-            ?>
+        <?php
+        require("view/show_tickets.php");
+        ?>
     </div>
     <div class="col-sm" id="festivals">
             <?php

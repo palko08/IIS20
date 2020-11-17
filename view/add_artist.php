@@ -14,18 +14,10 @@
                 <option value="dnb">Drum and Bass</option>
             </select>
             <br>
-            <label>clenovia TODO</label>
-            <br>
-            <text id="members">clen1</text>
             <br>
             <button type="submit" class="btn btn-info" >Pridať</button>
             <button type="submit" class="btn btn-danger" onclick=closeForm("add_interprets")>Zatvoriť</button>
             <br>
-        </form>
-        <form action="#" method="post">
-            <input name="member_name" type="text" class="input-sm" placeholder="Meno">
-            <input name="member_surname" type="text" class="input-sm" placeholder="Priezvisko">
-            <button type="submit" class="btn btn-primary">Pridat člena</button>
         </form>
     </div>
 </div>

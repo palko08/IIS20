@@ -33,9 +33,9 @@ require("view/admin_body.php");
     require("view/add_user.php");
     ?>
 </div>
-<div class="form-popup" id="add_interpret_festival">
+<div class="form-popup" id="add_interpret_member">
     <?php
-    require_once ("view/add_interpret_to_festival.php");
+    require_once("view/add_members.php");
     ?>
 </div>
 <div class="container" id="container">

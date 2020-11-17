@@ -17,7 +17,6 @@
                 <ul class="dropdown-menu">
                     <li><a onclick=openForm("add_festivals")>Pridať festival</a></li>
                     <li><a onClick=gotoDiv("festivals") >Upraviť festival</a></li>
-                    <li><a onclick=openForm("add_interpret_festival")>Pridať interpreta na festival</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -27,7 +26,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" onclick=openForm("add_interprets")>Pridať interpreta</a>
                     <a class="dropdown-item" onclick=gotoDiv("interprets")>Upraviť interpreta</a>
-                  <a class="dropdown-item" onclick=openForm("add_interpret_festival")>Pridať interpreta na festival</a>
+                  <a class="dropdown-item" onclick=openForm("interpret_member")>Pridať člena</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

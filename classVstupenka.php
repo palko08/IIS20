@@ -158,6 +158,12 @@ class Vstupenka{
         return $select->fetchColumn();
     }
 
+    function getStav($pdo){
+        $select = $pdo->prepare("SELECT stav FROM Vstupenka WHERE vstupenka_ID = ?");
+        $select->execute([$this->vstupenkaID]);
+        return $select->fetchColumn();
+    }
+
     /**
  	 *  @brief Funkcie pre updatovanie dat v databaze
  	 *
@@ -191,6 +197,17 @@ class Vstupenka{
     function setNeregistrovany_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET neregistrovany_ID = ? WHERE vstupenka_ID = ?");
+            $select->execute([$data, $this->vstupenkaID]);
+            return 0;
+        }catch(PDOException $e){
+            echo $e->getMessage() . "<br>";
+            return 1;
+        }
+    }
+
+    function setStav($pdo, $data){
+        try{
+            $select = $pdo->prepare("UPDATE Vstupenka SET stav = ? WHERE vstupenka_ID = ?");
             $select->execute([$data, $this->vstupenkaID]);
             return 0;
         }catch(PDOException $e){

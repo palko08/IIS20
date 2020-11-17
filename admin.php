@@ -10,6 +10,12 @@ make_head();
 <?php
 require("view/admin_body.php");
 ?>
+<div class="form-popup" id="add_tickets_admin">
+    <?php
+    //TODO
+    //require("view/add_ticket_admin.php");
+    ?>
+</div>
 
 <div class="form-popup" id="add_festivals">
     <?php

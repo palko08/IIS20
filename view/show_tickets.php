@@ -39,7 +39,7 @@ foreach($results as $row) {
     <form name="change_ticket" method="post" action="">
     <tr>
         <td>
-            <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID()?></a>
+            <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
         </td>
         <td>
             <a class="no_color_change_link" id="ticket_email"><?php echo get_email($ticket,$pdo); ?></a>
@@ -49,7 +49,7 @@ foreach($results as $row) {
         </td>
         <td>
             <button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button>
-            <button type="button" id="align-right" class="btn btn-danger"> Stornovať </button>
+            <button type="button" id="align-right" class="btn btn-danger" onclick="location.href='delete.php?type=TICKET&id=<?php echo $ticket->getID();?>'"> Stornovať </button>
         </td>
         <td>
             <a class="no_color_change_link" id="cena">cena</a></td>

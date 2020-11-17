@@ -3,6 +3,7 @@ require_once 'connect_db.php';
 require 'services.php';
 require 'classFestival.php';
 require 'classInterpret.php';
+require 'classVstupenka.php';
 
 $id = '';
 $type = $_GET['type'];
@@ -39,6 +40,16 @@ switch ($type) {
         }
         if ($interpret->deleteInterpret($pdo)){
             throw new Exception('Problem pri odstranovani interpreta');
+        }
+        break;
+
+    case 'TICKET':
+        $ticket = new Vstupenka();
+        if($ticket->initExistingVstupenka($pdo, $id) == -1){
+            throw new Exception('nenasla sa vstupenka s danym id.');
+        }
+        if ($ticket->setStav($pdo,"stornovana")){
+            throw new Exception('Problem pri odstranovani vstupenkz');
         }
         break;
 }

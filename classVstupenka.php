@@ -12,6 +12,20 @@ class Vstupenka{
 
     }
 
+    function getAllVstupenka($pdo,$registrovany_ID){
+        $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
+        $idSelect->execute([$registrovany_ID]);
+        $results = $idSelect->fetchAll();
+        foreach ($results as $row) {
+            $vstupenka = new Vstupenka();
+            if ($vstupenka->initExistingVstupenka($pdo,$row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $vstupenkaArray[] = $vstupenka;
+        }
+        return $vstupenkaArray;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Vstupenka k danemu rowu v databaze
  	 *

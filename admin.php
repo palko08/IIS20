@@ -5,6 +5,11 @@ require "services.php";
 $serv = new AccountService();
 $person = $serv->getAccount($_SESSION['user']);
 make_head();
+if ($person['level_opravnenia'] <= 'divak') {
+    echo "<h1>NEDOVOLENY PRISTUP</h1>";
+
+}
+else {
 ?>
     <script type="text/javascript" src="view/show_elements.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -89,6 +94,7 @@ if ($person['level_opravnenia'] == 'admin') {
 
 <?php
 make_footer();
+}
 ?>
 
 

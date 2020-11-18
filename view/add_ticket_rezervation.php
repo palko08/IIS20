@@ -8,7 +8,7 @@ $pdo = connect_db();
 $serv = new AccountService();
 $person = $serv->getAccount($_GET['login']);
 
-//for ($i = 0; i < $_POST['qty']; $i++)
+//for ($i = 0; i < $_POST['count']; $i++)
 //{
     $vstupenka = new Vstupenka();
     if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],$person['registrovany_ID'],-1) == -1)

@@ -12,6 +12,20 @@ class Interpret{
 
     }
 
+    function getAllInterpret($pdo){
+        $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        foreach ($results as $row) {
+            $interpret = new Interpret();
+            if ($interpret->initExistingInterpret($pdo,$row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $interpretArray[] = $interpret;
+        }
+        return $interpretArray;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Interpret k danemu rowu v databaze
  	 *

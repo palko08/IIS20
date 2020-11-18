@@ -1,7 +1,20 @@
 <?php
 require "common.php";
-require_once "classFestival.php";
+require_once "classInterpret.php";
 require_once "connect_db.php";
+
+function make_Interpret($interpret, $pdo){
+    echo '<div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+                    <div class="thumbnail">
+					<img src="'.$interpret->getLogo($pdo).'" alt="'.$interpret->getNazov($pdo).'">
+					<div class="text-center" style="margin-top:5px"><strong>'.$interpret->getNazov($pdo).'</strong></div>
+					</div>
+                </div>';
+}
+
+$pdo = connect_db();
+$interpret = new Interpret();
+$interpretArray = $interpret->getAllInterpret($pdo);
 
 make_header();
 ?>
@@ -10,33 +23,26 @@ make_header();
      <div class="bg-1">
 		<div class="container">
 			<h3 class="text-center" style="margin-top:150px; color:white; position:relative">INTERPRETI</h3>
-			<input type="text" class="form-control form-rounded" placeholder="Nájsť interpreta"> 
+            <form action="artists.php" method="GET">
+			<input type="text" name="search" class="form-control form-rounded" placeholder="Nájsť interpreta">
+            <center><input id="submit" type="submit" value="Search" class="btn btn-secondary"></center>
+            </form>
             <div class="row" style="margin-bottom: 25px;">
             <br>
-                <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
-                    <div class="thumbnail">
-					<img src="img/dimension.jpg" alt="Dimension">
-					<div class="text-center" style="margin-top:5px"><strong>Dimension</strong></div>
-					</div>
-                </div>
-                <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6" >
-                    <div class="thumbnail">
-					<img src="img/subfocus.jpg" alt="SubFocus">
-					<div class="text-center" style="margin-top:5px"><strong>Sub Focus</strong></div>
-					</div>
-                </div>
-                <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6" >
-                    <div class="thumbnail">
-					<img src="img/Delta_Heavy.jpg" alt="Deltaheavy">
-					<div class="text-center" style="margin-top:5px"><strong>Delta Heavy</strong></div>
-					</div>
-                </div>
-                <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6" >
-                    <div class="thumbnail">
-					<img src="img/hybridminds.jpg" alt="Hybridminds">
-					<div class="text-center" style="margin-top:5px"><strong>Hybrid Minds</strong></div>
-					</div>
-                </div>
+                <?php
+                if ($interpretArray[0] != NULL) {
+                    foreach ($interpretArray as $inter) {
+                        if ($_GET['search'] != NULL) {
+                            if (strstr($inter->getNazov($pdo), $_GET['search']) != FALSE) {
+                                make_Interpret($inter, $pdo);
+                            }
+                        }
+                        else{
+                            make_Interpret($inter, $pdo);
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>

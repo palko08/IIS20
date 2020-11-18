@@ -44,16 +44,17 @@ make_header();
 			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php
-					foreach ($festivalArray as $fest) {
-						if ($_GET['search'] != NULL) {
-							if (strstr($fest->getNazov($pdo),$_GET['search']) != FALSE) {
-							make_festival($fest,$pdo);
-							}
-						}
-						else {
-							make_festival($fest,$pdo);
-						}
-					}
+                    if ($festivalArray[0] != NULL) {
+                        foreach ($festivalArray as $fest) {
+                            if ($_GET['search'] != NULL) {
+                                if (strstr($fest->getNazov($pdo), $_GET['search']) != FALSE) {
+                                    make_festival($fest, $pdo);
+                                }
+                            } else {
+                                make_festival($fest, $pdo);
+                            }
+                        }
+                    }
 				?>
 			</div>
 		</div>

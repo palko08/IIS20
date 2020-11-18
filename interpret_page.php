@@ -1,6 +1,7 @@
 <?php
 require "common.php";
 require_once "classInterpret.php";
+require_once "classZaner.php";
 require_once "classFestival.php";
 require_once "classClen.php";
 require_once "classPodium.php";
@@ -25,7 +26,15 @@ make_header();
         <div class="col-sm-6">
             <div class="interpret-head" >
                 <h2><?php echo $interpret->getNazov($pdo);?></h2>
-                <h6><?php /*echo $interpret->getZanre();*/ ?></h6>
+                <h6><?php $zanre = $interpret->getZanre($pdo);
+                    foreach ($zanre as $row) {
+                        $zaner = new Zaner();
+                        if ($zaner->initExistingZaner($pdo,$row[0]) == -1) {
+                            echo "nenasli sme v datbazke dany row<br>";
+                        }
+                        echo $zaner->getZaner_nazov($pdo);
+                        }
+                ?></h6>
                 <h3>Členovia:</h3>
                 <?php $clenovia = $interpret->getClenov($pdo);
                     foreach ($clenovia as $row){
@@ -33,7 +42,6 @@ make_header();
                         if ($clen->initExistingClen($pdo,$row[0]) == -1) {
                             echo "nenasli sme v datbazke dany row<br>";
                         }
-                        //TODO zmen na meno
                         echo "<h4>".$clen->getClovekMeno($pdo)."</h4>";
                     }
                 ?>

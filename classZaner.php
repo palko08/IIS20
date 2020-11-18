@@ -12,6 +12,21 @@ class Zaner{
 
     }
 
+    function getAllZaner($pdo){
+        $idSelect = $pdo->prepare("SELECT zaner_ID FROM Zaner");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Zaner();
+            if ($object->initExistingZaner($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Zaner k danemu rowu v databaze
  	 *

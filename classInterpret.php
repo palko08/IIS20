@@ -16,14 +16,15 @@ class Interpret{
         $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret");
         $idSelect->execute();
         $results = $idSelect->fetchAll();
+        $array;
         foreach ($results as $row) {
-            $interpret = new Interpret();
-            if ($interpret->initExistingInterpret($pdo,$row[0]) == -1) {
+            $object = new Interpret();
+            if ($object->initExistingInterpret($pdo, $row[0]) == -1) {
                 echo "nenasli sme v datbazke dany row<br>";
             }
-            $interpretArray[] = $interpret;
+            $array[] = $object;
         }
-        return $interpretArray;
+        return $array;
     }
 
 	/**
@@ -138,7 +139,7 @@ class Interpret{
      *
      *  @return Array dat, pri nenajdeni by hodnota mala byt NULL
      */
-    function getZanre($pdo){
+    function getZanre(){
         $select = $pdo->prepare("SELECT zaner_ID FROM Interpret_patri_do_Zaner WHERE interpret_ID = ?");
         $select->execute([$this->interpretID]);
         return $select->fetchAll();

@@ -12,6 +12,21 @@ class Podium{
 
     }
 
+    function getAllPodium($pdo){
+        $idSelect = $pdo->prepare("SELECT podium_ID FROM Podium");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Podium();
+            if ($object->initExistingPodium($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Podium k danemu rowu v databaze
  	 *

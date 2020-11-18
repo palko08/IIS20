@@ -12,18 +12,19 @@ class Vstupenka{
 
     }
 
-    function getAllVstupenka($pdo,$registrovany_ID){
-        $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
-        $idSelect->execute([$registrovany_ID]);
+    function getAllVstupenka($pdo){
+        $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");
+        $idSelect->execute();
         $results = $idSelect->fetchAll();
+        $array;
         foreach ($results as $row) {
-            $vstupenka = new Vstupenka();
-            if ($vstupenka->initExistingVstupenka($pdo,$row[0]) == -1) {
+            $object = new Vstupenka();
+            if ($object->initExistingVstupenka($pdo, $row[0]) == -1) {
                 echo "nenasli sme v datbazke dany row<br>";
             }
-        $vstupenkaArray[] = $vstupenka;
+            $array[] = $object;
         }
-        return $vstupenkaArray;
+        return $array;
     }
 
 	/**

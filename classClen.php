@@ -12,6 +12,21 @@ class Clen{
 
     }
 
+    function getAllClen($pdo){
+        $idSelect = $pdo->prepare("SELECT clen_ID FROM Clen");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Clen();
+            if ($object->initExistingClen($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Clen k danemu rowu v databaze
  	 *

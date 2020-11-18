@@ -12,6 +12,21 @@ class Neregistrovany{
 
     }
 
+    function getAllNeregistrovany($pdo){
+        $idSelect = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Neregistrovany();
+            if ($object->initExistingNeregistrovany($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Neregistrovany k danemu rowu v databaze
  	 *

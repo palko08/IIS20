@@ -12,6 +12,21 @@ class Registrovany{
 
     }
 
+    function getAllRegistrovany($pdo){
+        $idSelect = $pdo->prepare("SELECT registrovany_ID FROM Registrovany");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Registrovany();
+            if ($object->initExistingRegistrovany($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Registrovany k danemu rowu v databaze
  	 *
@@ -161,9 +176,8 @@ class Registrovany{
 
     function setHeslo($pdo, $data){
         try{
-            $pwd = password_hash($data, PASSWORD_DEFAULT);
             $select = $pdo->prepare("UPDATE Registrovany SET heslo = ? WHERE registrovany_ID = ?");
-            $select->execute([$pwd, $this->registrovanyID]);
+            $select->execute([$data, $this->registrovanyID]);
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";

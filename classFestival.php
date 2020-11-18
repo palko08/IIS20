@@ -12,6 +12,21 @@ class Festival{
 
     }
 
+    function getAllFestival($pdo){
+        $idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        $array;
+        foreach ($results as $row) {
+            $object = new Festival();
+            if ($object->initExistingFestival($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            $array[] = $object;
+        }
+        return $array;
+    }
+
 	/**
  	 *  @brief Funkcia pre priradenie instancie classy Festival k danemu rowu v databaze
  	 *

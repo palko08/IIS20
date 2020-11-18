@@ -51,7 +51,7 @@ $serv = new AccountService();
                 <a href="tickets.php">Spravovať rezervácie</a>
                 <br>
                 <?php
-                if ($person['level_opravnenia'] == 'admin') {
+                if ($person['level_opravnenia'] != 'divak') {
                     echo '<a href="admin.php">Admin Page</a><br>';
                 }
                 ?>

@@ -10,7 +10,7 @@ $serv = new AccountService();
 
 $login = $_POST['username'];
 $password = $_POST['password'];
-
+$person = $serv->getAccount($login);
 if ($serv->isValidAccount($login, $password)) 
 {
 	echo "<br><br><h4>Login successful</h4>";
@@ -19,8 +19,11 @@ if ($serv->isValidAccount($login, $password))
 	echo '<a href="profile.php">Účet</a><br>
 <a href="tickets.php">Vstupenky</a><br>
 <a href="index.php">Back to home page</a>
-<br><a href="admin.php">Admin Page</a>
-<br><br><br>';
+<br>';
+    if ($person['level_opravnenia'] < 'divak')
+    {
+        echo '<a href="admin.php">Admin Page</a>';
+    }
 }
 else 
 {

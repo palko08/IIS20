@@ -1,6 +1,9 @@
 <?php
 require "common.php";
-require_admin();
+require "services.php";
+
+$serv = new AccountService();
+$person = $serv->getAccount($_SESSION['user']);
 make_head();
 ?>
     <script type="text/javascript" src="view/show_elements.js"></script>
@@ -16,6 +19,9 @@ require("view/admin_body.php");
     //require("view/add_ticket_admin.php");
     ?>
 </div>
+<?php
+if ($person['level_opravnenia'] <= 'poradatel') {
+?>
 <div class="form-popup" id="add_festivals">
     <?php
     require("view/add_festival.php");
@@ -27,23 +33,34 @@ require("view/admin_body.php");
     require("view/add_artist.php");
     ?>
 </div>
-
+<?php
+if ($person['level_opravnenia'] == 'admin') {
+?>
 <div class="form-popup" id="add_user">
     <?php
     require("view/add_user.php");
     ?>
 </div>
+    <?php
+}
+?>
 <div class="form-popup" id="add_interpret_member">
     <?php
     require_once("view/add_members.php");
     ?>
 </div>
+    <?php
+}
+?>
 <div class="container" id="container">
     <div class="col-sm" id="tickets">
         <?php
         require("view/show_tickets.php");
         ?>
     </div>
+    <?php
+    if ($person['level_opravnenia'] <= 'poradatel') {
+    ?>
     <div class="col-sm" id="festivals">
             <?php
             require("view/show_festivals.php");
@@ -54,11 +71,18 @@ require("view/admin_body.php");
             require("view/show_interprets.php");
             ?>
     </div>
+    <?php
+    if ($person['level_opravnenia'] == 'admin') {
+    ?>
     <div class="col-sm" id="users">
             <?php
             require("view/show_users.php");
             ?>
     </div>
+    <?php
+    }
+    }
+    ?>
 </div>
 
 </body>

@@ -59,7 +59,7 @@ class Vstupenka{
         $testID = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
         $testID->execute([$festival_ID]);
         if($testID->rowCount() == 0){
-            throw new Exception("Nedokazolo pridat vstupenku");
+            throw new Exception("Nedokazalo pridat vstupenku");
             return -1;
         }
 
@@ -68,7 +68,7 @@ class Vstupenka{
             $testID2 = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
             $testID2->execute([$registrovany_ID]);
             if($testID2->rowCount() == 0){
-                throw new Exception("Nedokazolo pridat vstupenku");
+                throw new Exception("Nedokazalo pridat vstupenku");
                 return -1;
             }
 
@@ -78,11 +78,15 @@ class Vstupenka{
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
             $select->execute([$festival_ID, $registrovany_ID]);
     
-            if($select->rowCount() == 1){
-                $this->vstupenkaID = $select->fetchColumn();
+            if($select->rowCount() >= 1){
+                $results = $select->fetchAll();
+
+                $length = $select->rowCount();
+
+                $this->vstupenkaID = $results[$length-1][0];
                 return $this->vstupenkaID;
             }else{
-                throw new Exception("Nedokazolo pridat vstupenku");
+                throw new Exception("Nedokazalo pridat vstupenku");
                 return -1;
             }
 
@@ -100,16 +104,21 @@ class Vstupenka{
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
             $select->execute([$festival_ID, $neregistrovany_ID]);
     
-            if($select->rowCount() == 1){
-                $this->vstupenkaID = $select->fetchColumn();
+            if($select->rowCount() >= 1){
+                $results = $select->fetchAll();
+
+                $length = $select->rowCount();
+
+                $this->vstupenkaID = $results[$length-1][0];
                 return $this->vstupenkaID;
             }else{
+                throw new Exception("Nedokazalo pridat vstupenku");
                 return -1;
             }
 
         }else{
+            throw new Exception("Nedokazalo pridat vstupenku");
             return -1;
-            throw new Exception("Nedokazolo pridat vstupenku");
         }    
     }
 

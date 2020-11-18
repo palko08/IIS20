@@ -2,7 +2,7 @@
 require "common.php";
 require "classVstupenka.php";
 require "services.php";
-require "controller_tickets.php";
+require "controller.php";
 require_once "connect_db.php";
 
 $vstupenka = new Vstupenka();

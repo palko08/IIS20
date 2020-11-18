@@ -1,8 +1,8 @@
 <?php
 require_once "classFestival.php";
-require_once "get_all.php";
 require_once "connect_db.php";
 require_once "controller.php";
+
 $pdo = connect_db();
 $festivals = get_festivals($pdo);
 ?>

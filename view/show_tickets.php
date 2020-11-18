@@ -1,22 +1,10 @@
 <?php
 require_once "classVstupenka.php";
 require_once "connect_db.php";
-require_once "controller_tickets.php";
+require_once "controller.php";
+
 $pdo = connect_db();
-$idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");
-$idSelect->execute();
-
-$results = $idSelect->fetchAll();
-
-$tickets = array();
-
-foreach($results as $row) {
-    $ticket = new Vstupenka();
-    if($ticket->initExistingVstupenka($pdo, $row[0]) == -1){
-        echo "nenasli sme v databazke dany row<br>";
-    }
-    $tickets[] = $ticket;
-}
+$tickets = get_vstupenky($pdo);
 ?>
 
 <table class="table">

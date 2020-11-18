@@ -2,11 +2,33 @@
 require_once "classZaner.php";
 require_once "classFestival.php";
 require_once "classPodium.php";
+require_once "classInterpret.php";
 require_once "classClen.php";
+require_once "classVstupenka.php";
+require_once "classNeregistrovany.php";
+require_once "classRegistrovany.php";
 
 
+function get_vstupenky($pdo){
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");
+    $idSelect->execute();
 
-function get_all_obj($id,$pdo){
+    $results = $idSelect->fetchAll();
+
+    $tickets = array();
+
+    foreach($results as $row) {
+        $ticket = new Vstupenka();
+        if($ticket->initExistingVstupenka($pdo, $row[0]) == -1){
+            echo "nenasli sme v databazke dany row<br>";
+        }
+        $tickets[] = $ticket;
+    }
+    return $tickets;
+}
+
+function get_zanre($pdo){
+    $id = $pdo->prepare("SELECT zaner_ID FROM Zaner");
     $id->execute();
     $results = $id->fetchAll();
     $array = array();
@@ -18,6 +40,46 @@ function get_all_obj($id,$pdo){
         $array[] = $object;
     }
     return $array;
+}
+
+function get_festivals($pdo)
+{
+    $idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
+    $idSelect->execute();
+
+    $results = $idSelect->fetchAll();
+
+    $festivals = array();
+
+    foreach ($results as $row) {
+        $festival = new Festival();
+        if ($festival->initExistingFestival($pdo, $row[0]) == -1) {
+            echo "nenasli sme v databazke dany row<br>";
+        }
+        $festivals[] = $festival;
+    }
+
+    return $festivals;
+}
+
+function get_interprets($pdo)
+{
+    $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret");
+    $idSelect->execute();
+
+    $results = $idSelect->fetchAll();
+
+    $festivals = array();
+
+    foreach ($results as $row) {
+        $interpret = new Interpret();
+        if ($interpret->initExistingInterpret($pdo, $row[0]) == -1) {
+            echo "nenasli sme v databazke dany row<br>";
+        }
+        $interprets[] = $interpret;
+    }
+
+    return $interprets;
 }
 
 function print_zanre($obj, $pdo, $style)
@@ -115,5 +177,35 @@ function make_festival($festival,$pdo)
 		</div>
         </a>
 	</div>';
+}
+
+function get_cena($ticket,$pdo){
+    $festival_id = $ticket->getFestival_ID($pdo);
+    $festival = new Festival();
+    if ($festival->initExistingFestival($pdo, $festival_id) == -1) {
+        echo "festival nenadjeny";
+    }
+    return $festival->getCena($pdo);
+}
+
+function get_email($ticket,$pdo){
+    $customer = null;
+
+    if ($ticket->getNeregistrovany_ID($pdo) != NULL) {
+        $id_customer = $ticket->getNeregistrovany_ID($pdo);
+        $customer = new Neregistrovany();
+        if ($customer->initExistingNeregistrovany($pdo, $id_customer) == -1){
+            echo "nenasli sme v databazke dany row<br>";
+        }
+    }
+    elseif ($ticket->getRegistrovany_ID($pdo) != NULL) {
+        $id_customer = $ticket->getRegistrovany_ID($pdo);
+        $customer = new Registrovany();
+        if ($customer->initExistingRegistrovany($pdo, $id_customer) == -1){
+            echo "nenasli sme v databazke dany row<br>";
+        }
+    }
+
+    return $customer->getEmail($pdo);
 }
 ?>

@@ -5,8 +5,7 @@ require_once "classZaner.php";
 
 $pdo = connect_db();
 
-$idSelect = $pdo->prepare("SELECT zaner_ID FROM Zaner");
-$zanre = get_all_obj($idSelect,$pdo);
+$zanre = get_zanre($pdo);
 ?>
 <div class="jumbotron">
     <div class="span8 centering">
@@ -35,6 +34,7 @@ $zanre = get_all_obj($idSelect,$pdo);
                                 echo "<option value=".$zaner->getID().">".$zaner->getZaner_nazov($pdo)."</option>";
                             }
                             ?>
+
                         </select> </td>
 
                     <td><textarea placeholder="Popis..." class="form-control" id="exampleFormControlTextarea1" rows="3" name="popis"></textarea></td>

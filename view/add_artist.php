@@ -4,9 +4,7 @@ require_once "controller.php";
 require_once "classZaner.php";
 
 $pdo = connect_db();
-
-$idSelect = $pdo->prepare("SELECT zaner_ID FROM Zaner");
-$zanre = get_all_obj($idSelect,$pdo);
+$zanre = get_zanre($pdo);
 ?>
 <div class="jumbotron">
     <div class="span8 centering">

@@ -139,7 +139,7 @@ class Interpret{
      *
      *  @return Array dat, pri nenajdeni by hodnota mala byt NULL
      */
-    function getZanre(){
+    function getZanre($pdo){
         $select = $pdo->prepare("SELECT zaner_ID FROM Interpret_patri_do_Zaner WHERE interpret_ID = ?");
         $select->execute([$this->interpretID]);
         return $select->fetchAll();

@@ -105,6 +105,12 @@ class Clen{
     	return $select->fetchColumn();
     }
 
+    function getClovekMeno($pdo){
+        $select = $pdo->prepare("SELECT meno FROM Clovek WHERE clovek_ID = ?");
+        $select->execute([$this->clenID]);
+        return $select->fetchColumn();
+    }
+
     /**
      *  @brief Funkcie pre vytahovanie dat z databazy
      *

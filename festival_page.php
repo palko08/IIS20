@@ -47,10 +47,12 @@ make_header();
         </div>
     <div class="row">
         <div class="qty mt-5 col-sm-6">
-            <span class="minus bg-dark">-</span>
-            <input type="number" class="count" name="qty" value="1">
-            <span class="plus bg-dark">+</span>
-            <button type="button" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
+            <form method="post" action="view/add_ticket_rezervation.php?festival_id=<?php echo $festival->getID()?>">
+                <span class="minus bg-dark">-</span>
+                <input type="number" class="count" name="qty" value="1">
+                <span class="plus bg-dark">+</span>
+                <button type="submit" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
+            </form>
             <br><br>
         </div>
     </div>

@@ -24,7 +24,6 @@ function make_Vstupenka($pdo,$vstupenka){
 $vstupenka = new Vstupenka();
 $serv = new AccountService();
 $pdo = connect_db();
-
 $person = $serv->getAccount($_SESSION['user']);
 $vstupenkaArray = $vstupenka->getAllVstupenka($pdo,$person['registrovany_ID']);
 

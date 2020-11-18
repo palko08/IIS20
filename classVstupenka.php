@@ -62,7 +62,7 @@ class Vstupenka{
             return -1;
         }
 
-        if($registrovany_ID == -1 && $neregistrovany_ID != -1){
+        if($registrovany_ID != -1 && $neregistrovany_ID == -1){
 
             $testID2 = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
             $testID2->execute([$registrovany_ID]);
@@ -76,8 +76,8 @@ class Vstupenka{
             if($testSelect->rowCount() == 1){
                 return $testSelect->fetchColumn();
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID) VALUES(?, ?, ?)");
-                $insert->execute([$festival_ID, $registrovany_ID]);
+                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID, stav) VALUES(?, ?, ?)");
+                $insert->execute([$festival_ID, $registrovany_ID, "rezervovana"]);
     
                 $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
                 $select->execute([$festival_ID, $registrovany_ID]);
@@ -90,7 +90,7 @@ class Vstupenka{
                 }
             }
 
-        }else if($registrovany_ID != -1 && $neregistrovany_ID == -1){
+        }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
 
             $testID3 = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ?");
             $testID3->execute([$neregistrovany_ID]);
@@ -104,8 +104,8 @@ class Vstupenka{
             if($testSelect->rowCount() == 1){
                 return $testSelect->fetchColumn();
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID) VALUES(?, ?, ?)");
-                $insert->execute([$festival_ID, $neregistrovany_ID]);
+                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID, stav) VALUES(?, ?, ?)");
+                $insert->execute([$festival_ID, $neregistrovany_ID, "rezervovana"]);
     
                 $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
                 $select->execute([$festival_ID, $neregistrovany_ID]);

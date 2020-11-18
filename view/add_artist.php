@@ -8,7 +8,6 @@
                 <input type="file" name="obr" id="artist_align">
             </center>
             <select name="artist_genre" id="artist_genre" multiple>
-                <!--  TU BUDE FUNKCIA Z TRIEDY ZANROV -->
                 <option value="rock">Rock</option>
                 <option value="pop">Pop</option>
                 <option value="dnb">Drum and Bass</option>

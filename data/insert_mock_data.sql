@@ -168,7 +168,7 @@ INSERT INTO Clovek(meno)
 VALUES("meno32");
 
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(1, "email1", "login1", "heslo1", 'admin');
+VALUES(1, "admin", "admin", "admin", 'admin');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(2, "email2", "login2", "heslo2", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)

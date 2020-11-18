@@ -1,6 +1,6 @@
 <?php
 require_once "classVstupenka.php";
-require_once ("classFestival.php");
+require_once("classFestival.php");
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 require_once "connect_db.php";

@@ -53,6 +53,7 @@ $interprets = get_interprets($pdo);
             <div class="form-group">
                 <select class="custom-select" multiple>
                     <?php
+                    //TODO update zanrov
                     print_zanre($interpret,$pdo,"multiple");
                     ?>
                 </select>

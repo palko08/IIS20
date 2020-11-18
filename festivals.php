@@ -2,7 +2,7 @@
 require "common.php";
 require_once "classFestival.php";
 require "connect_db.php";
-require_once "controller_festival_interpret.php";
+require_once "controller.php";
 
 
 $pdo = connect_db();

@@ -2,6 +2,7 @@
 require_once "classFestival.php";
 require_once "get_all.php";
 require_once "connect_db.php";
+require_once "controller.php";
 $pdo = connect_db();
 $festivals = get_festivals($pdo);
 ?>
@@ -16,6 +17,7 @@ $festivals = get_festivals($pdo);
         <th>Dátum Do</th>
         <th>Max. kapacita</th>
         <th>Cena</th>
+        <th>Zanre</th>
         <th></th>
         <th></th>
         <th></th>
@@ -52,6 +54,15 @@ $festivals = get_festivals($pdo);
         </td>
         <td>
             <input type="number" id="festival_price" name="festival_price" class="form-control" placeholder=<?php echo $festival->getCena($pdo);?>>
+        </td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select" multiple>
+                    <?php
+                    //TODO update zanrov
+                    print_zanre($festival,$pdo,"multiple");
+                    ?>
+                </select>
         </td>
         <td>
             <button type="button" id="align-right" class="btn btn-danger" name="delete_btn" onclick="location.href='delete.php?type=FESTIVAL&id=<?php echo $festival->getID()?>'"> Odstrániť </button>

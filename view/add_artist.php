@@ -1,3 +1,13 @@
+<?php
+require_once "connect_db.php";
+require_once "controller.php";
+require_once "classZaner.php";
+
+$pdo = connect_db();
+
+$idSelect = $pdo->prepare("SELECT zaner_ID FROM Zaner");
+$zanre = get_all_obj($idSelect,$pdo);
+?>
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nového interpreta</h2>
@@ -7,7 +17,12 @@
             <center>
                 <input type="file" name="obr" id="artist_align">
             </center>
-            <select name="artist_genre" id="artist_genre" multiple>
+            <select name="zaner[]" id="artist_genre" multiple>
+                <?php
+                foreach ($zanre as $zaner){
+                    echo "<option value=".$zaner->getID().">".$zaner->getZaner_nazov($pdo)."</option>";
+                }
+                ?>
                 <option value="rock">Rock</option>
                 <option value="pop">Pop</option>
                 <option value="dnb">Drum and Bass</option>

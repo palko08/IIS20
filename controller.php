@@ -4,6 +4,22 @@ require_once "classFestival.php";
 require_once "classPodium.php";
 require_once "classClen.php";
 
+
+
+function get_all_obj($id,$pdo){
+    $id->execute();
+    $results = $id->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Zaner();
+        if ($object->initExistingZaner($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
 function print_zanre($obj, $pdo, $style)
 {
     $zanre = $obj->getZanre($pdo);

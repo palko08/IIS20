@@ -1,6 +1,6 @@
 <?php
 require "common.php";
-require "services.php";
+require_once "services.php";
 
 $serv = new AccountService();
 $person = $serv->getAccount($_SESSION['user']);

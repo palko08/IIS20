@@ -12,6 +12,7 @@ $cena = $_POST['cena'];
 $hodnotenie = '';
 $popis = '';
 $obr = '';
+$zanre = $_POST['zaner'];
 
 $festival = new Festival();
 $error = $festival->createNewFestival($pdo,$nazov,$kapacita, $datum_od, $datum_do,$cena,$adresa);
@@ -43,6 +44,16 @@ if (!(empty($_POST['obr']))) {
         throw new Exception("obrazok sa neda pridat");
     }
 }
+
+if (!(empty($zanre))) {
+    foreach ($zanre as $zaner) {
+        $error = $festival->addZaner($pdo, $zaner);
+        if ($error == 1) {
+            throw new Exception("zaner sa neda pridat");
+        }
+    }
+}
+
 
 header("Location: /admin.php");
 die;

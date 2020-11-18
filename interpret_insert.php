@@ -7,6 +7,7 @@ $nazov = $_POST['nazov'];
 $clenovia = $_POST['clenovia'];
 $hodnotenie = '';
 $obr = '';
+$zanre = $_POST['zaner'];
 
 $interpret = new Interpret();
 $error = $interpret ->createNewInterpret($pdo,$nazov);
@@ -29,6 +30,15 @@ if (!(empty($_POST['obr']))) {
     $error = $interpret->setObrazok($pdo, $obr);
     if ($error == 1) {
         throw new Exception("obrazok sa neda pridat");
+    }
+}
+
+if (!(empty($zanre))) {
+    foreach ($zanre as $zaner) {
+        $error = $interpret->addZaner($pdo, $zaner);
+        if ($error == 1) {
+            throw new Exception("obrazok sa neda pridat" . var_dump($zanre));
+        }
     }
 }
 

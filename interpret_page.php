@@ -1,6 +1,6 @@
 <?php
 require "common.php";
-require_once "controller_festival_interpret.php";
+require_once "controller.php";
 require_once "classInterpret.php";
 require "connect_db.php";
 

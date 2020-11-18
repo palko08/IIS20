@@ -47,7 +47,7 @@ make_header();
         </div>
     <div class="row">
         <div class="qty mt-5 col-sm-6">
-            <form method="post" action="view/add_ticket_rezervation.php?festival_id=<?php echo $festival->getID()?>">
+            <form method="post" action="view/add_ticket_rezervation.php?festival_id=<?php echo $festival->getID()?>&login=<?php echo $_SESSION['user']?>">
                 <span class="minus bg-dark">-</span>
                 <input type="number" class="count" name="qty" value="1">
                 <span class="plus bg-dark">+</span>

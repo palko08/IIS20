@@ -59,6 +59,7 @@ class Vstupenka{
         $testID = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
         $testID->execute([$festival_ID]);
         if($testID->rowCount() == 0){
+            throw new Exception("Nedokazolo pridat vstupenku");
             return -1;
         }
 
@@ -67,6 +68,7 @@ class Vstupenka{
             $testID2 = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
             $testID2->execute([$registrovany_ID]);
             if($testID2->rowCount() == 0){
+                throw new Exception("Nedokazolo pridat vstupenku");
                 return -1;
             }
 
@@ -86,6 +88,7 @@ class Vstupenka{
                     $this->vstupenkaID = $select->fetchColumn();
                     return $this->vstupenkaID;
                 }else{
+                    throw new Exception("Nedokazolo pridat vstupenku");
                     return -1;
                 }
             }

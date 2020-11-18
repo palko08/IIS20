@@ -2,10 +2,11 @@
 require "../services.php";
 require "../classVstupenka.php";
 require_once '../connect_db.php';
+require "../common.php";
 
 $pdo = connect_db();
 $serv = new AccountService();
-$person = $serv->getAccount($_SESSION['user']);
+$person = $serv->getAccount($_GET['login']);
 
 //for ($i = 0; i < $_POST['qty']; $i++)
 //{

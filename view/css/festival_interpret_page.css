@@ -1,27 +1,31 @@
-.festival-main{
+th,td{
+    text-align: center;
+    padding: 10px;
+}
+.festival-main,.interpret-body{
     padding-top: 100px;
     padding-bottom: 100px;
     overflow:hidden;
 }
 
-.festival-body{
+.festival-body, .interpret-body{
     background: rgb(31, 29, 30);
 }
-.festival-main{
+.festival-main, .interpret-main{
     margin-top: 100px;
     margin-bottom: 50px;
     height: auto;
     overflow: visible;
 }
 
-.festival-img img
+.festival-img img, .interpret-img img
 {
     width: 150%;
     height: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.festival-img .file {
+.festival-img .file, .interpret-img .file {
     position: relative;
     overflow: hidden;
     margin-top: -20%;
@@ -31,7 +35,7 @@
     font-size: 15px;
     background: #212529b8;}
 
-.festival-img .file input {
+.festival-img .file input,.interpret-img .file input   {
     position: absolute;
     opacity: 0;
     right: 0;
@@ -43,7 +47,7 @@
     position: relative;
     font-family: Arial;
 }
-.festival-description{
+.festival-description,.interpret-festivals{
     margin-left: 15px;
     margin-right: 15px;
 }

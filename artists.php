@@ -5,6 +5,7 @@ require_once "connect_db.php";
 
 function make_Interpret($interpret, $pdo){
     echo '<div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+                    <a href="interpret_page.php?id='.$interpret->getID().'">
                     <div class="thumbnail">
 					<img src="'.$interpret->getLogo($pdo).'" alt="'.$interpret->getNazov($pdo).'">
 					<div class="text-center" style="margin-top:5px"><strong>'.$interpret->getNazov($pdo).'</strong></div>
@@ -27,6 +28,7 @@ make_header();
 			<input type="text" name="search" class="form-control form-rounded" placeholder="Nájsť interpreta">
             <center><input id="submit" type="submit" value="Search" class="btn btn-secondary"></center>
             </form>
+            <br>
             <div class="row" style="margin-bottom: 25px;">
             <br>
                 <?php

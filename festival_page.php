@@ -25,7 +25,7 @@ make_header();
     });
 </script>
 
-<link rel="stylesheet" href="view/css/festival_page.css">
+<link rel="stylesheet" href="view/css/festival_interpret_page.css">
 <body class="festival-body">
 <div class="container festival-main">
         <div class="row">

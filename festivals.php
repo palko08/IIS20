@@ -2,21 +2,8 @@
 require "common.php";
 require_once "classFestival.php";
 require "connect_db.php";
+require_once "controller_festival_interpret.php";
 
-function make_festival($festival,$pdo)
-{
-	echo '<div class="col-sm-4">
-        <a href="festival_page.php?id='.$festival->getID().'">
-		<div class="thumbnail">
-		<img src="'. $festival->getObrazok($pdo) .'" alt="Obrastok">
-		<p style="margin-top:5px"><strong>'.$festival->getNazov($pdo).'</strong></p>
-		<p>od :'.$festival->getDatum_Od($pdo).'</p>
-		<p>do :'.$festival->getDatum_Do($pdo).'</p>
-		<button class="btn">Buy Tickets</button>
-		</div>
-        </a>
-	</div>';
-}
 
 $pdo = connect_db();
 
@@ -44,17 +31,7 @@ make_header();
 			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php
-                    if ($festivalArray[0] != NULL) {
-                        foreach ($festivalArray as $fest) {
-                            if ($_GET['search'] != NULL) {
-                                if (strstr($fest->getNazov($pdo), $_GET['search']) != FALSE) {
-                                    make_festival($fest, $pdo);
-                                }
-                            } else {
-                                make_festival($fest, $pdo);
-                            }
-                        }
-                    }
+                make_interprets_festivals($festivalArray,$pdo);
 				?>
 			</div>
 		</div>

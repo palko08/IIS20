@@ -26,10 +26,10 @@ $query = $serv->getAccounts();
 
     <form name="change_user" method="post" action='update_users.php?login=<?php echo $row["login"]?>&id=<?php echo $row["registrovany_ID"]?>'>
     <tr><td> <a name="id" class="no_color_change_link" id="user_id"><?php echo $row["registrovany_ID"]?></a></td>
-        <td><input name="email" type="email" id="user_email" value=<?php echo $row["email"]?>></td>
-        <td><input name="name" type="text"id="user_name" value=<?php echo $name?>></td>
-        <td><input name="login" type="text" id="user_login" value=<?php echo$row["login"]?>></td>
-        <td> <input name="password" type="password" value="password" id="user_password" ></td>
+        <td><input name="email" type="email" id="user_email" placeholder="<?php echo $row["email"]?>"></td>
+        <td><input name="name" type="text"id="user_name" placeholder="<?php echo $name?>"></td>
+        <td><input name="login" type="text" id="user_login" placeholder="<?php echo$row["login"]?>"></td>
+        <td> <input name="password" type="password" placeholder="password" id="user_password" ></td>
         <td><div class="form-group">
                 <select name="opravnenie" class="custom-select">
                     <option selected="0"><?php echo $row["level_opravnenia"]?></option>

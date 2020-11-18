@@ -5,7 +5,7 @@ require "services.php";
 $serv = new AccountService();
 $person = $serv->getAccount($_SESSION['user']);
 make_head();
-if ($person['level_opravnenia'] <= 'divak') {
+if ($person['level_opravnenia'] == 'divak') {
     echo "<h1>NEDOVOLENY PRISTUP</h1>";
 
 }

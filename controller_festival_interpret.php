@@ -4,7 +4,7 @@ require_once "classFestival.php";
 require_once "classPodium.php";
 require_once "classClen.php";
 
-function print_zanre($obj,$pdo)
+function print_zanre($obj, $pdo, $style)
 {
     $zanre = $obj->getZanre($pdo);
     foreach ($zanre as $row) {
@@ -12,7 +12,10 @@ function print_zanre($obj,$pdo)
         if ($zaner->initExistingZaner($pdo, $row[0]) == -1) {
             echo "nenasli sme v datbazke dany row<br>";
         }
-        echo $zaner->getZaner_nazov($pdo) . " ";
+        if ($style == "line")
+            echo $zaner->getZaner_nazov($pdo) . " ";
+        elseif ($style == "multiple")
+            echo "<option value=".$zaner->getID().">".$zaner->getZaner_nazov($pdo)."</option>";
     }
 }
 

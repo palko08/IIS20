@@ -24,7 +24,7 @@ make_header();
             <div class="col-sm-6">
                 <div class="festival-head" >
                     <h2><?php echo $festival->getNazov($pdo);?></h2>
-                    <h6><?php print_zanre($festival,$pdo);?></h6>
+                    <h6><?php print_zanre($festival, $pdo, "line");?></h6>
                     <h5>Kapacita:<?php echo $festival->getKapacita($pdo);?></h5>
                     <h3><?php echo $festival->getDatum_Od($pdo);?> - <?php echo $festival->getDatum_Do($pdo);?></h3>
                     <h4>Adresa: <?php echo $festival->getAdresa($pdo);?></h4>

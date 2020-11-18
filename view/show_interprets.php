@@ -2,6 +2,7 @@
 require_once "classInterpret.php";
 require_once "connect_db.php";
 require_once "get_all.php";
+require_once "controller_festival_interpret.php";
 $pdo = connect_db();
 $interprets = get_interprets($pdo);
 ?>
@@ -15,6 +16,7 @@ $interprets = get_interprets($pdo);
         <th>Hodnotenie</th>
         <th>Fotka</th>
         <th> Festivaly </th>
+        <th> Zanre </th>
         <th></th>
         <th></th>
     </tr>
@@ -41,8 +43,18 @@ $interprets = get_interprets($pdo);
         <td>
             <div class="form-group">
                 <select class="custom-select" multiple>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
+                    <?php
+                    //TODO print festivaly
+                    //print_zanre($interpret,$pdo,"multiple");
+                    ?>
+                </select>
+        </td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select" multiple>
+                    <?php
+                    print_zanre($interpret,$pdo,"multiple");
+                    ?>
                 </select>
         </td>
         <td>

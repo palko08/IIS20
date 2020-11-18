@@ -23,7 +23,7 @@ make_header();
         <div class="col-sm-6">
             <div class="interpret-head" >
                 <h2><?php echo $interpret->getNazov($pdo);?></h2>
-                <h6><?php print_zanre($interpret,$pdo);?></h6>
+                <h6><?php print_zanre($interpret, $pdo, "line");?></h6>
                 <h3>Členovia:</h3>
                 <?php print_clenov($interpret,$pdo);
                 ?>

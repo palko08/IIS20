@@ -1,7 +1,7 @@
 <?php
 require_once "classVstupenka.php";
 require_once "connect_db.php";
-require_once "tickets_controll.php";
+require_once "controller_tickets.php";
 $pdo = connect_db();
 $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");
 $idSelect->execute();

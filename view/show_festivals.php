@@ -60,7 +60,7 @@ $festivals = get_festivals($pdo);
             <button type="submit" id="align-right" class="btn btn-info" onclick=""> Potvrdiť zmeny</button>
         </td>
         <td>
-            <a href="../create_lineup.php?id=<?php echo $festival->getID()?>"><button type="button" class="btn btn-warning">Vytvoriť rozpis</button></a>
+            <a href="view/create_lineup.php?id=<?php echo $festival->getID()?>"><button type="button" class="btn btn-warning">Vytvoriť rozpis</button></a>
     </tr>
     </form>
             <?php

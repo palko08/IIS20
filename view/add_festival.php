@@ -20,7 +20,9 @@
                 </tr>
                 <tr>
                     <td><select class="form-control" name="festival_genre" id="festival_genre" multiple>
-                            <!--  TU BUDE FUNKCIA Z TRIEDY ZANROV -->
+                            <?php
+                            //TODO vsetky zanre
+                            ?>
                             <option value="rock">Rock</option>
                             <option value="pop">Pop</option>
                             <option value="dnb">Drum and Bass</option>

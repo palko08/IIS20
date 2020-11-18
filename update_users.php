@@ -36,8 +36,7 @@ if ($_POST['login'] != ''){
 }
 
 if ($_POST['password'] != ''){
-    $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $registrovany->setHeslo($pdo,$pwd);
+    $registrovany->setHeslo($pdo,$_POST['password']);
 }
 
 if ($_POST['opravnenie'] != ''){

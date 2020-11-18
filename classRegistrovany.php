@@ -161,8 +161,9 @@ class Registrovany{
 
     function setHeslo($pdo, $data){
         try{
+            $pwd = password_hash($data, PASSWORD_DEFAULT);
             $select = $pdo->prepare("UPDATE Registrovany SET heslo = ? WHERE registrovany_ID = ?");
-            $select->execute([$data, $this->registrovanyID]);
+            $select->execute([$pwd, $this->registrovanyID]);
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";

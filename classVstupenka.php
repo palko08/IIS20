@@ -72,25 +72,18 @@ class Vstupenka{
                 return -1;
             }
 
-            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
-            $testSelect->execute([$festival_ID, $registrovany_ID]);
+            $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID, stav) VALUES(?, ?, ?)");
+            $insert->execute([$festival_ID, $registrovany_ID, "rezervovana"]);
     
-            if($testSelect->rowCount() == 1){
-                return $testSelect->fetchColumn();
+            $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
+            $select->execute([$festival_ID, $registrovany_ID]);
+    
+            if($select->rowCount() == 1){
+                $this->vstupenkaID = $select->fetchColumn();
+                return $this->vstupenkaID;
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID, stav) VALUES(?, ?, ?)");
-                $insert->execute([$festival_ID, $registrovany_ID, "rezervovana"]);
-    
-                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
-                $select->execute([$festival_ID, $registrovany_ID]);
-    
-                if($select->rowCount() == 1){
-                    $this->vstupenkaID = $select->fetchColumn();
-                    return $this->vstupenkaID;
-                }else{
-                    throw new Exception("Nedokazolo pridat vstupenku");
-                    return -1;
-                }
+                throw new Exception("Nedokazolo pridat vstupenku");
+                return -1;
             }
 
         }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
@@ -101,24 +94,17 @@ class Vstupenka{
                 return -1;
             }
 
-            $testSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
-            $testSelect->execute([$festival_ID, $neregistrovany_ID]);
+            $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID, stav) VALUES(?, ?, ?)");
+            $insert->execute([$festival_ID, $neregistrovany_ID, "rezervovana"]);
     
-            if($testSelect->rowCount() == 1){
-                return $testSelect->fetchColumn();
+            $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
+            $select->execute([$festival_ID, $neregistrovany_ID]);
+    
+            if($select->rowCount() == 1){
+                $this->vstupenkaID = $select->fetchColumn();
+                return $this->vstupenkaID;
             }else{
-                $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID, stav) VALUES(?, ?, ?)");
-                $insert->execute([$festival_ID, $neregistrovany_ID, "rezervovana"]);
-    
-                $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
-                $select->execute([$festival_ID, $neregistrovany_ID]);
-    
-                if($select->rowCount() == 1){
-                    $this->vstupenkaID = $select->fetchColumn();
-                    return $this->vstupenkaID;
-                }else{
-                    return -1;
-                }
+                return -1;
             }
 
         }else{

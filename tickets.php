@@ -6,28 +6,13 @@ require_once  "classFestival.php";
 require_once "controller.php";
 require_once "connect_db.php";
 
-function make_Vstupenka($pdo,$vstupenka){
-    $festival = new Festival();
-    $festival->initExistingFestival($pdo,$vstupenka->getFestival_ID($pdo));
-    echo '  <tr>
-                <td>
-                    <a class="no_color_change_link" id="ticket" href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">'.$vstupenka->getFestival_ID($pdo).'</a>
-                </td>
-                <td>
-                    <a class="no_color_change_link" id="stav">'.$vstupenka->getStav($pdo).'</a>
-                </td>
-                <td>
-                    <a class="no_color_change_link" id="cena">'.$festival->getCena($pdo).'</a>
-                </td>
-            </tr>';
-}
 
 $vstupenka = new Vstupenka();
 $serv = new AccountService();
 $pdo = connect_db();
 $person = $serv->getAccount($_SESSION['user']);
-/*TODO fix get_vstupenky($pdo,$person['registrovany_ID'],-1,-1); */
-$vstupenkaArray = $vstupenka->getAllVstupenka($pdo,$person['registrovany_ID']);
+
+$vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
 
 make_header();
 ?>

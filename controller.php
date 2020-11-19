@@ -8,6 +8,21 @@ require_once "classVstupenka.php";
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 
+function get_user_vstupenky($pdo,$id){
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
+    $idSelect->execute([$id]);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Vstupenka();
+        if ($object->initExistingVstupenka($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
 function getVstupenky($pdo, $registrovany_ID, $neregistrovany_ID, $festival_ID){
     if($festival_ID == -1){
         if($registrovany_ID != -1 && $neregistrovany_ID == -1){
@@ -52,7 +67,7 @@ function check_tickets_limit($pdo,$ticket){
     }
 
     $count = getVstupenky($pdo,$reg_id,$nereg_id,$festival_id);
-    
+
     if ($count > 10) {
         echo "max limit prekroceny. Pocet vstupeniek: ".$count;
     }
@@ -226,6 +241,22 @@ function make_festival($festival,$pdo)
 		</div>
         </a>
 	</div>';
+}
+
+function make_Vstupenka($pdo,$vstupenka){
+    $festival = new Festival();
+    $festival->initExistingFestival($pdo,$vstupenka->getFestival_ID($pdo));
+    echo '  <tr>
+                <td>
+                    <a class="no_color_change_link" id="ticket" href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">'.$vstupenka->getFestival_ID($pdo).'</a>
+                </td>
+                <td>
+                    <a class="no_color_change_link" id="stav">'.$vstupenka->getStav($pdo).'</a>
+                </td>
+                <td>
+                    <a class="no_color_change_link" id="cena">'.$festival->getCena($pdo).'</a>
+                </td>
+            </tr>';
 }
 
 function get_cena($ticket,$pdo){

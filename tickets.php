@@ -28,7 +28,7 @@ make_header();
         <table class="table">
             <thead>
                 <tr>
-                <th>Vstupenky</th>
+                <th>Vstupenka</th>
                 <th>Stav</th>
                 <th>Cena</th>
                 </tr>

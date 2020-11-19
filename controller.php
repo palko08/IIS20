@@ -248,7 +248,7 @@ function make_Vstupenka($pdo,$vstupenka){
     $festival->initExistingFestival($pdo,$vstupenka->getFestival_ID($pdo));
     echo '  <tr>
                 <td>
-                    <a class="no_color_change_link" id="ticket" href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">'.$vstupenka->getFestival_ID($pdo).'</a>
+                    <a class="no_color_change_link" id="ticket" href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">'.$festival->getNazov($pdo).'</a>
                 </td>
                 <td>
                     <a class="no_color_change_link" id="stav">'.$vstupenka->getStav($pdo).'</a>

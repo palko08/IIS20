@@ -1,6 +1,6 @@
 <?php
 require "services.php";
-require "classVstupenka.php";
+require_once "classVstupenka.php";
 require_once 'connect_db.php';
 require_once 'classNeregistrovany.php';
 require_once 'classClovek.php';
@@ -9,9 +9,10 @@ require "common.php";
 $pdo = connect_db();
 $serv = new AccountService();
 $person = $serv->getAccount($_GET['login']);
+$pocet = $_POST['pocet'];
 
-//for ($i = 0; i < $_POST['count']; $i++)
-//{
+for ($i = 0; $i < $pocet; $i++)
+{
 $vstupenka = new Vstupenka();
 if (!empty($person)){
     if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],$person['registrovany_ID'],-1) == -1)
@@ -36,7 +37,7 @@ else {
         throw new Exception("Nedokazolo pridat vstupenku");
     }
 }
-//}
+}
 
 header("Location: /festivals.php");
 die;

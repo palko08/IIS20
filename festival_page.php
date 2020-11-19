@@ -36,7 +36,7 @@ make_header();
     <div class="row">
          <div class="festival-ticket-input">
             <form method="post" action="add_ticket_rezervation.php?festival_id=<?php echo $festival->getID()?>&login=<?php echo $_SESSION['user']?>">
-                <input type="number" class="count" name="qty" value="0" min="0">
+                <input type="number" class="count" name="pocet" value="0" min="0">
                 <button type="submit" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
             </form>
             <br><br>

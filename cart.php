@@ -9,7 +9,7 @@ $vstupenka = new Vstupenka();
 $serv = new AccountService();
 $pdo = connect_db();
 $person = $serv->getAccount($_SESSION['user']);
-$vstupenkaArray = $vstupenka->getAllVstupenka($pdo,$person['registrovany_ID']);
+$vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
 
 function make_product($pdo, $vstupenka){
     echo '<tr>

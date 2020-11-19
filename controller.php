@@ -41,9 +41,19 @@ function check_tickets_limit($pdo,$ticket){
     $reg_id = $ticket->getRegistrovany_ID($pdo);
     $nereg_id = $ticket->getNeregistrovany_ID($pdo);
 
+    if (empty($festival_id)) {
+        $festival_id = -1;
+    }
+    if (empty($reg_id )) {
+        $reg_id  = -1;
+    }
+    if (empty($nereg_id)) {
+        $nereg_id = -1;
+    }
+
     $count = getVstupenky($pdo,$reg_id,$nereg_id,$festival_id);
-    //TODO zmen na limit 10
-    if ($count > 1) {
+    
+    if ($count > 10) {
         echo "max limit prekroceny. Pocet vstupeniek: ".$count;
     }
 }

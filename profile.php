@@ -5,7 +5,9 @@ require "services.php";
 make_header();
 
 $serv = new AccountService();
+$edit = false;
 ?>
+<script src="view/show_elements.js"></script>
 <link rel="stylesheet" href="view/css/style_profile.css">
 <body class="profile-body">
 <div class="container emp-profile">
@@ -32,18 +34,15 @@ $serv = new AccountService();
                     <h6>
                         nejake bio
                     </h6>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs" id="myTab">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                            <a class="nav-link" id="home-tab">About</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-2 col-sm-4">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Upravit profil" onclick="show_edit();return false;"/>
             </div>
         </div>
         <div class="row">
@@ -57,19 +56,20 @@ $serv = new AccountService();
                 ?>
                 <a href="logout.php">Logout</a>
             </div>
+            <form name="edit_profile" method="post" action='update_users.php?login=<?php echo $person["login"]?>&id=<?php echo $person["registrovany_ID"]?>'>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
                                 <label>User Id</label>
                             </div>
-                            <div class="col-md-6">
-                                <p>
-                                    <?php
-                                    echo $person['login'];
-                                    ?>
-                                </p>
+                            <div class="col-md-6" >
+                                <input type="text" name="login" id="edit_login" placeholder=<?php echo
+                                $person['login']; ?>>
+                                    <p id="show_login"><?php
+                                        echo $person['login'];
+                                        ?>
+                                    </p>
                             </div>
                         </div>
                         <div class="row">
@@ -77,7 +77,9 @@ $serv = new AccountService();
                                 <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>
+                                <input type="text" name="name" id="edit_name" placeholder=<?php echo
+                                $name; ?>>
+                                <p id="show_name">
                                     <?php
                                     echo $name;
                                     ?>
@@ -89,32 +91,28 @@ $serv = new AccountService();
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>
+                                <input type="text" name="email" id="edit_email" placeholder=<?php
+                                echo $person['email'];?>>
+                                <p id="show_email">
                                     <?php
                                     echo $person['email'];
                                     ?>
                                 </p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>123 456 7890</p>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Heslo</label>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
-                            </div>
+                        <div class="col-md-6">
+                            <input type="password" name="password" id="edit_heslo">
                         </div>
                     </div>
                 </div>
+                <br>
+                <button class="btn btn-info" id="confirm_changes" type="submit" name="update" value="update" onclick="">Potvrdit zmeny</button>
             </div>
+            </form>
         </div>
     </form>
 </div>

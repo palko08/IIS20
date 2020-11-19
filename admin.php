@@ -25,7 +25,7 @@ require("view/admin_body.php");
     ?>
 </div>
 <?php
-if ($person['level_opravnenia'] <= 'poradatel') {
+if ($person['level_opravnenia'] == 'poradatel' || $person['level_opravnenia'] == 'admin' ) {
 ?>
 <div class="form-popup" id="add_festivals">
     <?php
@@ -64,7 +64,7 @@ if ($person['level_opravnenia'] == 'admin') {
         ?>
     </div>
     <?php
-    if ($person['level_opravnenia'] <= 'poradatel') {
+    if ($person['level_opravnenia'] == 'poradatel' || $person['level_opravnenia'] == 'admin' ) {
     ?>
     <div class="col-sm" id="festivals">
             <?php

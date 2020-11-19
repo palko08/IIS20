@@ -20,7 +20,7 @@ if ($serv->isValidAccount($login, $password))
 <a href="tickets.php">Vstupenky</a><br>
 <a href="index.php">Back to home page</a>
 <br>';
-    if ($person['level_opravnenia'] < 'divak')
+    if ($person['level_opravnenia'] != 'divak')
     {
         echo '<a href="admin.php">Admin Page</a>';
     }

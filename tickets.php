@@ -1,8 +1,9 @@
 <?php
 require "common.php";
-require "services.php";
-require "classVstupenka.php";
-require "classFestival.php";
+require_once  "services.php";
+require_once  "classVstupenka.php";
+require_once  "classFestival.php";
+require_once "controller.php";
 require_once "connect_db.php";
 
 function make_Vstupenka($pdo,$vstupenka){
@@ -25,6 +26,7 @@ $vstupenka = new Vstupenka();
 $serv = new AccountService();
 $pdo = connect_db();
 $person = $serv->getAccount($_SESSION['user']);
+/*TODO fix get_vstupenky($pdo,$person['registrovany_ID'],-1,-1); */
 $vstupenkaArray = $vstupenka->getAllVstupenka($pdo,$person['registrovany_ID']);
 
 make_header();

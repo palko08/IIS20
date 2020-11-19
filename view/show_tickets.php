@@ -33,6 +33,9 @@ $tickets = get_vstupenky($pdo);
         </td>
         <td>
             <a class="no_color_change_link" id="stav"><?php echo $ticket->getStav($pdo); ?></a>
+            <p style="color: red">
+                <?php check_tickets_limit($pdo,$ticket); ?>
+            </p>
         </td>
         <td>
             <a href="../change_stav.php?stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>

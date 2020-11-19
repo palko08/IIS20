@@ -8,6 +8,45 @@ require_once "classVstupenka.php";
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 
+function getVstupenky($pdo, $registrovany_ID, $neregistrovany_ID, $festival_ID){
+    if($festival_ID == -1){
+        if($registrovany_ID != -1 && $neregistrovany_ID == -1){
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ? AND stav = ?");
+            $idSelect->execute([$registrovany_ID,'rezervovana']);
+        }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE neregistrovany_ID = ? AND stav = ?");
+            $idSelect->execute([$neregistrovany_ID,'rezervovana']);
+        }else{
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");
+            $idSelect->execute();
+        }
+    }else{
+        if($registrovany_ID != -1 && $neregistrovany_ID == -1){
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ? AND festival_ID = ? AND stav = ?");
+            $idSelect->execute([$registrovany_ID, $festival_ID,'rezervovana']);
+        }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE neregistrovany_ID = ? AND festival_ID = ? AND stav = ?");
+            $idSelect->execute([$neregistrovany_ID, $festival_ID,'rezervovana']);
+        }else{
+            $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND stav = ?");
+            $idSelect->execute([$festival_ID,'rezervovana']);
+        }
+    }
+    return $idSelect->rowCount();
+}
+
+function check_tickets_limit($pdo,$ticket){
+
+    $festival_id = $ticket->getFestival_ID($pdo);
+    $reg_id = $ticket->getRegistrovany_ID($pdo);
+    $nereg_id = $ticket->getNeregistrovany_ID($pdo);
+
+    $count = getVstupenky($pdo,$reg_id,$nereg_id,$festival_id);
+    //TODO zmen na limit 10
+    if ($count > 1) {
+        echo "max limit prekroceny. Pocet vstupeniek: ".$count;
+    }
+}
 
 function get_vstupenky($pdo){
     $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka");

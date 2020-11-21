@@ -1,13 +1,13 @@
 USE IIS2020;
 
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie)
-VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', 15.00, "Niekde26", 3.8);
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa)
-VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', 12.55, "Dakde44");
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa)
-VALUES("festival3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', 20.00, "Tuto17");
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie)
-VALUES("festival4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', 25.80, "Ulica7", 4.1);
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok)
+VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', 15.00, "Niekde26", 3.8, "./img/lir.jpg");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok)
+VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', 12.55, "Dakde44", "./img/lir2.jpg");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok)
+VALUES("festival3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', 20.00, "Tuto17", "./img/lir.jpg");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok)
+VALUES("festival4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', 25.80, "Ulica7", 4.1, "./img/lir3.jpg");
 
 INSERT INTO Podium(festival_ID, nazov)
 VALUES(1, "podium1");
@@ -30,30 +30,30 @@ VALUES(4, "podium9");
 INSERT INTO Podium(festival_ID, nazov)
 VALUES(4, "podium10");
 
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret1", 3.5);
-INSERT INTO Interpret(nazov)
-VALUES("interpret2");
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret3", 3.7);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret4", 3.2);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret5", 4.5);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret6", 4.1);
-INSERT INTO Interpret(nazov)
-VALUES("interpret7");
-INSERT INTO Interpret(nazov)
-VALUES("interpret8");
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret9", 3.7);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret10", 3.3);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret11", 4.4);
-INSERT INTO Interpret(nazov, hodnotenie)
-VALUES("interpret12", 2.9);
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret1", 3.5, "./img/Delta_Heavy.jpg");
+INSERT INTO Interpret(nazov, logo)
+VALUES("interpret2", "./img/dimension.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret3", 3.7, "./img/hybridminds.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret4", 3.2, "./img/subfocus.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret5", 4.5, "./img/Delta_Heavy.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret6", 4.1, "./img/dimension.jpg");
+INSERT INTO Interpret(nazov, logo)
+VALUES("interpret7", "./img/subfocus.jpg");
+INSERT INTO Interpret(nazov, logo)
+VALUES("interpret8", "./img/hybridminds.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret9", 3.7, "./img/dimension.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret10", 3.3, "./img/Delta_Heavy.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret11", 4.4, "./img/subfocus.jpg");
+INSERT INTO Interpret(nazov, hodnotenie, logo)
+VALUES("interpret12", 2.9, "./img/hybridminds.jpg");
 
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
 VALUES(1, 1, '2020-11-05 18:00:00');
@@ -168,29 +168,29 @@ INSERT INTO Clovek(meno)
 VALUES("meno32");
 
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(1, "admin", "admin", "admin", 'admin');
+VALUES(1, "email1", "login1", "$2y$10$kU5n3a6KnxqJAOlDN4NcB.72iEbwrTduCabT3RiC/eOIoDsgHhN3C", 'admin');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(2, "email2", "login2", "heslo2", 'poradatel');
+VALUES(2, "email2", "login2", "$2y$10$pMbd.7vOq4KkDCjofBZ5dugvzzeNwrdS1YNwkp7s5/zsH7CF.lYjW", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(3, "email3", "login3", "heslo3", 'poradatel');
+VALUES(3, "email3", "login3", "$2y$10$PxEnJOhy3Nge/gAOEL2VQuOH4dPw3BwSBaS1pzNWeN3lZgi2RXdau", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(4, "email4", "login4", "heslo4", 'pokladni');
+VALUES(4, "email4", "login4", "$2y$10$4lwD0MnH2u5mtm1g4gUB0uhlzptByByignVdywfJtBfvlY1vTs4QG", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(5, "email5", "login5", "heslo5", 'pokladni');
+VALUES(5, "email5", "login5", "$2y$10$KvX4C40k.8uZHeW0ArDa9e4zr6Ewna7pfmYJ5dfb7m3unS8/7a4ju", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(6, "email6", "login6", "heslo6", 'pokladni');
+VALUES(6, "email6", "login6", "$2y$10$IlfV25k1SXLR2IaJa4MSee/49a1LmBFE6UzcOagIk2sJqhCkjahDG", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(7, "email7", "login7", "heslo7", 'divak');
+VALUES(7, "email7", "login7", "$2y$10$DUWuFYnqTwKcWhJwScdtN.nMvl9ROsLg5rdcXAktnh38X6cux54ze", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(8, "email8", "login8", "heslo8", 'divak');
+VALUES(8, "email8", "login8", "$2y$10$eWbkklOGdNWw9J5bpUHD1OCey9/gIXpsSuKdP.qzOQxjrzkzrwguC", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(9, "email9", "login9", "heslo9", 'divak');
+VALUES(9, "email9", "login9", "$2y$10$BLSf.EuDXjlJAiqyPRn0iOkDIfQZshwBsns0YEJ/T0hoUDD1.7MKG", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(10, "email10", "login10", "heslo10", 'divak');
+VALUES(10, "email10", "login10", "$2y$10$0azQ9TNQn5UUhKy8LYxWr./CES3A77zesdYw8pPw3vixH4sfWDtFq", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(11, "email11", "login11", "heslo11", 'divak');
+VALUES(11, "email11", "login11", "$2y$10$NDRWcP0T4EBuFJBn3Xek8OfoYXWGzhUFRwm8Nf9gELHIoBH7NIdS.", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(12, "email12", "login12", "heslo12", 'divak');
+VALUES(12, "email12", "login12", "$2y$10$3zht53WJPkwc3QcekGmO8.oZoGL6TNFLkEerm6xrqpipY1nJhrqaC", 'divak');
 
 INSERT INTO Neregistrovany(neregistrovany_ID, email)
 VALUES(13, "email13");

@@ -8,6 +8,37 @@ require_once "classVstupenka.php";
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 
+function getPodiaForFestival($pdo, $festival_ID){
+    $idSelect = $pdo->prepare("SELECT podium_ID FROM Podium WHERE festival_ID = ?");
+    $idSelect->execute([$festival_ID]);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Podium();
+        if ($object->initExistingPodium($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+
+}
+
+function getInterpretsForFestival($pdo, $festival_ID){
+    $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
+    $idSelect->execute([$festival_ID]);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Interpret();
+        if ($object->initExistingInterpret($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
 function get_user_vstupenky($pdo,$id){
     $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
     $idSelect->execute([$id]);

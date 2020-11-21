@@ -42,16 +42,21 @@ function getPodiaForFestival($pdo, $festival_ID){
 }
 
 function getInterpretsForFestival($pdo, $festival_ID){
-    $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
-    $idSelect->execute([$festival_ID]);
-    $results = $idSelect->fetchAll();
+    $arrayPodia = getPodiaForFestival($pdo, $festival_ID);
     $array = array();
-    foreach ($results as $row) {
-        $object = new Interpret();
-        if ($object->initExistingInterpret($pdo, $row[0]) == -1) {
-            echo "nenasli sme v datbazke dany row<br>";
+    foreach ($arrayPodia as $podium) {
+        $idSelect = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
+        $idSelect->execute([$podium->getID()]);
+        $results = $idSelect->fetchAll();
+        foreach ($results as $row) {
+            $object = new Interpret();
+            if ($object->initExistingInterpret($pdo, $row[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+            if (!array_search($object, $array)) {
+                $array[] = $object;
+            }
         }
-        $array[] = $object;
     }
     return $array;
 }

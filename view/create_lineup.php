@@ -44,6 +44,25 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                     <td>
                         <select name="select_interprets_timeslots'.$k.'">
                             ';
+                            $cas = $datumOd;
+                            if ($i == $datumOd['day']) {
+                                $cas['hour'] += $k;
+                            }
+                            elseif ($i != $datumDo['day']) {
+                                $cas['day'] += $i - $datumOd['day'];
+                                $cas['hour'] = $k;
+                            }
+                            else {
+                                $cas = $datumDo;
+                                $cas['hour'] = $k;
+                            }
+                            $interpret = getInterpretForTime($pdo, $cas, $podium->getID());
+                            if ($interpret != NULL) {
+                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
+                            }
+                            else {
+                                echo '<option value="">none</option>';
+                            }
                             foreach ($interpretArray as $interpret){
                                 echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
                             }
@@ -87,85 +106,6 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
 
 
         <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
-            <b name="den">21.11.2020</b>
-            <table class="borders" id="lineup-table">
-                <thead>
-                <tr>
-                    <th class="borders">podium/cas</th>
-                    <th class="borders">18:00</th>
-                    <th class="borders">19:00</th>
-                    <th class="borders">20:00</th>
-                    <th class="borders">21:00</th>
-                    <th class="borders">22:00</th>
-                    <th class="borders">23:00</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="borders"><b>PODIUM 1</b></td>
-                    <td>
-                        <select name="select_interprets_timeslots1">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="select_interprets_timeslots2">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="select_interprets_timeslots3">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="select_interprets_timeslots4">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="select_interprets_timeslots5">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="select_interprets_timeslots6">
-                            <?php
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
-                            }
-                            ?>
-                            <option value="">none</option>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
             <?php
                 createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo);
             ?>

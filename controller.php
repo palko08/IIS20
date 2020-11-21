@@ -8,6 +8,23 @@ require_once "classVstupenka.php";
 require_once "classNeregistrovany.php";
 require_once "classRegistrovany.php";
 
+function getInterpretForTime($pdo, $dateTime, $podium_id){
+    $select = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE cas_vystupenia = ? AND podium_ID = ?");
+    $datestr = $dateTime['year']."-".$dateTime['month']."-".$dateTime['day']." ".$dateTime['hour'].":".$dateTime['minute'].":".$dateTime['second'];
+    $date = strtotime($datestr);
+    $select->execute([date('Y-m-d H:i:s',$date),$podium_id]);
+    $id = $select->fetchColumn();
+
+    if ($id == NULL) {
+        return NULL;
+    }
+    else {
+        $interpret = new Interpret();
+        $interpret->initExistingInterpret($pdo,$id);
+        return $interpret;
+    }
+}
+
 function getPodiaForFestival($pdo, $festival_ID){
     $idSelect = $pdo->prepare("SELECT podium_ID FROM Podium WHERE festival_ID = ?");
     $idSelect->execute([$festival_ID]);

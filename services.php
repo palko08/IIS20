@@ -90,7 +90,12 @@ class AccountService
 	function isValidAccount($login, $password)
 	{
 		$data = $this->getAccount($login);
-		return password_verify($password, $data['heslo']);
+		$hash = password_hash($password, PASSWORD_DEFAULT)
+		if(strcmp($hash, $data['heslo']) == 0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
 	}
 
 	function getName($login)

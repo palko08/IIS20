@@ -37,7 +37,7 @@ class Vstupenka{
  	 */
     function initExistingVstupenka($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE vstupenka_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->vstupenkaID = $idSelect->fetchColumn();
@@ -58,7 +58,7 @@ class Vstupenka{
      */
     function createNewVstupenka($pdo, $festival_ID, $registrovany_ID, $neregistrovany_ID){
         $testID = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
-        $testID->execute([$festival_ID]);
+        $testID->execute($festival_ID);
         if($testID->rowCount() == 0){
             throw new Exception("Nedokazalo pridat vstupenku");
             return -1;
@@ -67,17 +67,17 @@ class Vstupenka{
         if($registrovany_ID != -1 && $neregistrovany_ID == -1){
 
             $testID2 = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
-            $testID2->execute([$registrovany_ID]);
+            $testID2->execute($registrovany_ID);
             if($testID2->rowCount() == 0){
                 throw new Exception("Nedokazalo pridat vstupenku");
                 return -1;
             }
 
             $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID, stav) VALUES(?, ?, ?)");
-            $insert->execute([$festival_ID, $registrovany_ID, "rezervovana"]);
+            $insert->execute(array($festival_ID, $registrovany_ID, "rezervovana"));
     
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
-            $select->execute([$festival_ID, $registrovany_ID]);
+            $select->execute(array($festival_ID, $registrovany_ID));
     
             if($select->rowCount() >= 1){
                 $results = $select->fetchAll();
@@ -94,16 +94,16 @@ class Vstupenka{
         }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
 
             $testID3 = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ?");
-            $testID3->execute([$neregistrovany_ID]);
+            $testID3->execute($neregistrovany_ID);
             if($testID3->rowCount() == 0){
                 return -1;
             }
 
             $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID, stav) VALUES(?, ?, ?)");
-            $insert->execute([$festival_ID, $neregistrovany_ID, "rezervovana"]);
+            $insert->execute(array($festival_ID, $neregistrovany_ID, "rezervovana"));
     
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
-            $select->execute([$festival_ID, $neregistrovany_ID]);
+            $select->execute(array($festival_ID, $neregistrovany_ID));
     
             if($select->rowCount() >= 1){
                 $results = $select->fetchAll();
@@ -132,10 +132,10 @@ class Vstupenka{
      */
     function deleteVstupenka($pdo){
         $delete = $pdo->prepare("DELETE FROM Vstupenka WHERE vstupenka_ID = ?");
-        $delete->execute([$this->vstupenkaID]);
+        $delete->execute($this->vstupenkaID);
 
         $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE vstupenka_ID = ?");
-        $select->execute([$this->vstupenkaID]);
+        $select->execute($this->vstupenkaID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -156,25 +156,25 @@ class Vstupenka{
 
     function getFestival_ID($pdo){
         $select = $pdo->prepare("SELECT festival_ID FROM Vstupenka WHERE vstupenka_ID = ?");
-        $select->execute([$this->vstupenkaID]);
+        $select->execute($this->vstupenkaID);
         return $select->fetchColumn();
     }
 
     function getRegistrovany_ID($pdo){
         $select = $pdo->prepare("SELECT registrovany_ID FROM Vstupenka WHERE vstupenka_ID = ?");
-        $select->execute([$this->vstupenkaID]);
+        $select->execute($this->vstupenkaID);
         return $select->fetchColumn();
     }
 
     function getNeregistrovany_ID($pdo){
         $select = $pdo->prepare("SELECT neregistrovany_ID FROM Vstupenka WHERE vstupenka_ID = ?");
-        $select->execute([$this->vstupenkaID]);
+        $select->execute($this->vstupenkaID);
         return $select->fetchColumn();
     }
 
     function getStav($pdo){
         $select = $pdo->prepare("SELECT stav FROM Vstupenka WHERE vstupenka_ID = ?");
-        $select->execute([$this->vstupenkaID]);
+        $select->execute($this->vstupenkaID);
         return $select->fetchColumn();
     }
 
@@ -189,7 +189,7 @@ class Vstupenka{
     function setFestival_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET festival_ID = ? WHERE vstupenka_ID = ?");
-            $select->execute([$data, $this->vstupenkaID]);
+            $select->execute(array($data, $this->vstupenkaID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -200,7 +200,7 @@ class Vstupenka{
     function setRegistrovany_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET registrovany_ID = ? WHERE vstupenka_ID = ?");
-            $select->execute([$data, $this->vstupenkaID]);
+            $select->execute(array($data, $this->vstupenkaID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -211,7 +211,7 @@ class Vstupenka{
     function setNeregistrovany_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET neregistrovany_ID = ? WHERE vstupenka_ID = ?");
-            $select->execute([$data, $this->vstupenkaID]);
+            $select->execute(array($data, $this->vstupenkaID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -222,7 +222,7 @@ class Vstupenka{
     function setStav($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Vstupenka SET stav = ? WHERE vstupenka_ID = ?");
-            $select->execute([$data, $this->vstupenkaID]);
+            $select->execute(array($data, $this->vstupenkaID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";

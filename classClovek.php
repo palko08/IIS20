@@ -37,7 +37,7 @@ class Clovek{
  	 */
     function initExistingClovek($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE clovek_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->clovekID = $idSelect->fetchColumn();
@@ -57,16 +57,16 @@ class Clovek{
      */
     function createNewClovek($pdo, $meno){
         $testSelect = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE meno = ?");
-        $testSelect->execute([$meno]);
+        $testSelect->execute($meno);
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Clovek(meno) VALUES(?, ?)");
-            $insert->execute([$meno]);
+            $insert->execute($meno);
 
             $select = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE meno = ?");
-            $select->execute([$meno]);
+            $select->execute($meno);
 
             if($select->rowCount() == 1){
                 $this->clovekID = $select->fetchColumn();
@@ -86,10 +86,10 @@ class Clovek{
      */
     function deleteClovek($pdo){
         $delete = $pdo->prepare("DELETE FROM Clovek WHERE clovek_ID = ?");
-        $delete->execute([$this->clovekID]);
+        $delete->execute($this->clovekID);
 
         $select = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE clovek_ID = ?");
-        $select->execute([$this->clovekID]);
+        $select->execute($this->clovekID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -110,7 +110,7 @@ class Clovek{
 
     function getMeno($pdo){
     	$select = $pdo->prepare("SELECT meno FROM Clovek WHERE clovek_ID = ?");
-    	$select->execute([$this->clovekID]);
+    	$select->execute($this->clovekID);
     	return $select->fetchColumn();
     }
 
@@ -125,7 +125,7 @@ class Clovek{
     function setMeno($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Clovek SET meno = ? WHERE clovek_ID = ?");
-    		$select->execute([$data, $this->clovekID]);
+    		$select->execute(array($data, $this->clovekID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";

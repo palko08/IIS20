@@ -37,7 +37,7 @@ class Podium{
  	 */
     function initExistingPodium($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT podium_ID FROM Podium WHERE podium_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->podiumID = $idSelect->fetchColumn();
@@ -57,22 +57,22 @@ class Podium{
      */
     function createNewPodium($pdo, $festival_ID, $nazov){
         $testID = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
-        $testID->execute([$festival_ID]);
+        $testID->execute($festival_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $testSelect = $pdo->prepare("SELECT podium_ID FROM Podium WHERE festival_ID = ? AND nazov = ?");
-        $testSelect->execute([$festival_ID, $nazov]);
+        $testSelect->execute(array($festival_ID, $nazov));
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Podium(festival_ID, nazov) VALUES(?, ?)");
-            $insert->execute([$festival_ID, $nazov]);
+            $insert->execute(array($festival_ID, $nazov));
 
             $select = $pdo->prepare("SELECT podium_ID FROM Podium WHERE festival_ID = ? AND nazov = ?");
-            $select->execute([$festival_ID, $nazov]);
+            $select->execute(array($festival_ID, $nazov));
 
             if($select->rowCount() == 1){
                 $this->podiumID = $select->fetchColumn();
@@ -92,10 +92,10 @@ class Podium{
      */
     function deletePodium($pdo){
         $delete = $pdo->prepare("DELETE FROM Podium WHERE podium_ID = ?");
-        $delete->execute([$this->podiumID]);
+        $delete->execute($this->podiumID);
 
         $select = $pdo->prepare("SELECT podium_ID FROM Podium WHERE podium_ID = ?");
-        $select->execute([$this->podiumID]);
+        $select->execute($this->podiumID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -116,19 +116,19 @@ class Podium{
 
     function getFestival_ID($pdo){
         $select = $pdo->prepare("SELECT festival_ID FROM Podium WHERE podium_ID = ?");
-        $select->execute([$this->podiumID]);
+        $select->execute($this->podiumID);
         return $select->fetchColumn();
     }
 
     function getNazov($pdo){
     	$select = $pdo->prepare("SELECT nazov FROM Podium WHERE podium_ID = ?");
-    	$select->execute([$this->podiumID]);
+    	$select->execute($this->podiumID);
     	return $select->fetchColumn();
     }
 
     function getCas_vystupenia($pdo, $interpret_ID){
         $select = $pdo->prepare("SELECT cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
-        $select->execute([$this->podiumID, $interpret_ID]);
+        $select->execute(array($this->podiumID, $interpret_ID));
         return $select->fetchColumn();
     }
 
@@ -141,7 +141,7 @@ class Podium{
      */
     function getVystupenia($pdo){
         $select = $pdo->prepare("SELECT interpret_ID AND cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
-        $select->execute([$this->podiumID]);
+        $select->execute($this->podiumID);
         return $select->fetchAll();
     }
 
@@ -154,7 +154,7 @@ class Podium{
      */
     function checkVystupenie($pdo, $interpret_ID){
         $select = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
-        $select->execute([$this->podiumID, $interpret_ID]);
+        $select->execute(array($this->podiumID, $interpret_ID));
         if($select->rowCount() == 0){
             return 1;
         }else{
@@ -173,7 +173,7 @@ class Podium{
     function setFestival_ID($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Podium SET festival_ID = ? WHERE podium_ID = ?");
-            $select->execute([$data, $this->podiumID]);
+            $select->execute(array($data, $this->podiumID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -184,7 +184,7 @@ class Podium{
     function setNazov($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Podium SET nazov = ? WHERE podium_ID = ?");
-    		$select->execute([$data, $this->podiumID]);
+    		$select->execute(array($data, $this->podiumID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -202,29 +202,29 @@ class Podium{
      */
     function addVystupenie($pdo, $interpret_ID, $cas_vystupenia){
         $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
-        $testID->execute([$interpret_ID]);
+        $testID->execute($interpret_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $insert = $pdo->prepare("INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia) VALUES(?, ?, ?)");
-        $insert->execute([$interpret_ID, $this->podiumID, $cas_vystupenia]);
+        $insert->execute(array($interpret_ID, $this->podiumID, $cas_vystupenia));
         return 0;
     }
 
 
     function deleteVystupenie($pdo, $interpret_ID){
         $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
-        $testID->execute([$interpret_ID]);
+        $testID->execute($interpret_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $delete = $pdo->prepare("DELETE FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
-        $delete->execute([$this->podiumID, $interpret_ID]);
+        $delete->execute(array($this->podiumID, $interpret_ID));
         
         $select = $pdo->prepare("SELECT podium_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND interpret_ID = ?");
-        $select->execute([$this->podiumID, $interpret_ID]);
+        $select->execute(array($this->podiumID, $interpret_ID));
         if($select->rowCount() == 0){
             return 0;
         }else{

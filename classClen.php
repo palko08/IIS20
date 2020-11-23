@@ -37,7 +37,7 @@ class Clen{
  	 */
     function initExistingClen($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT clen_ID FROM Clen WHERE clen_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->clenID = $idSelect->fetchColumn();
@@ -57,22 +57,22 @@ class Clen{
      */
     function createNewClen($pdo, $clovek_ID){
         $testID = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE clovek_ID = ?");
-        $testID->execute([$clovek_ID]);
+        $testID->execute($clovek_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $testSelect = $pdo->prepare("SELECT clen_ID FROM Clen WHERE clen_ID = ?");
-        $testSelect->execute([$clovek_ID]);
+        $testSelect->execute($clovek_ID);
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Clen(clen_ID) VALUES(?)");
-            $insert->execute([$clovek_ID]);
+            $insert->execute($clovek_ID);
 
             $select = $pdo->prepare("SELECT clen_ID FROM Clen WHERE clen_ID = ?");
-            $select->execute([$clovek_ID]);
+            $select->execute($clovek_ID);
 
             if($select->rowCount() == 1){
                 $this->clenID = $select->fetchColumn();
@@ -92,10 +92,10 @@ class Clen{
      */
     function deleteClen($pdo){
         $delete = $pdo->prepare("DELETE FROM Clen WHERE clen_ID = ?");
-        $delete->execute([$this->clenID]);
+        $delete->execute($this->clenID);
 
         $select = $pdo->prepare("SELECT clen_ID FROM Clen WHERE clen_ID = ?");
-        $select->execute([$this->clenID]);
+        $select->execute($this->clenID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -116,13 +116,13 @@ class Clen{
 
     function getFoto($pdo){
     	$select = $pdo->prepare("SELECT foto FROM Clen WHERE clen_ID = ?");
-    	$select->execute([$this->clenID]);
+    	$select->execute($this->clenID);
     	return $select->fetchColumn();
     }
 
     function getClovekMeno($pdo){
         $select = $pdo->prepare("SELECT meno FROM Clovek WHERE clovek_ID = ?");
-        $select->execute([$this->clenID]);
+        $select->execute($this->clenID);
         return $select->fetchColumn();
     }
 
@@ -135,7 +135,7 @@ class Clen{
      */
     function getInterpretov($pdo){
         $select = $pdo->prepare("SELECT interpret_ID FROM Clen_je_v_Interpret WHERE clen_ID = ?");
-        $select->execute([$this->clenID]);
+        $select->execute($this->clenID);
         return $select->fetchAll();
     }
 
@@ -148,7 +148,7 @@ class Clen{
      */
     function checkInterpret($pdo, $interpret_ID){
         $select = $pdo->prepare("SELECT interpret_ID FROM Clen_je_v_Interpret WHERE clen_ID = ? AND interpret_ID = ?");
-        $select->execute([$this->clenID, $interpret_ID]);
+        $select->execute(array($this->clenID, $interpret_ID));
         if($select->rowCount() == 0){
             return 1;
         }else{
@@ -167,7 +167,7 @@ class Clen{
     function setFoto($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Clen SET foto = ? WHERE clen_ID = ?");
-    		$select->execute([$data, $this->clenID]);
+    		$select->execute(array($data, $this->clenID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -185,29 +185,29 @@ class Clen{
      */
     function addInterpret($pdo, $interpret_ID){
         $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
-        $testID->execute([$interpret_ID]);
+        $testID->execute($interpret_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $insert = $pdo->prepare("INSERT INTO Clen_je_v_Interpret(interpret_ID, clen_ID) VALUES(?, ?)");
-        $insert->execute([$interpret_ID, $this->clenID]);
+        $insert->execute(array($interpret_ID, $this->clenID));
         return 0;
     }
 
 
     function deleteInterpret($pdo, $interpret_ID){
         $testID = $pdo->prepare("SELECT interpret_ID FROM Interpret WHERE interpret_ID = ?");
-        $testID->execute([$interpret_ID]);
+        $testID->execute($interpret_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $delete = $pdo->prepare("DELETE FROM Clen_je_v_Interpret WHERE clen_ID = ? AND interpret_ID = ?");
-        $delete->execute([$this->clenID, $interpret_ID]);
+        $delete->execute(array($this->clenID, $interpret_ID));
         
         $select = $pdo->prepare("SELECT clen_ID FROM Clen_je_v_Interpret WHERE clen_ID = ? AND interpret_ID = ?");
-        $select->execute([$this->clenID, $interpret_ID]);
+        $select->execute(array($this->clenID, $interpret_ID));
         if($select->rowCount() == 0){
             return 0;
         }else{

@@ -37,7 +37,7 @@ class Festival{
  	 */
     function initExistingFestival($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->festivalID = $idSelect->fetchColumn();
@@ -57,16 +57,16 @@ class Festival{
      */
     function createNewFestival($pdo, $nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa){
         $testSelect = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND cena = ? AND adresa = ?");
-        $testSelect->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
+        $testSelect->execute(array($nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa));
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa) VALUES(?, ?, ?, ?, ?, ?)");
-            $insert->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
+            $insert->execute(array($nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa));
 
             $select = $pdo->prepare("SELECT festival_ID FROM Festival WHERE nazov = ? AND kapacita = ? AND datum_Od = ? AND datum_Do = ? AND cena = ? AND adresa = ?");
-            $select->execute([$nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa]);
+            $select->execute(array($nazov, $kapacita, $datum_Od, $datum_Do, $cena, $adresa));
 
             if($select->rowCount() == 1){
                 $this->festivalID = $select->fetchColumn();
@@ -86,10 +86,10 @@ class Festival{
      */
     function deleteFestival($pdo){
         $delete = $pdo->prepare("DELETE FROM Festival WHERE festival_ID = ?");
-        $delete->execute([$this->festivalID]);
+        $delete->execute($this->festivalID);
 
         $select = $pdo->prepare("SELECT festival_ID FROM Festival WHERE festival_ID = ?");
-        $select->execute([$this->festivalID]);
+        $select->execute($this->festivalID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -110,55 +110,55 @@ class Festival{
 
     function getNazov($pdo){
     	$select = $pdo->prepare("SELECT nazov FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getKapacita($pdo){
     	$select = $pdo->prepare("SELECT kapacita FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getDatum_Od($pdo){
     	$select = $pdo->prepare("SELECT datum_Od FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getDatum_Do($pdo){
     	$select = $pdo->prepare("SELECT datum_Do FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getCena($pdo){
         $select = $pdo->prepare("SELECT cena FROM Festival WHERE festival_ID = ?");
-        $select->execute([$this->festivalID]);
+        $select->execute($this->festivalID);
         return $select->fetchColumn();
     }
 
     function getAdresa($pdo){
     	$select = $pdo->prepare("SELECT adresa FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getHodnotenie($pdo){
         $select = $pdo->prepare("SELECT hodnotenie FROM Festival WHERE festival_ID = ?");
-        $select->execute([$this->festivalID]);
+        $select->execute($this->festivalID);
         return $select->fetchColumn();
     }
 
     function getPopis($pdo){
     	$select = $pdo->prepare("SELECT popis FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
     function getObrazok($pdo){
     	$select = $pdo->prepare("SELECT obrazok FROM Festival WHERE festival_ID = ?");
-    	$select->execute([$this->festivalID]);
+    	$select->execute($this->festivalID);
     	return $select->fetchColumn();
     }
 
@@ -171,7 +171,7 @@ class Festival{
      */
     function getZanre($pdo){
         $select = $pdo->prepare("SELECT zaner_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ?");
-        $select->execute([$this->festivalID]);
+        $select->execute($this->festivalID);
         return $select->fetchAll();
     }
 
@@ -184,7 +184,7 @@ class Festival{
      */
     function checkZaner($pdo, $zaner_ID){
         $select = $pdo->prepare("SELECT zaner_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
-        $select->execute([$this->festivalID, $zaner_ID]);
+        $select->execute(array($this->festivalID, $zaner_ID));
         if($select->rowCount() == 0){
             return 1;
         }else{
@@ -203,7 +203,7 @@ class Festival{
     function setNazov($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET nazov = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -214,7 +214,7 @@ class Festival{
     function setKapacita($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET kapacita = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -225,7 +225,7 @@ class Festival{
     function setDatum_Od($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET datum_Od = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -236,7 +236,7 @@ class Festival{
     function setDatum_Do($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET datum_Do = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -247,7 +247,7 @@ class Festival{
     function setCena($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Festival SET cena = ? WHERE festival_ID = ?");
-            $select->execute([$data, $this->festivalID]);
+            $select->execute(array($data, $this->festivalID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -258,7 +258,7 @@ class Festival{
     function setAdresa($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET adresa = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -269,7 +269,7 @@ class Festival{
     function setHodnotenie($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Festival SET hodnotenie = ? WHERE festival_ID = ?");
-            $select->execute([$data, $this->festivalID]);
+            $select->execute(array($data, $this->festivalID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -280,7 +280,7 @@ class Festival{
     function setPopis($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET popis = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -291,7 +291,7 @@ class Festival{
     function setObrazok($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Festival SET obrazok = ? WHERE festival_ID = ?");
-    		$select->execute([$data, $this->festivalID]);
+    		$select->execute(array($data, $this->festivalID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -309,29 +309,29 @@ class Festival{
      */
     function addZaner($pdo, $zaner_ID){
         $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
-        $testID->execute([$zaner_ID]);
+        $testID->execute($zaner_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $insert = $pdo->prepare("INSERT INTO Festival_patri_do_Zaner(zaner_ID, festival_ID) VALUES(?, ?)");
-        $insert->execute([$zaner_ID, $this->festivalID]);
+        $insert->execute(array($zaner_ID, $this->festivalID));
         return 0;
     }
 
 
     function deleteZaner($pdo, $zaner_ID){
         $testID = $pdo->prepare("SELECT zaner_ID FROM Zaner WHERE zaner_ID = ?");
-        $testID->execute([$zaner_ID]);
+        $testID->execute($zaner_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $delete = $pdo->prepare("DELETE FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
-        $delete->execute([$this->festivalID, $zaner_ID]);
+        $delete->execute(array($this->festivalID, $zaner_ID));
         
         $select = $pdo->prepare("SELECT festival_ID FROM Festival_patri_do_Zaner WHERE festival_ID = ? AND zaner_ID = ?");
-        $select->execute([$this->festivalID, $zaner_ID]);
+        $select->execute(array($this->festivalID, $zaner_ID));
         if($select->rowCount() == 0){
             return 0;
         }else{

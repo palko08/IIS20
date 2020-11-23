@@ -37,7 +37,7 @@ class Neregistrovany{
  	 */
     function initExistingNeregistrovany($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->neregistrovanyID = $idSelect->fetchColumn();
@@ -57,22 +57,22 @@ class Neregistrovany{
      */
     function createNewNeregistrovany($pdo, $clovek_ID, $email){
         $testID = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE clovek_ID = ?");
-        $testID->execute([$clovek_ID]);
+        $testID->execute($clovek_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $testSelect = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ? AND email = ?");
-        $testSelect->execute([$clovek_ID, $email]);
+        $testSelect->execute(array($clovek_ID, $email));
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Neregistrovany(neregistrovany_ID, email) VALUES(?, ?)");
-            $insert->execute([$clovek_ID, $email]);
+            $insert->execute(array($clovek_ID, $email));
 
             $select = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ? AND email = ?");
-            $select->execute([$clovek_ID, $email]);
+            $select->execute(array($clovek_ID, $email));
 
             if($select->rowCount() == 1){
                 $this->neregistrovanyID = $select->fetchColumn();
@@ -92,10 +92,10 @@ class Neregistrovany{
      */
     function deleteNeregistrovany($pdo){
         $delete = $pdo->prepare("DELETE FROM Neregistrovany WHERE neregistrovany_ID = ?");
-        $delete->execute([$this->neregistrovanyID]);
+        $delete->execute(array($this->neregistrovanyID));
 
         $select = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ?");
-        $select->execute([$this->neregistrovanyID]);
+        $select->execute(array($this->neregistrovanyID));
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -116,7 +116,7 @@ class Neregistrovany{
 
     function getEmail($pdo){
     	$select = $pdo->prepare("SELECT email FROM Neregistrovany WHERE neregistrovany_ID = ?");
-    	$select->execute([$this->neregistrovanyID]);
+    	$select->execute(array($this->neregistrovanyID));
     	return $select->fetchColumn();
     }
 
@@ -131,7 +131,7 @@ class Neregistrovany{
     function setEmail($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Neregistrovany SET email = ? WHERE neregistrovany_ID = ?");
-    		$select->execute([$data, $this->neregistrovanyID]);
+    		$select->execute(array($data, $this->neregistrovanyID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";

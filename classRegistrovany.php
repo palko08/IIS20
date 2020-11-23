@@ -37,7 +37,7 @@ class Registrovany{
  	 */
     function initExistingRegistrovany($pdo, $id){
     	$idSelect = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
-    	$idSelect->execute([$id]);
+    	$idSelect->execute($id);
 
     	if($idSelect->rowCount() == 1){
     		$this->registrovanyID = $idSelect->fetchColumn();
@@ -57,22 +57,22 @@ class Registrovany{
      */
     function createNewRegistrovany($pdo, $clovek_ID, $email, $login, $heslo, $level_opravnenia){
         $testID = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE clovek_ID = ?");
-        $testID->execute([$clovek_ID]);
+        $testID->execute($clovek_ID);
         if($testID->rowCount() == 0){
             return -1;
         }
 
         $testSelect = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ? AND email = ? AND login = ? AND heslo = ? AND level_opravnenia = ?");
-        $testSelect->execute([$clovek_ID, $email, $login, $heslo, $level_opravnenia]);
+        $testSelect->execute(array($clovek_ID, $email, $login, $heslo, $level_opravnenia));
 
         if($testSelect->rowCount() == 1){
             return $testSelect->fetchColumn();
         }else{
             $insert = $pdo->prepare("INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia) VALUES(?, ?, ?, ?, ?)");
-            $insert->execute([$clovek_ID, $email, $login, $heslo, $level_opravnenia]);
+            $insert->execute(array($clovek_ID, $email, $login, $heslo, $level_opravnenia));
 
             $select = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ? AND email = ? AND login = ? AND heslo = ? AND level_opravnenia = ?");
-            $select->execute([$clovek_ID, $email, $login, $heslo, $level_opravnenia]);
+            $select->execute(array($clovek_ID, $email, $login, $heslo, $level_opravnenia));
 
             if($select->rowCount() == 1){
                 $this->registrovanyID = $select->fetchColumn();
@@ -92,10 +92,10 @@ class Registrovany{
      */
     function deleteRegistrovany($pdo){
         $delete = $pdo->prepare("DELETE FROM Registrovany WHERE registrovany_ID = ?");
-        $delete->execute([$this->registrovanyID]);
+        $delete->execute($this->registrovanyID);
 
         $select = $pdo->prepare("SELECT registrovany_ID FROM Registrovany WHERE registrovany_ID = ?");
-        $select->execute([$this->registrovanyID]);
+        $select->execute($this->registrovanyID);
         if($select->rowCount() == 0){
             return 0;
         }else{
@@ -116,31 +116,31 @@ class Registrovany{
 
     function getEmail($pdo){
     	$select = $pdo->prepare("SELECT email FROM Registrovany WHERE registrovany_ID = ?");
-    	$select->execute([$this->registrovanyID]);
+    	$select->execute($this->registrovanyID);
     	return $select->fetchColumn();
     }
 
     function getLogin($pdo){
         $select = $pdo->prepare("SELECT login FROM Registrovany WHERE registrovany_ID = ?");
-        $select->execute([$this->registrovanyID]);
+        $select->execute($this->registrovanyID);
         return $select->fetchColumn();
     }
 
     function getHeslo($pdo){
         $select = $pdo->prepare("SELECT heslo FROM Registrovany WHERE registrovany_ID = ?");
-        $select->execute([$this->registrovanyID]);
+        $select->execute($this->registrovanyID);
         return $select->fetchColumn();
     }
 
     function getLevel_opravnenia($pdo){
         $select = $pdo->prepare("SELECT level_opravnenia FROM Registrovany WHERE registrovany_ID = ?");
-        $select->execute([$this->registrovanyID]);
+        $select->execute($this->registrovanyID);
         return $select->fetchColumn();
     }
 
     function getFoto($pdo){
         $select = $pdo->prepare("SELECT foto FROM Registrovany WHERE registrovany_ID = ?");
-        $select->execute([$this->registrovanyID]);
+        $select->execute($this->registrovanyID);
         return $select->fetchColumn();
     }
 
@@ -155,7 +155,7 @@ class Registrovany{
     function setEmail($pdo, $data){
     	try{
     		$select = $pdo->prepare("UPDATE Registrovany SET email = ? WHERE registrovany_ID = ?");
-    		$select->execute([$data, $this->registrovanyID]);
+    		$select->execute(array($data, $this->registrovanyID));
     		return 0;
     	}catch(PDOException $e){
     		echo $e->getMessage() . "<br>";
@@ -166,7 +166,7 @@ class Registrovany{
     function setLogin($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Registrovany SET login = ? WHERE registrovany_ID = ?");
-            $select->execute([$data, $this->registrovanyID]);
+            $select->execute(array($data, $this->registrovanyID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -178,7 +178,7 @@ class Registrovany{
         try{
             $select = $pdo->prepare("UPDATE Registrovany SET heslo = ? WHERE registrovany_ID = ?");
             $pwd = password_hash($data,PASSWORD_DEFAULT);
-            $select->execute([$pwd, $this->registrovanyID]);
+            $select->execute(array($pwd, $this->registrovanyID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -189,7 +189,7 @@ class Registrovany{
     function setLevel_opravnenia($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Registrovany SET level_opravnenia = ? WHERE registrovany_ID = ?");
-            $select->execute([$data, $this->registrovanyID]);
+            $select->execute(array($data, $this->registrovanyID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -200,7 +200,7 @@ class Registrovany{
     function setFoto($pdo, $data){
         try{
             $select = $pdo->prepare("UPDATE Registrovany SET foto = ? WHERE registrovany_ID = ?");
-            $select->execute([$data, $this->registrovanyID]);
+            $select->execute(array($data, $this->registrovanyID));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";

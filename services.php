@@ -17,7 +17,7 @@ class AccountService
 	{
 		$stmt = $this->pdo->prepare('INSERT INTO Clovek (meno) VALUES (?)');
 		$meno = $data['meno'];
-		if ($stmt->execute([$meno]))
+		if ($stmt->execute($meno))
 		{
 			$id = $this->pdo->lastInsertId();
 		}
@@ -32,7 +32,7 @@ class AccountService
 		$email = $data['email'];
 		$login = $data['login'];
 		$pwd = password_hash($data['heslo'], PASSWORD_DEFAULT);
-		if ($stmt->execute([$id, $email ,$login, $pwd, "divák"]))
+		if ($stmt->execute(array($id, $email ,$login, $pwd, "divák")))
 		{
 			$newid = $this->pdo->lastInsertId();
 			$data['id'] = $newid;
@@ -42,7 +42,7 @@ class AccountService
 		{
 			$this->lastError = $stmt->errorInfo();
 			$stmt = $this->pdo->prepare('DELETE FROM Clovek WHERE meno = ?');
-			$stmt->execute([$meno]);
+			$stmt->execute($meno);
 			return FALSE;
 		}
 	}
@@ -50,7 +50,7 @@ class AccountService
 	function getAccount($login)
 	{
 		$stmt = $this->pdo->prepare('SELECT registrovany_ID, email, login, heslo, level_opravnenia FROM Registrovany WHERE login = ?');
-		$stmt->execute([$login]);
+		$stmt->execute($login);
 		return $stmt->fetch();
 	}
 
@@ -64,7 +64,7 @@ class AccountService
     {
         $stmt = $this->pdo->prepare('DELETE FROM Clovek WHERE clovek_ID = ?');
 
-        if ($stmt->execute([$id]))
+        if ($stmt->execute($id))
         {
             return TRUE;
         }
@@ -78,7 +78,7 @@ class AccountService
     function update($login,$email,$level_opravnenia, $id){
         try{
             $select = $this->pdo->prepare("UPDATE Registrovany SET login = ?, SET email = ?, SET level_opravnenia = ?  WHERE registrovany_ID = ?");
-            $select->execute([$login,$email, $level_opravnenia, $id]);
+            $select->execute(array($login,$email, $level_opravnenia, $id));
             return 0;
         }catch(PDOException $e){
             echo $e->getMessage() . "<br>";
@@ -102,7 +102,7 @@ class AccountService
 	{
 		$person = $this->getAccount($login);
 		$stmt = $this->pdo->prepare('SELECT meno FROM Clovek WHERE clovek_ID = ?');
-		$stmt->execute([$person['registrovany_ID']]);
+		$stmt->execute($person['registrovany_ID']);
 		$person = $stmt->fetch();
 		return $person['meno'];
 	}

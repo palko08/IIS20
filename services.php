@@ -90,7 +90,7 @@ class AccountService
 	function isValidAccount($login, $password)
 	{
 		$data = $this->getAccount($login);
-		$hash = password_hash($password, PASSWORD_DEFAULT)
+		$hash = password_hash($password, PASSWORD_DEFAULT);
 		if(strcmp($hash, $data['heslo']) == 0){
 			return TRUE;
 		}else{

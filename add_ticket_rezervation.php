@@ -39,5 +39,5 @@ else {
 }
 }
 
-header("Location: /festivals.php");
+header("Location: festivals.php");
 die;

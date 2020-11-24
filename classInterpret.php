@@ -152,7 +152,7 @@ class Interpret{
     }
 
     function getVystupenia($pdo){
-        $select = $pdo->prepare("SELECT podium_ID AND cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE interpret_ID = ?");
+        $select = $pdo->prepare("SELECT podium_ID FROM Interpret_vystupuje_na_Podium WHERE interpret_ID = ?");
         $select->execute([$this->interpretID]);
         return $select->fetchAll();
     }

@@ -30,4 +30,6 @@ if (isset($_SESSION['user'])) {
 <?php
 
 make_footer();
+
 ?>
+

@@ -19,6 +19,9 @@ if (!empty($person)){
     {
         throw new Exception("Nedokazolo pridat vstupenku");
     }
+    if($vstupenka->setStav($pdo, 'v kosiku') == 1){
+        throw new Exception("Nedokazalo updatnut stav vstupenky!");
+    }
 }
 else {
     $person = new Clovek();
@@ -35,6 +38,9 @@ else {
     if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],$neregistrovany->getID(),-1) == -1)
     {
         throw new Exception("Nedokazolo pridat vstupenku");
+    }
+    if($vstupenka->setStav($pdo, 'v kosiku') == 1){
+        throw new Exception("Nedokazalo updatnut stav vstupenky!");
     }
 }
 }

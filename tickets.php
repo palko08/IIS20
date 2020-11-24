@@ -35,7 +35,7 @@ make_header();
             </thead>
             <tbody>
                 <?php
-                    if ($vstupenkaArray[0] != NULL) {
+                    if ($vstupenkaArray != NULL) {
                         foreach ($vstupenkaArray as $vstup) {
                             make_Vstupenka($pdo, $vstup);
                         }

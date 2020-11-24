@@ -57,8 +57,8 @@ function getInterpretsForFestival($pdo, $festival_ID){
 }
 
 function get_user_vstupenky($pdo,$id){
-    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
-    $idSelect->execute([$id]);
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ? AND stav = ?");
+    $idSelect->execute([$id, 'v kosiku']);
     $results = $idSelect->fetchAll();
     $array = array();
     foreach ($results as $row) {

@@ -267,7 +267,7 @@ function make_interprets_festivals($array, $pdo,$search){
     }
 }
 function make_Interpret($interpret, $pdo){
-    echo '<div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+    echo '<div class="col-sm-3">
                     <a href="interpret_page.php?id='.$interpret->getID().'">
                     <div class="thumbnail">
 					<img src="'.$interpret->getLogo($pdo).'" alt="'.$interpret->getNazov($pdo).'">

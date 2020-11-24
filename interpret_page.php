@@ -17,7 +17,7 @@ make_header();
     <div class="row">
         <div class="col-sm-4">
             <div class="interpret-img">
-                <img src="img/lir.jpg" alt="Obrastok"/>
+                <img src="<?php echo $interpret->getLogo($pdo);?>" alt="Obrastok"/>
             </div>
         </div>
         <div class="col-sm-6">

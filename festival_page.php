@@ -28,7 +28,7 @@ make_header();
                     <h5>Kapacita:<?php echo $festival->getKapacita($pdo);?></h5>
                     <h3><?php echo $festival->getDatum_Od($pdo);?> - <?php echo $festival->getDatum_Do($pdo);?></h3>
                     <h4>Adresa: <?php echo $festival->getAdresa($pdo);?></h4>
-                    <h6><?php echo $festival->getZanre($pdo);?></h6>
+                    <h6><?php print_zanre($festival, $pdo, "line");?></h6>
                     <h3>Cena: <?php echo $festival->getCena($pdo);?></h3>
                 </div>
             </div>

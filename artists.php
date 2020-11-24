@@ -8,6 +8,7 @@ $pdo = connect_db();
 $interpret = new Interpret();
 $interpretArray = $interpret->getAllInterpret($pdo);
 make_header();
+$search = $_GET['search'];
 ?>
 
 <body>
@@ -22,7 +23,7 @@ make_header();
             <div class="row" style="margin-bottom: 25px;">
             <br>
                 <?php
-                make_interprets_festivals($interpretArray,$pdo,$_GET['search']);
+                make_interprets_festivals($interpretArray,$pdo,$search);
                 ?>
             </div>
         </div>

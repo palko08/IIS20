@@ -42,7 +42,7 @@ th,td{
     top: 0;
 }
 
-.festival-head{
+.festival-head, .interpret-head{
     margin-left: 30%;
     position: relative;
     font-family: Arial;

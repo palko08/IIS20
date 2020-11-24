@@ -22,6 +22,8 @@ $tickets = get_vstupenky($pdo);
     <tbody>
     <?php
     foreach ($tickets as $ticket){
+        if ($ticket->getStav() == "v kosiku")
+            continue;
     ?>
     <form name="change_ticket" method="post" action="admin.php">
     <tr>

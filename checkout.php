@@ -20,7 +20,7 @@
                 </div>
             </div>    
             <div class="row cart-body">
-                <form class="form-horizontal" method="post" action="">
+                <form class="form-horizontal" method="post" action="reservation_done.php">
                 <div class="" >
                     <!--SHIPPING METHOD-->
                     <div class="panel panel-info">
@@ -39,8 +39,8 @@
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
-                                    <strong>*Priezvisko:</strong>
-                                    <input type="text" name="last_name" class="form-control" value="" required/>
+                                    <strong>Priezvisko:</strong>
+                                    <input type="text" name="last_name" class="form-control" value=""/>
                                 </div>
                             </div>
                             <div class="form-group">

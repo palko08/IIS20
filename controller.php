@@ -245,12 +245,12 @@ function print_clenov($obj,$pdo){
     }
 }
 
-function make_interprets_festivals($array, $pdo){
+function make_interprets_festivals($array, $pdo,$search){
 
     if ($array[0] != NULL) {
         foreach ($array as $obj) {
-            if ($_GET['search'] != NULL) {
-                if (strstr($obj->getNazov($pdo), $_GET['search']) != FALSE) {
+            if ($search != NULL) {
+                if (strstr($obj->getNazov($pdo), $search) != FALSE) {
                     if (get_class($obj) == Interpret::class)
                         make_Interpret($obj, $pdo);
                     else if (get_class($obj) == Festival::class)

@@ -22,7 +22,7 @@ make_header();
             <div class="row" style="margin-bottom: 25px;">
             <br>
                 <?php
-                make_interprets_festivals($interpretArray,$pdo);
+                make_interprets_festivals($interpretArray,$pdo,$_GET['search']);
                 ?>
             </div>
         </div>

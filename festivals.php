@@ -31,7 +31,7 @@ make_header();
 			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php
-                make_interprets_festivals($festivalArray,$pdo);
+                make_interprets_festivals($festivalArray,$pdo,$_GET['search']);
 				?>
 			</div>
 		</div>

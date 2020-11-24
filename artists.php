@@ -21,7 +21,7 @@ $search = $_GET['search'];
             </form>
             <br>
             <div class="row" style="margin-bottom: 25px;">
-            <br>
+                <br>
                 <?php
                 make_interprets_festivals($interpretArray,$pdo,$search);
                 ?>
@@ -34,15 +34,3 @@ $search = $_GET['search'];
 <?php
 	make_footer();
 ?>
-
-<style> 
-img{
-    width:250px;
-    height:250px;
-}
-.thumbnail{
-    max-width:100%;
-max-height:100%;
-    position: center;
-}
-</style>

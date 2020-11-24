@@ -6,18 +6,7 @@ require_once "controller.php";
 
 
 $pdo = connect_db();
-
-$idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
-$idSelect->execute();
-$results = $idSelect->fetchAll();
-$festivalArray = array();
-foreach ($results as $row) {
-	$festival = new Festival();
-	if ($festival->initExistingFestival($pdo,$row[0]) == -1) {
-		echo "nenasli sme v datbazke dany row<br>";
-	}
-	$festivalArray[] = $festival;
-}
+$festivalArray = get_festivals($pdo);
 
 make_header();
 $search = $_GET['search'];

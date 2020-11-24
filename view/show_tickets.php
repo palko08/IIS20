@@ -26,7 +26,7 @@ $tickets = get_vstupenky($pdo);
     <form name="change_ticket" method="post" action="admin.php">
     <tr>
         <td>
-            <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
+            <a class="no_color_change_link" id="ticket" href="festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
         </td>
         <td>
             <a class="no_color_change_link" id="ticket_email"><?php echo get_email($ticket,$pdo); ?></a>

@@ -23,7 +23,7 @@ $tickets = get_vstupenky($pdo);
     <?php
     foreach ($tickets as $ticket){
     ?>
-    <form name="change_ticket" method="post" action="../admin.php">
+    <form name="change_ticket" method="post" action="admin.php">
     <tr>
         <td>
             <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>

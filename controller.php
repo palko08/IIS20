@@ -283,6 +283,31 @@ function make_interprets_festivals($array, $pdo,$search){
         }
     }
 }
+
+function make_product($pdo, $vstupenka){
+    echo '<tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">Vstupenka</a></h4>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                            <div class="number-input md-number-input">
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
+                        <td class="col-sm-1 col-md-1">';
+    ?>
+    <button type="button" class="btn btn-danger" onclick="location.href='delete.php?type=TICKET&id=<?php echo $vstupenka->getID()?>'" >
+        <span class="glyphicon glyphicon-remove"></span> Odstrániť
+    </button></td>
+    </tr>
+    <?php
+}
+
 function make_Interpret($interpret, $pdo){
     echo '<div class="col-sm-4">
                     <a href="interpret_page.php?id='.$interpret->getID().'">

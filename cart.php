@@ -11,28 +11,6 @@ $pdo = connect_db();
 $person = $serv->getAccount($_SESSION['user']);
 $vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
 
-function make_product($pdo, $vstupenka){
-    echo '<tr>
-                        <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading"><a href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">Vstupenka</a></h4>
-                            </div>
-                        </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                            <div class="number-input md-number-input">
-                                <input class="quantity" min="0" name="quantity" value="1" type="number">
-                            </div>
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
-                        <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Odstrániť
-                        </button></td>
-                    </tr>';
-}
-
 make_header();
 ?>
 <body class="cart">

@@ -212,16 +212,14 @@ function print_zanre($obj, $pdo, $style)
 function get_vystupenia($pdo,$obj){
 
     $vystupenia = $obj->getVystupenia($pdo);
+    $podium = new Podium();
+    $festival = new Festival();
     foreach ($vystupenia as $row) {
-        $podium = new Podium();
         if ($podium->initExistingPodium($pdo, $row[0]) == -1) {
             echo "nenasli sme v datbazke dany row<br>";
         }
 
-        $festival = new Festival();
-        $id = $podium->getFestival_ID($pdo);
-
-        if ($podium->initExistingPodium($pdo, $id) == -1) {
+        if ($festival->initExistingFestival($pdo, $podium->getFestival_ID($pdo)) == -1) {
             echo "nenasli sme v datbazke dany row<br>";
         }
 
@@ -229,8 +227,12 @@ function get_vystupenia($pdo,$obj){
         echo "<tr><td>" . $datum['day'] . "." . $datum['month'] . "." . $datum['year'] . "</td>";
         echo "<td>" . $festival->getNazov($pdo) . "</td>";
         echo "<td>" . $podium->getNazov($pdo) . "</td>";
-        echo "<td>" . $datum['hour'] . "." . $datum['minute']."0". "</td></tr>";
-
+        if($datum['minute'] == 0){
+            echo "<td>" . $datum['hour'] . "." . $datum['minute']."0". "</td></tr>";
+        }else{
+            echo "<td>" . $datum['hour'] . "." . $datum['minute']. "</td></tr>";
+        }
+        
     }
 }
 

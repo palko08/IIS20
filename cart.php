@@ -54,6 +54,7 @@ make_header();
                 </thead>
                 <tbody>
                     <?php
+                    $pay = 0;
                     if ($vstupenkaArray[0] != NULL) {
                         foreach ($vstupenkaArray as $vstup) {
                             make_product($pdo, $vstup);

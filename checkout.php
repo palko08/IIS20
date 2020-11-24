@@ -70,9 +70,36 @@
                                 <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="" required></div>
 							</div>
 						</div>
-                        <button type="submit" class="btn btn-secondary btn-block">
-                            <a href="reservation_done.php">Rezervovať lístky</a>
-                        </button>
+                        <form method="post">
+                            <a href="reservation_done.php">
+                                <input type="submit" name="test" id="test" value="Rezervovať lístky" class="btn btn-secondary btn-block"></input>
+                            </a>
+                        </form>
+                        <?php
+                            require "classVstupenka.php";
+                            require "services.php";
+                            require "controller.php";
+                            require_once "connect_db.php";
+                            
+                            function finish_reservation(){
+                                $pdo = connect_db();
+                                $serv = new AccountService();
+                                $person = $serv->getAccount($_SESSION['user']);
+                                $vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
+                                if($vstupenkaArray != NULL){
+                                    foreach ($vstupenkaArray as $vstupenka) {
+                                        if($vstupenka->setStav($pdo, 'rezervovana') == 1){
+                                            throw new Exception("Nedokazalo updatnut stav vstupenky!");
+                                        }
+                                    }
+                                }
+                            }
+
+                            if(array_key_exists('test', $_POST)){
+                                finish_reservation();
+                            }
+
+                        ?>
                 </div>
                 </form>
             </div>

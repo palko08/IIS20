@@ -93,7 +93,7 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
 <div class="create_lineup">
     <div class="centering">
         <h4>VYTVORIŤ ROZPIS</h4>
-        <form action="../create_lineup.php?id=<?php echo $_GET['id'] ?>" class="add_podium" method="post">
+        <form action="create_lineup.php?id=<?php echo $_GET['id'] ?>" class="add_podium" method="post">
         <input name="pocet" type="number" min=0 placeholder="Počet podií">
         <label for="lineup_date">Den</label>
         <input name="datum" type="date" id="lineup_date">
@@ -105,7 +105,7 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
         </form>
 
 
-        <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
+        <form action="rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php
                 createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo);
             ?>
@@ -114,3 +114,4 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
         </form>
     </div>
 </div>
+

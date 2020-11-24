@@ -27,7 +27,7 @@ $festivals = get_festivals($pdo);
     <?php
         foreach ($festivals as $festival){
     ?>
-    <form name="change_festival" method="post" action="../update_festivals.php?id=<?php echo $festival->getID();?>">
+    <form name="change_festival" method="post" action="update_festivals.php?id=<?php echo $festival->getID();?>">
     <tr>
         <td>
             <a class="no_color_change_link" id="festival_id" href="#"><?php echo $festival->getID();?></a>

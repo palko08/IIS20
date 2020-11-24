@@ -38,12 +38,12 @@ $tickets = get_vstupenky($pdo);
             </p>
         </td>
         <td>
-            <a href="../change_stav.php?stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>
-            <a href="../change_stav.php?stav=stornovana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-danger"> Stornovať </button></a>
+            <a href="change_stav.php?stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>
+            <a href="change_stav.php?stav=stornovana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-danger"> Stornovať </button></a>
         </td>
         <td>
             <a class="no_color_change_link" id="cena"><?php echo get_cena($ticket,$pdo); ?></a></td>
-         <td>  <a href="../change_stav.php?stav=vydana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-primary"> Vydať </button></>
+         <td>  <a href="change_stav.php?stav=vydana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-primary"> Vydať </button></>
         </td>
     </tr>
         <?php

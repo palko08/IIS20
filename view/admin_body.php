@@ -43,7 +43,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Vyhladať</button>
         </form>
         <div class="nav-item">
-            <a class="nav-link" href="../logout.php">Odhlásiť</a>
+            <a class="nav-link" href="logout.php">Odhlásiť</a>
         </div>
     </div>
 </nav>

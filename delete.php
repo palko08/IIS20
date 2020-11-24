@@ -43,5 +43,5 @@ switch ($type) {
         break;
 }
 
-header("Location: /admin.php");
+header("Location: admin.php");
 die;

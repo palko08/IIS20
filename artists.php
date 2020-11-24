@@ -34,3 +34,10 @@ $search = $_GET['search'];
 <?php
 	make_footer();
 ?>
+
+<style>
+    img {
+        width: 250px;
+        height: 250px;
+    }
+</style>

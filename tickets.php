@@ -12,7 +12,7 @@ $serv = new AccountService();
 $pdo = connect_db();
 $person = $serv->getAccount($_SESSION['user']);
 
-$vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
+$vstupenkaArray = get_user_vstupenky_all($pdo,$person['registrovany_ID']);
 
 make_header();
 ?>

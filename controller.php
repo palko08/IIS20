@@ -71,6 +71,21 @@ function get_user_vstupenky($pdo,$id){
     return $array;
 }
 
+function get_user_vstupenky_all($pdo,$id){
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
+    $idSelect->execute([$id]);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Vstupenka();
+        if ($object->initExistingVstupenka($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
 function getVstupenky($pdo, $registrovany_ID, $neregistrovany_ID, $festival_ID){
     if($festival_ID == -1){
         if($registrovany_ID != -1 && $neregistrovany_ID == -1){

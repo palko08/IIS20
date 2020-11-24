@@ -47,5 +47,5 @@ if ($_POST['name'] != ''){
     $clovek->setMeno($pdo,$_POST['name']);
 }
 
-header("Location: /admin.php");
+header("Location: admin.php");
 die;

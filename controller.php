@@ -62,6 +62,21 @@ function getInterpretsForFestival($pdo, $festival_ID){
 }
 
 function get_user_vstupenky($pdo,$id){
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ? AND stav = ?");
+    $idSelect->execute([$id, 'v kosiku']);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Vstupenka();
+        if ($object->initExistingVstupenka($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
+function get_user_vstupenky_all($pdo,$id){
     $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
     $idSelect->execute([$id]);
     $results = $idSelect->fetchAll();
@@ -217,16 +232,14 @@ function print_zanre($obj, $pdo, $style)
 function get_vystupenia($pdo,$obj){
 
     $vystupenia = $obj->getVystupenia($pdo);
+    $podium = new Podium();
+    $festival = new Festival();
     foreach ($vystupenia as $row) {
-        $podium = new Podium();
         if ($podium->initExistingPodium($pdo, $row[0]) == -1) {
             echo "nenasli sme v datbazke dany row<br>";
         }
 
-        $festival = new Festival();
-        $id = $podium->getFestival_ID($pdo);
-
-        if ($podium->initExistingPodium($pdo, $id) == -1) {
+        if ($festival->initExistingFestival($pdo, $podium->getFestival_ID($pdo)) == -1) {
             echo "nenasli sme v datbazke dany row<br>";
         }
 
@@ -234,8 +247,12 @@ function get_vystupenia($pdo,$obj){
         echo "<tr><td>" . $datum['day'] . "." . $datum['month'] . "." . $datum['year'] . "</td>";
         echo "<td>" . $festival->getNazov($pdo) . "</td>";
         echo "<td>" . $podium->getNazov($pdo) . "</td>";
-        echo "<td>" . $datum['hour'] . "." . $datum['minute']."0". "</td></tr>";
-
+        if($datum['minute'] == 0){
+            echo "<td>" . $datum['hour'] . "." . $datum['minute']."0". "</td></tr>";
+        }else{
+            echo "<td>" . $datum['hour'] . "." . $datum['minute']. "</td></tr>";
+        }
+        
     }
 }
 
@@ -250,12 +267,12 @@ function print_clenov($obj,$pdo){
     }
 }
 
-function make_interprets_festivals($array, $pdo){
+function make_interprets_festivals($array, $pdo,$search){
 
     if ($array[0] != NULL) {
         foreach ($array as $obj) {
-            if ($_GET['search'] != NULL) {
-                if (strstr($obj->getNazov($pdo), $_GET['search']) != FALSE) {
+            if ($search != NULL) {
+                if (strstr($obj->getNazov($pdo), $search) != FALSE) {
                     if (get_class($obj) == Interpret::class)
                         make_Interpret($obj, $pdo);
                     else if (get_class($obj) == Festival::class)
@@ -271,13 +288,39 @@ function make_interprets_festivals($array, $pdo){
         }
     }
 }
+
+function make_product($pdo, $vstupenka){
+    echo '<tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="festival_page.php?id='.$vstupenka->getFestival_ID($pdo).'">Vstupenka</a></h4>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                            <div class="number-input md-number-input">
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>'.get_cena($vstupenka,$pdo).'</strong></td>
+                        <td class="col-sm-1 col-md-1">';
+    ?>
+    <button type="button" class="btn btn-danger" onclick="location.href='delete.php?type=TICKET&id=<?php echo $vstupenka->getID()?>'" >
+        <span class="glyphicon glyphicon-remove"></span> Odstrániť
+    </button></td>
+    </tr>
+    <?php
+}
+
 function make_Interpret($interpret, $pdo){
-    echo '<div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+    echo '<div class="col-sm-4">
                     <a href="interpret_page.php?id='.$interpret->getID().'">
                     <div class="thumbnail">
 					<img src="'.$interpret->getLogo($pdo).'" alt="'.$interpret->getNazov($pdo).'">
 					<div class="text-center" style="margin-top:5px"><strong>'.$interpret->getNazov($pdo).'</strong></div>
 					</div>
+					</a>
                 </div>';
 }
 

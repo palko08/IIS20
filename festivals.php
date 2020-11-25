@@ -6,20 +6,10 @@ require_once "controller.php";
 
 
 $pdo = connect_db();
-
-$idSelect = $pdo->prepare("SELECT festival_ID FROM Festival");
-$idSelect->execute();
-$results = $idSelect->fetchAll();
-$festivalArray;
-foreach ($results as $row) {
-	$festival = new Festival();
-	if ($festival->initExistingFestival($pdo,$row[0]) == -1) {
-		echo "nenasli sme v datbazke dany row<br>";
-	}
-	$festivalArray[] = $festival;
-}
+$festivalArray = get_festivals($pdo);
 
 make_header();
+$search = $_GET['search'];
 ?>
 <body>
      <div class="bg-1">
@@ -31,7 +21,7 @@ make_header();
 			</form>
 			<div class="row text-center" style="background-color:rgb(31, 29, 30); padding-bottom:50px">
 				<?php
-                make_interprets_festivals($festivalArray,$pdo);
+                make_interprets_festivals($festivalArray,$pdo,$search);
 				?>
 			</div>
 		</div>

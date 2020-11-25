@@ -19,6 +19,9 @@ if (!empty($person)){
     {
         throw new Exception("Nedokazolo pridat vstupenku");
     }
+    if($vstupenka->setStav($pdo, 'v kosiku') == 1){
+        throw new Exception("Nedokazalo updatnut stav vstupenky!");
+    }
 }
 else {
     $person = new Clovek();
@@ -36,8 +39,11 @@ else {
     {
         throw new Exception("Nedokazolo pridat vstupenku");
     }
+    if($vstupenka->setStav($pdo, 'v kosiku') == 1){
+        throw new Exception("Nedokazalo updatnut stav vstupenky!");
+    }
 }
 }
 
-header("Location: /festivals.php");
+header("Location: festivals.php");
 die;

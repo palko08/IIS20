@@ -8,6 +8,7 @@ $pdo = connect_db();
 $interpret = new Interpret();
 $interpretArray = $interpret->getAllInterpret($pdo);
 make_header();
+$search = $_GET['search'];
 ?>
 
 <body>
@@ -20,9 +21,9 @@ make_header();
             </form>
             <br>
             <div class="row" style="margin-bottom: 25px;">
-            <br>
+                <br>
                 <?php
-                make_interprets_festivals($interpretArray,$pdo);
+                make_interprets_festivals($interpretArray,$pdo,$search);
                 ?>
             </div>
         </div>
@@ -34,14 +35,9 @@ make_header();
 	make_footer();
 ?>
 
-<style> 
-img{
-    width:250px;
-    height:250px;
-}
-.thumbnail{
-    max-width:100%;
-max-height:100%;
-    position: center;
-}
+<style>
+    img {
+        width: 250px;
+        height: 250px;
+    }
 </style>

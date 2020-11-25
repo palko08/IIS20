@@ -1,4 +1,4 @@
-USE IIS2020;
+USE xpalko08;
 
 INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok)
 VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', 15.00, "Niekde26", 3.8, "./img/lir.jpg");

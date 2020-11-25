@@ -26,7 +26,7 @@ $interprets = get_interprets($pdo);
     foreach ($interprets as $interpret){
 
     ?>
-    <form name="change_interpret" method="post" action="../update_interprets.php?id=<?php echo $interpret->getID();?>">
+    <form name="change_interpret" method="post" action="update_interprets.php?id=<?php echo $interpret->getID();?>">
     <tr>
         <td>
             <a class="no_color_change_link" id="interpret_id"><?php echo $interpret->getID();?></a>

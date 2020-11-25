@@ -9,7 +9,7 @@ $zanre = get_zanre($pdo);
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nového interpreta</h2>
-        <form action="../interpret_insert.php" class="form-container" method="post">
+        <form action="interpret_insert.php" class="form-container" method="post">
             <input type="text" placeholder="meno" name="nazov" required>
             <input type="text" placeholder="hodnotenie" name="hodnotenie">
             <center>

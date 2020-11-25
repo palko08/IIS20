@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php">Domov</a>
+                <a class="nav-link" href="index.php">Domov</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" onclick=gotoDiv("tickets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,7 +43,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Vyhladať</button>
         </form>
         <div class="nav-item">
-            <a class="nav-link" href="../logout.php">Odhlásiť</a>
+            <a class="nav-link" href="logout.php">Odhlásiť</a>
         </div>
     </div>
 </nav>

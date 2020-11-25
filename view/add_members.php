@@ -11,7 +11,7 @@ $interprets = get_interprets($pdo);
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať členov interpreta</h2>
-        <form name="add_user" action="../add_member.php" method="post" class="form-container" target="dummyframe">
+        <form name="add_user" action="add_member.php" method="post" class="form-container" target="dummyframe">
             <select class="custom-select" name="interpret" required>
                 <option value="">Vybrať Interpreta</option>
                 <?php

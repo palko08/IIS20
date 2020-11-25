@@ -10,7 +10,7 @@ $zanre = get_zanre($pdo);
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nový festival</h2>
-        <form action="../festival_insert.php" class="form-container" method="post">
+        <form action="festival_insert.php" class="form-container" method="post">
             <table class="center">
                 <tr>
                     <td><input name="nazov" class="form-control" type="text" placeholder="meno" required></td>

@@ -13,6 +13,6 @@ if (isset($_GET['id'])) {
     $ticket->setStav($pdo,$stav);
 }
 
-header("Location: /admin.php");
+header("Location: admin.php");
 die;
 ?>

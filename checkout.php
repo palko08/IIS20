@@ -20,7 +20,7 @@
                 </div>
             </div>    
             <div class="row cart-body">
-                <form class="form-horizontal" method="post" action="">
+                <form class="form-horizontal" method="post" action="reservation_done.php">
                 <div class="" >
                     <!--SHIPPING METHOD-->
                     <div class="panel panel-info">
@@ -39,8 +39,8 @@
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
-                                    <strong>*Priezvisko:</strong>
-                                    <input type="text" name="last_name" class="form-control" value="" required/>
+                                    <strong>Priezvisko:</strong>
+                                    <input type="text" name="last_name" class="form-control" value=""/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -70,9 +70,11 @@
                                 <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="" required></div>
 							</div>
 						</div>
-                        <button type="submit" class="btn btn-secondary btn-block">
-                            <a href="reservation_done.php">Rezervovať lístky</a>
-                        </button>
+                        <form method="post">
+                            <a href="reservation_done.php">
+                                <input type="submit" name="test" id="test" value="Rezervovať lístky" class="btn btn-secondary btn-block"></input>
+                            </a>
+                        </form>
                 </div>
                 </form>
             </div>

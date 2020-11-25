@@ -1,5 +1,4 @@
-CREATE DATABASE IIS2020;
-USE IIS2020;
+USE xpalko08;
 
 CREATE TABLE Festival(
 	festival_ID			INT 			NOT NULL AUTO_INCREMENT,
@@ -102,7 +101,7 @@ CREATE TABLE Vstupenka(
     festival_ID			int				NOT NULL,
     registrovany_ID		int				DEFAULT NULL,
     neregistrovany_ID	int				DEFAULT NULL,
-    stav				ENUM('rezervovana', 'potvrdena', 'stornovana', 'vydana')		DEFAULT 'rezervovana',
+    stav				ENUM('v kosiku', 'rezervovana', 'potvrdena', 'stornovana', 'vydana')		DEFAULT 'rezervovana',
     PRIMARY KEY(vstupenka_ID),
     CONSTRAINT Vstupenka_Festival_ID_FK
         FOREIGN KEY (festival_ID)

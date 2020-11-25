@@ -22,11 +22,13 @@ $tickets = get_vstupenky($pdo);
     <tbody>
     <?php
     foreach ($tickets as $ticket){
+        if ($ticket->getStav($pdo) == "v kosiku")
+            continue;
     ?>
-    <form name="change_ticket" method="post" action="../admin.php">
+    <form name="change_ticket" method="post" action="admin.php">
     <tr>
         <td>
-            <a class="no_color_change_link" id="ticket" href="../festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
+            <a class="no_color_change_link" id="ticket" href="festival_page.php?id=<?php echo $ticket->getFestival_ID($pdo);?>"><?php echo $ticket->getID();?></a>
         </td>
         <td>
             <a class="no_color_change_link" id="ticket_email"><?php echo get_email($ticket,$pdo); ?></a>
@@ -38,12 +40,12 @@ $tickets = get_vstupenky($pdo);
             </p>
         </td>
         <td>
-            <a href="../change_stav.php?stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>
-            <a href="../change_stav.php?stav=stornovana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-danger"> Stornovať </button></a>
+            <a href="change_stav.php?stav=potvrdena&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-info"> Potvrdiť </button></a>
+            <a href="change_stav.php?stav=stornovana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-danger"> Stornovať </button></a>
         </td>
         <td>
             <a class="no_color_change_link" id="cena"><?php echo get_cena($ticket,$pdo); ?></a></td>
-         <td>  <a href="../change_stav.php?stav=vydana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-primary"> Vydať </button></>
+         <td>  <a href="change_stav.php?stav=vydana&id=<?php echo $ticket->getID(); ?>"><button type="button" id="align-right" class="btn btn-primary"> Vydať </button></>
         </td>
     </tr>
         <?php

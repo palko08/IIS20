@@ -23,5 +23,5 @@ if ($_POST['rating'] != ''){
 if ($_POST['artist_foto'] != ''){
     $interpret->setLogo($pdo,$_POST['artist_foto']);
 }
-header("Location: /admin.php");
+header("Location: admin.php");
 die;

@@ -35,5 +35,5 @@ if ($_POST['festival_capacity'] != "") {
 if ($_POST['festival_price'] != "") {
     $festival->setCena($pdo,$_POST['festival_price']);
 }
-header("Location: /admin.php");
+header("Location: admin.php");
 die;

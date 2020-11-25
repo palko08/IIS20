@@ -15,6 +15,11 @@ $error = $serv->addAccount($newperson);
  {
      throw new Exception("Ucet sa nepodarilo vytvorit");
  }
-header("Location: signin.php");
+ else {
+ 	session_start();
+	$_SESSION['user'] = $_POST['login'];
+ }
+
+header("Location: index.php");
 die;
 ?>

@@ -13,6 +13,25 @@ if (isset($_SESSION['user'])) {
     include ("view/register.html"); } ?>
 
 <?php
+    require "classVstupenka.php";
+    require "services.php";
+    require "controller.php";
+    require_once "connect_db.php";
+    
+    $pdo = connect_db();
+    $serv = new AccountService();
+    $person = $serv->getAccount($_SESSION['user']);
+    $vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
+    if($vstupenkaArray != NULL){
+        foreach ($vstupenkaArray as $vstupenka) {
+            if($vstupenka->setStav($pdo, 'rezervovana') == 1){
+                throw new Exception("Nedokazalo updatnut stav vstupenky!");
+            }
+        }
+    }
+?>
+
+<?php
 
 make_footer();
 ?>

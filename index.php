@@ -3,7 +3,7 @@
 
 	make_header();
  ?>
-
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <main class="main">
 <!-- Carousel -->
 <div id="theCarousel" class="carousel slide" data-ride="carousel">

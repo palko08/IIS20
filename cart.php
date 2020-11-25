@@ -13,6 +13,7 @@ $vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
 
 make_header();
 ?>
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <body class="cart">
 
 <div class="cart-wrap">

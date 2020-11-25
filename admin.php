@@ -11,6 +11,7 @@ if ($person['level_opravnenia'] == 'divak' || !isset($_SESSION['user'])) {
 }
 else {
 ?>
+    <meta http-equiv="refresh" content="600;url=logout.php" />
     <script type="text/javascript" src="view/show_elements.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="view/css/admin_page.css">

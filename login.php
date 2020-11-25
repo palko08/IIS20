@@ -4,7 +4,7 @@ require "services.php";
 
 make_header();
 ?>
-
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <?php 
 $serv = new AccountService();
 

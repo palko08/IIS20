@@ -8,6 +8,7 @@ $serv = new AccountService();
 $edit = false;
 ?>
 <script src="view/show_elements.js"></script>
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <link rel="stylesheet" href="view/css/style_profile.css">
 <body class="profile-body">
 <div class="container emp-profile">

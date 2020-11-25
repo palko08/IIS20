@@ -16,7 +16,7 @@ $vstupenkaArray = get_user_vstupenky_all($pdo,$person['registrovany_ID']);
 
 make_header();
 ?>
-
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <link rel="stylesheet" href="view/css/tickets.css">
 
 <body class="tickets_body">

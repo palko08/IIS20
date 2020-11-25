@@ -11,7 +11,7 @@ $festival->initExistingFestival($pdo, $_GET['id']);
 make_header();
 
 ?>
-
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <link rel="stylesheet" href="view/css/festival_interpret_page.css">
 <body class="festival-body">
 <div class="container festival-main">

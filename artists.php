@@ -10,7 +10,7 @@ $interpretArray = $interpret->getAllInterpret($pdo);
 make_header();
 $search = $_GET['search'];
 ?>
-
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <body>
      <div class="bg-1">
 		<div class="container">

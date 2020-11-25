@@ -3,6 +3,7 @@
 
 	make_header();
  ?>
+<meta http-equiv="refresh" content="600;url=logout.php" />
 <link rel="stylesheet" href="view/css/style_checkout.css">
 <body class="checkout-body">
 

@@ -15,6 +15,6 @@ $error = $serv->addAccount($newperson);
  {
      throw new Exception("Ucet sa nepodarilo vytvorit");
  }
-header("Location: /signin.php");
+header("Location: signin.php");
 die;
 ?>

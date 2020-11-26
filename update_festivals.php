@@ -1,6 +1,7 @@
 <?php
 require_once 'connect_db.php';
-require "classFestival.php";
+require_once "classFestival.php";
+require_once "classPodium.php";
 
 $pdo = connect_db();
 $festival = new Festival();
@@ -35,5 +36,13 @@ if ($_POST['festival_capacity'] != "") {
 if ($_POST['festival_price'] != "") {
     $festival->setCena($pdo,$_POST['festival_price']);
 }
+
+if ($_POST['podium_add'] != "") {
+    $podium = new Podium();
+    $podium->createNewPodium($pdo,$id,$_POST['podium_add']);
+    header("Location: view/create_lineup.php?id=".$id);
+    die;
+}
+
 header("Location: admin.php");
 die;

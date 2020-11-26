@@ -92,20 +92,13 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
 ?>
 <div class="create_lineup">
     <div class="centering">
-        <h4>VYTVORIŤ ROZPIS</h4>
-        <form action="create_lineup.php?id=<?php echo $_GET['id'] ?>" class="add_podium" method="post">
-        <input name="pocet" type="number" min=0 placeholder="Počet podií">
-        <label for="lineup_date">Den</label>
-        <input name="datum" type="date" id="lineup_date">
-        <label for="lineup_time_from">Casovy interval od:</label>
-        <input name="datum_od" type="time" id="lineup_time_from">
-        <label for="lineup_time_to">do:</label>
-        <input name="datum_do" type="time" id="lineup_time_to">
-        <button type="submit" class="btn btn-danger" id="add-podium">Pridat podia</button>
+        <h4>Pridat podia</h4>
+        <form action="../update_festivals.php?id=<?php echo $_GET['id'];?>" method="post" name="update_festival">
+        <input name="podium_add" type="text" placeholder="Názov">
+        <button type="submit" class="btn btn-danger" id="add-podium">Pridat podium</button>
         </form>
-
-
-        <form action="rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
+        <h4>VYTVORIŤ ROZPIS</h4>
+        <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php
                 createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo);
             ?>

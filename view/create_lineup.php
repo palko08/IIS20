@@ -93,7 +93,7 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
 <div class="create_lineup">
     <div class="centering">
         <h4>Pridat podia</h4>
-        <form action="../update_festivals.php?id=<?php echo $_GET['id'];?>" method="post" name="update_festival">
+        <form action="update_festivals.php?id=<?php echo $_GET['id'];?>" method="post" name="update_festival">
         <input name="podium_add" type="text" placeholder="Názov">
         <button type="submit" class="btn btn-danger" id="add-podium">Pridat podium</button>
         </form>

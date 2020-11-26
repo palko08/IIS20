@@ -40,7 +40,7 @@ if ($_POST['festival_price'] != "") {
 if ($_POST['podium_add'] != "") {
     $podium = new Podium();
     $podium->createNewPodium($pdo,$id,$_POST['podium_add']);
-    header("Location: view/create_lineup.php?id=".$id);
+    header("Location: create_lineup.php?id=".$id);
     die;
 }
 

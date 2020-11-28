@@ -20,8 +20,13 @@ if (isset($_SESSION['user'])) {
     
     $pdo = connect_db();
     $serv = new AccountService();
-    $person = $serv->getAccount($_SESSION['user']);
-    $vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
+    if ($_SESSION['user'] != NULL) {
+        $person = $serv->getAccount($_SESSION['user']);
+        $vstupenkaArray = get_user_vstupenky($pdo, $person['registrovany_ID']);
+    }
+    else if ($_SESSION['id'] != NULL){
+        $vstupenkaArray = get_nouser_vstupenky($pdo, $_SESSION['id']);
+    }
     if($vstupenkaArray != NULL){
         foreach ($vstupenkaArray as $vstupenka) {
             if($vstupenka->setStav($pdo, 'rezervovana') == 1){

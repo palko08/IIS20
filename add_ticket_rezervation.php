@@ -8,13 +8,19 @@ require "common.php";
 
 $pdo = connect_db();
 $serv = new AccountService();
-$person = $serv->getAccount($_GET['login']);
+if ($_GET['login'] != NULL){
+    $person = $serv->getAccount($_GET['login']);
+}
+else{
+    $person = NULL;
+}
+
 $pocet = $_POST['pocet'];
 
 for ($i = 0; $i < $pocet; $i++)
 {
 $vstupenka = new Vstupenka();
-if (!empty($person)){
+if ($_GET['login'] != ""){
     if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],$person['registrovany_ID'],-1) == -1)
     {
         throw new Exception("Nedokazolo pridat vstupenku");
@@ -29,13 +35,16 @@ else {
     {
         throw new Exception("Nedokazolo pridat clovek");
     }
+    if ($_SESSION['id'] == NULL){
+        session_start();
+        $_SESSION['id'] = $person->getID();
+    }
     $neregistrovany = new Neregistrovany();
-    if ($neregistrovany->createNewNeregistrovany($pdo,$person->getID(),-1) == -1)
+    if ($neregistrovany->createNewNeregistrovany($pdo,$person->getID(),"-1") == -1)
     {
         throw new Exception("Nedokazolo pridat neregistrovany");
     }
-    $person = 0;
-    if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],$neregistrovany->getID(),-1) == -1)
+    if ($vstupenka->createNewVstupenka($pdo,$_GET['festival_id'],-1,$neregistrovany->getID()) == -1)
     {
         throw new Exception("Nedokazolo pridat vstupenku");
     }

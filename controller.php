@@ -76,6 +76,21 @@ function get_user_vstupenky($pdo,$id){
     return $array;
 }
 
+function get_nouser_vstupenky($pdo,$id){
+    $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE neregistrovany_ID = ? AND stav = ?");
+    $idSelect->execute([$id, 'v kosiku']);
+    $results = $idSelect->fetchAll();
+    $array = array();
+    foreach ($results as $row) {
+        $object = new Vstupenka();
+        if ($object->initExistingVstupenka($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        $array[] = $object;
+    }
+    return $array;
+}
+
 function get_user_vstupenky_all($pdo,$id){
     $idSelect = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE registrovany_ID = ?");
     $idSelect->execute([$id]);

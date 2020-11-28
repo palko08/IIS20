@@ -66,7 +66,8 @@ class Neregistrovany{
         $testSelect->execute([$clovek_ID, $email]);
 
         if($testSelect->rowCount() == 1){
-            return $testSelect->fetchColumn();
+            $this->neregistrovanyID = $testSelect->fetchColumn();
+            return $this->neregistrovanyID;
         }else{
             $insert = $pdo->prepare("INSERT INTO Neregistrovany(neregistrovany_ID, email) VALUES(?, ?)");
             $insert->execute([$clovek_ID, $email]);

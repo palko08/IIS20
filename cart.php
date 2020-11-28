@@ -8,8 +8,13 @@ require_once "connect_db.php";
 $vstupenka = new Vstupenka();
 $serv = new AccountService();
 $pdo = connect_db();
-$person = $serv->getAccount($_SESSION['user']);
-$vstupenkaArray = get_user_vstupenky($pdo,$person['registrovany_ID']);
+if ($_SESSION['user'] != NULL) {
+    $person = $serv->getAccount($_SESSION['user']);
+    $vstupenkaArray = get_user_vstupenky($pdo, $person['registrovany_ID']);
+}
+else if ($_SESSION['id'] != NULL){
+    $vstupenkaArray = get_nouser_vstupenky($pdo, $_SESSION['id']);
+}
 
 make_header();
 ?>

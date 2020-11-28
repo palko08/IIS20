@@ -60,9 +60,10 @@ class Clovek{
         $testSelect->execute([$meno]);
 
         if($testSelect->rowCount() == 1){
-            return $testSelect->fetchColumn();
+            $this->clovekID = $testSelect->fetchColumn();
+            return $this->clovekID;
         }else{
-            $insert = $pdo->prepare("INSERT INTO Clovek(meno) VALUES(?, ?)");
+            $insert = $pdo->prepare("INSERT INTO Clovek(meno) VALUES(?)");
             $insert->execute([$meno]);
 
             $select = $pdo->prepare("SELECT clovek_ID FROM Clovek WHERE meno = ?");

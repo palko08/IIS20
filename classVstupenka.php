@@ -74,7 +74,7 @@ class Vstupenka{
             }
 
             $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, registrovany_ID, stav) VALUES(?, ?, ?)");
-            $insert->execute([$festival_ID, $registrovany_ID, "rezervovana"]);
+            $insert->execute([$festival_ID, $registrovany_ID, 'rezervovana']);
     
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND registrovany_ID = ?");
             $select->execute([$festival_ID, $registrovany_ID]);
@@ -92,7 +92,6 @@ class Vstupenka{
             }
 
         }else if($registrovany_ID == -1 && $neregistrovany_ID != -1){
-
             $testID3 = $pdo->prepare("SELECT neregistrovany_ID FROM Neregistrovany WHERE neregistrovany_ID = ?");
             $testID3->execute([$neregistrovany_ID]);
             if($testID3->rowCount() == 0){
@@ -100,7 +99,7 @@ class Vstupenka{
             }
 
             $insert = $pdo->prepare("INSERT INTO Vstupenka(festival_ID, neregistrovany_ID, stav) VALUES(?, ?, ?)");
-            $insert->execute([$festival_ID, $neregistrovany_ID, "rezervovana"]);
+            $insert->execute([$festival_ID, $neregistrovany_ID, 'rezervovana']);
     
             $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ? AND neregistrovany_ID = ?");
             $select->execute([$festival_ID, $neregistrovany_ID]);

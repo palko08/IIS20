@@ -6,13 +6,15 @@ make_header();
 
 $serv = new AccountService();
 $edit = false;
+$person = $serv->getAccount($_SESSION['user']);
+$name = $serv->getName($_SESSION['user']);
+
 ?>
 <script src="view/show_elements.js"></script>
 <meta http-equiv="refresh" content="600;url=logout.php" />
 <link rel="stylesheet" href="view/css/style_profile.css">
 <body class="profile-body">
 <div class="container emp-profile">
-    <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
@@ -27,8 +29,6 @@ $edit = false;
                 <div class="profile-head">
                     <h5>
                         <?php
-                        $person = $serv->getAccount($_SESSION['user']);
-                        $name = $serv->getName($_SESSION['user']);
                         echo $name;
                         ?>
                     </h5>
@@ -57,7 +57,7 @@ $edit = false;
                 ?>
                 <a href="logout.php">Logout</a>
             </div>
-            <form name="edit_profile" method="post" action='update_users.php?login=<?php echo $person["login"]?>&id=<?php echo $person["registrovany_ID"]?>'>
+            <form name="edit_profile" method="post" action='update_users.php'>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                         <div class="row">
@@ -101,21 +101,20 @@ $edit = false;
                                 </p>
                             </div>
                         </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Heslo</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Heslo</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" name="password" id="edit_heslo">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <input type="password" name="password" id="edit_heslo">
-                        </div>
-                    </div>
                 </div>
                 <br>
                 <button class="btn btn-info" id="confirm_changes" type="submit" name="update" value="update" onclick="">Potvrdit zmeny</button>
             </div>
             </form>
         </div>
-    </form>
 </div>
 </body>
 

@@ -1,51 +1,49 @@
 <?php
 require_once 'connect_db.php';
-require 'services.php';
-require "classRegistrovany.php";
-require "classClovek.php";
+require_once 'services.php';
+require 'classRegistrovany.php';
+require 'classClovek.php';
 
-$id = '';
-$login = '';
+session_start();
 $pdo = connect_db();
+$serv = new AccountService();
+$person = $serv->getAccount($_SESSION['user']);
 $registrovany = new Registrovany();
 $clovek = new Clovek();
 
-if (!empty($_GET['login'])) {
-    $login = $_GET['login'];
+if ($registrovany->initExistingRegistrovany($pdo, $person['registrovany_ID']) == -1) {
+	throw new Exception("Nepodarilo sa najst Registrovaneho");
 }
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-}
-
-$registrovany->initExistingRegistrovany($pdo,$id);
-$clovek->initExistingClovek($pdo,$id);
-
-if (empty($login)) {
-    throw new Exception('login je prazdne');
-}
-if (empty($id)) {
-    throw new Exception('id je prazdne');
+if ($clovek->initExistingClovek($pdo, $person['registrovany_ID']) == -1) {
+	throw new Exception("Nepodarilo sa najst Cloveka");
 }
 
-if ($_POST['email'] != ''){
-    $registrovany->setEmail($pdo,$_POST['email']);
+
+if ($_POST['login'] != '') {
+	if ($registrovany->setLogin($pdo, $_POST['login']) == 1) {
+		throw new Exception("Nepodarilo sa pridat login");
+	}
+	$_SESSION['user'] = $_POST['login'];
 }
 
-if ($_POST['login'] != ''){
-    $registrovany->setLogin($pdo,$_POST['login']);
+if ($_POST['name'] != '') {
+	if ($clovek->setMeno($pdo, $_POST['name']) == 1) {
+		throw new Exception("Nepodarilo sa pridat meno");
+	}
 }
 
-if ($_POST['password'] != ''){
-    $registrovany->setHeslo($pdo,$_POST['password']);
+if ($_POST['email'] != '') {
+	if ($registrovany->setEmail($pdo, $_POST['email']) == 1) {
+		throw new Exception("Nepodarilo sa pridat email");
+	}
 }
 
-if ($_POST['opravnenie'] != ''){
-    $registrovany->setLevel_opravnenia($pdo,$_POST['opravnenie']);
+if ($_POST['password'] != '') {
+	if ($registrovany->setHeslo($pdo, $_POST['password']) == 1) {
+		throw new Exception("Nepodarilo sa pridat heslo");
+	}
 }
 
-if ($_POST['name'] != ''){
-    $clovek->setMeno($pdo,$_POST['name']);
-}
-
-header("Location: admin.php");
+header("Location: profile.php");
 die;
+?>

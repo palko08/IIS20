@@ -11,7 +11,11 @@ $newperson = array(
 );
 
 $error = $serv->addAccount($newperson);
- if (!$error)
+if($error == 2){
+	header("Location: register.php");
+	die;
+}
+ if ($error == FALSE)
  {
      throw new Exception("Ucet sa nepodarilo vytvorit");
  }
@@ -20,6 +24,6 @@ $error = $serv->addAccount($newperson);
 	$_SESSION['user'] = $_POST['login'];
  }
 
-header("Location: index.php");
+header("Location: profile.php");
 die;
 ?>

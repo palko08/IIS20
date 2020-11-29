@@ -15,6 +15,15 @@ class AccountService
 
 	function addAccount($data)
 	{
+		$idSelect = $this->pdo->prepare("SELECT login FROM Registrovany");
+        $idSelect->execute();
+        $results = $idSelect->fetchAll();
+        foreach ($results as $row) {
+            if($row[0] == $data['login']){
+            	return 2;
+            }
+        }
+
 		$stmt = $this->pdo->prepare('INSERT INTO Clovek (meno) VALUES (?)');
 		$meno = $data['meno'];
 		if ($stmt->execute([$meno]))
@@ -32,7 +41,7 @@ class AccountService
 		$email = $data['email'];
 		$login = $data['login'];
 		$pwd = password_hash($data['heslo'], PASSWORD_DEFAULT);
-		if ($stmt->execute([$id, $email ,$login, $pwd, "divák"]))
+		if ($stmt->execute([$id, $email ,$login, $pwd, "divak"]))
 		{
 			$newid = $this->pdo->lastInsertId();
 			$data['id'] = $newid;

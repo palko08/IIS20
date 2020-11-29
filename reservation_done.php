@@ -20,7 +20,8 @@ if (isset($_SESSION['user'])) {
     
     $pdo = connect_db();
     $serv = new AccountService();
-    if ($_SESSION['user'] != NULL) {
+    $vstupenkaArray;
+    if($_SESSION['user'] != NULL){
         $person = $serv->getAccount($_SESSION['user']);
         $vstupenkaArray = get_user_vstupenky($pdo, $person['registrovany_ID']);
     }

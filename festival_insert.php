@@ -55,6 +55,6 @@ if (!(empty($zanre))) {
 }
 
 
-header("Location: /admin.php");
+header("Location: admin.php");
 die;
 ?>

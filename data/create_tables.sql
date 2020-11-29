@@ -35,11 +35,12 @@ CREATE TABLE Interpret(
 );
 
 CREATE TABLE Interpret_vystupuje_na_Podium(
+    vystupenie_ID       INT             NOT NULL AUTO_INCREMENT,
 	interpret_ID		INT 			NOT NULL,
     podium_ID			INT				NOT NULL,
     cas_vystupenia		DATETIME		NOT NULL,
     CONSTRAINT Interpret_vystupuje_na_Podium_PK
-		PRIMARY KEY(interpret_ID, podium_ID),
+		PRIMARY KEY(vystupenie_ID),
 	CONSTRAINT Interpret_na_Podiu_interpret_ID_FK
         FOREIGN KEY (interpret_ID)
         REFERENCES Interpret (interpret_ID)

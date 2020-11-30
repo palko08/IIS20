@@ -33,7 +33,7 @@
 		Backend
 	</dd>
 	<dt>URL aplikace</dt>
-	<dd><a href="http://www.stud.fit.vutbr.cz/~xpalko08/">http://www.stud.fit.vutbr.cz/~xpalko08</a></dd>
+	<dd><a href="http://www.stud.fit.vutbr.cz/~xpalko08/">http://www.stud.fit.vutbr.cz/~xpalko08/</a></dd>
 	<dd></dd>
 </dl>
 
@@ -51,6 +51,37 @@
 
 <h2>Implementace</h2>
 <p>Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.</p>
+<p>Súbory začínajúce slovom class reprezentujú model aplikácie.</p>
+<p><b>Administrátor:</b>
+	<ul><li>správa užívatelov - view/show_users.php, update_users.php, delete.php</li></ul>
+<b>Pořadatel</b>
+	<ul>
+	<li>správa festivalu - view/show_festivals.php, update_festivals.php, delete.php</li>
+	<li>správa interpretov -view/show_interprets.php, update_interprets.php, delete.php </li>
+	<li>pridanie člena interpreta - view/add_members.php, add_member.php</li>
+	<li>vytvorenie festivalu - view/add_festival.php, festival_insert.php</li>
+	<li>vytvorenie interpeta - view/add_artist.php, interpret_insert.php</li>
+	<li>vytvorenie rozpisu - view/create_lineup.php, rozpis_insert.php</li>
+	<li>přihlašuje interprety na festivaly - ##############TODO############</li>
+	</ul>
+<b>Pokladní:</b>
+	<ul>
+		<li>spravuje rezervace pro vybrané festivaly - view/show_tickets.php, change_stav.php. 
+			Max. počet vstupeniek na festival na užívateľa je 10. </li>
+	</ul>
+<b>Divák:</b>
+	<ul>
+		<li>rezervuje vstupenky - cart.php, checkout.php, add_ticket_rezervation.php </li>
+		<li>sleduje stav jeho rezervací - tickets.php </li>
+		<li>editácia profilu - update_user.php, profile.php </li>
+	</ul>
+<b>Neregistrovaný návštěvník:</b>
+	<ul>
+		<li>vyhledává a prohlíží festivaly, interprety dle různých vlastností</li>
+		<li>rezervácia bez registrácie - cart.php, checkout.php, add_ticket_rezervation.php</li>
+		<li>registrácia - register.php </li>
+	</ul>
+</p>
 
 <h3>Databáze</h3>
 

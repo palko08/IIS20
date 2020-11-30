@@ -16,6 +16,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a onclick=openForm("add_festivals")>Pridať festival</a></li>
+                    <li><a onClick=openForm("add_interpret_festival") >Pridať interpreta na festival</a></li>
                     <li><a onClick=gotoDiv("festivals") >Upraviť festival</a></li>
                 </ul>
             </li>

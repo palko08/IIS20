@@ -6,6 +6,7 @@ require_once "classPodium.php";
 $pdo = connect_db();
 $festival = new Festival();
 $id =  '';
+$error = false;
 
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
@@ -22,11 +23,41 @@ if ($_POST['festival_address'] != "") {
 }
 
 if ($_POST['festival_date_from'] != "") {
-    $festival->setDatum_Od($pdo,$_POST['festival_date_from']);
+    if ($_POST['festival_date_to'] != ""){
+        if ($_POST['festival_date_from'] > $_POST['festival_date_to']){
+            $error = true;
+        }
+        else{
+            $festival->setDatum_Od($pdo,$_POST['festival_date_from']);
+        }
+    }
+    else{
+        if ($_POST['festival_date_from'] > $festival->getDatum_Do($pdo)){
+            $error = true;
+        }
+        else{
+            $festival->setDatum_Od($pdo,$_POST['festival_date_from']);
+        }
+    }
 }
 
 if ($_POST['festival_date_to'] != "") {
-    $festival->setDatum_Do($pdo,$_POST['festival_date_to']);
+    if ($_POST['festival_date_from'] != ""){
+        if ($_POST['festival_date_from'] > $_POST['festival_date_to']){
+            $error = true;
+        }
+        else{
+            $festival->setDatum_Do($pdo,$_POST['festival_date_to']);
+        }
+    }
+    else{
+        if ($festival->getDatum_Od($pdo) > $_POST['festival_date_to']){
+            $error = true;
+        }
+        else{
+            $festival->setDatum_Do($pdo,$_POST['festival_date_to']);
+        }
+    }
 }
 
 if ($_POST['festival_capacity'] != "") {
@@ -43,6 +74,10 @@ if ($_POST['podium_add'] != "") {
     header("Location: view/create_lineup.php?id=".$id);
     die;
 }
-
-header("Location: admin.php");
+if ($error){
+    header("Location: admin.php?error=1");
+}
+else{
+    header("Location: admin.php");
+}
 die;

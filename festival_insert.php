@@ -14,6 +14,11 @@ $popis = '';
 $obr = '';
 $zanre = $_POST['zaner'];
 
+if ($datum_od > $datum_do){
+    echo 'Datum od musi byt mensi ako datum do.';
+    throw new Exception("Ucet sa nepodarilo vytvorit, datum od musi byt mensi ako datum do.");
+}
+
 $festival = new Festival();
 $error = $festival->createNewFestival($pdo,$nazov,$kapacita, $datum_od, $datum_do,$cena,$adresa);
 if ($error == -1)

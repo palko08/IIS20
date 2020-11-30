@@ -40,6 +40,9 @@ if ($person['level_opravnenia'] == 'poradatel' || $person['level_opravnenia'] ==
     ?>
 </div>
 <?php
+    if (isset($_GET['error'])){
+        echo '<p style="color:#FF0000">Datum od musi byt mensi ako datum do.</p>';
+    }
 if ($person['level_opravnenia'] == 'admin') {
 ?>
 <div class="form-popup" id="add_user">

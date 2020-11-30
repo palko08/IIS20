@@ -20,8 +20,8 @@ $zanre = get_zanre($pdo);
                             <option value="Dakde 44">Dakde 44</option>
                             <option value="Tuto 17">Tuto 17</option>
                         </select></td>
-                    <td> <input class="form-control" type="date" placeholder="od" name="od" required></td>
-                    <td>  <input class="form-control" type="date" placeholder="do" name="do" required></td>
+                    <td> <input class="form-control" type="datetime-local" placeholder="od" name="od" required></td>
+                    <td>  <input class="form-control" type="datetime-local" placeholder="do" name="do" required></td>
                     <td><input class="form-control" type="text" placeholder="hodnotenie" name="hodnotenie"></td>
                     <td><input class="form-control" type="number" placeholder="kapacita" name="kapacita" required></td>
                     <td><input class="form-control" type="number" placeholder="cena" name="cena" required></td>

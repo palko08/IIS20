@@ -76,19 +76,19 @@ VALUES(9, 3, '2020-10-25 21:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
 VALUES(10, 3, '2020-10-25 22:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(11, 3, '2020-10-25 23:30:00');
+VALUES(11, 3, '2020-10-25 23:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(12, 4, '2020-11-02 20:30:00');
+VALUES(12, 4, '2020-11-02 20:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(1, 4, '2020-11-02 21:30:00');
+VALUES(1, 4, '2020-11-02 21:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(2, 4, '2020-11-02 22:30:00');
+VALUES(2, 4, '2020-11-02 22:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(3, 5, '2020-11-02 20:30:00');
+VALUES(3, 5, '2020-11-02 20:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(4, 5, '2020-11-02 21:30:00');
+VALUES(4, 5, '2020-11-02 21:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
-VALUES(5, 5, '2020-11-02 22:30:00');
+VALUES(5, 5, '2020-11-02 22:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)
 VALUES(6, 5, '2020-11-03 00:00:00');
 INSERT INTO Interpret_vystupuje_na_Podium(interpret_ID, podium_ID, cas_vystupenia)

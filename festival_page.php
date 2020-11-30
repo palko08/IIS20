@@ -7,6 +7,8 @@ require "connect_db.php";
 $pdo = connect_db();
 $festival = new Festival();
 $festival->initExistingFestival($pdo, $_GET['id']);
+$vstupenky = $festival->getVstupenky($pdo);
+$pocetVstupeniek = count($vstupenky);
 
 make_header();
 
@@ -30,6 +32,16 @@ make_header();
                     <h4>Adresa: <?php echo $festival->getAdresa($pdo);?></h4>
                     <h6><?php print_zanre($festival, $pdo, "line");?></h6>
                     <h3>Cena: <?php echo $festival->getCena($pdo);?></h3>
+                    <h3>
+                        <?php 
+                            if($pocetVstupeniek >= $festival->getKapacita($pdo)){
+                                echo "Festival je vypredaný!<br>";
+                            }else{
+                                $miesta = $festival->getKapacita($pdo) - $pocetVstupeniek;
+                                echo "Počet voľných miest: " . $miesta . "<br>";
+                            }
+                        ?>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -37,7 +49,7 @@ make_header();
          <div class="festival-ticket-input">
             <form method="post" action="add_ticket_rezervation.php?festival_id=<?php echo $festival->getID()?><?php if(isset($_SESSION['user'])) echo '&login='.$_SESSION["user"]?>">
                 <input type="number" class="count" name="pocet" value="0" min="0">
-                <button type="submit" class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
+                <button type="submit" <?php if($pocetVstupeniek >= $festival->getKapacita($pdo)){ ?> disabled <?php   } ?> class="btn btn-info" id="reserve-tickets">Rezervovať lístky</button>
             </form>
             <br><br>
         </div>

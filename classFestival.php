@@ -175,6 +175,13 @@ class Festival{
         return $select->fetchAll();
     }
 
+    function getVstupenky($pdo){
+        $select = $pdo->prepare("SELECT vstupenka_ID FROM Vstupenka WHERE festival_ID = ?");
+        $select->execute([$this->festivalID]);
+        return $select->fetchAll();
+    }
+
+
     /**
      *  @brief Funkcie pre zistenie, ci su dane IDs prepojene
      *

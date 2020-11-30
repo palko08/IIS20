@@ -5,10 +5,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Domov</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" onclick=gotoDiv("tickets") id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Správa vstupeniek
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a onclick=openForm("add_tickets_admin")>Pridať vstupenku</a></li>
+                    <li><a onClick=gotoDiv("tickets") >Upraviť vstupenky</a></li>
+                </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

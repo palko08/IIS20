@@ -27,6 +27,9 @@ if (isset($_SESSION['user'])) {
     }
     else if ($_SESSION['id'] != NULL){
         $vstupenkaArray = get_nouser_vstupenky($pdo, $_SESSION['id']);
+        $neregistrovany = new Neregistrovany();
+        $neregistrovany->initExistingNeregistrovany($pdo, $_SESSION['id']);
+        $neregistrovany->setEmail($pdo, $_POST["email_address"]);
     }
     if($vstupenkaArray != NULL){
         foreach ($vstupenkaArray as $vstupenka) {

@@ -44,7 +44,7 @@ $festivals = get_festivals($pdo);
             </select>
         </td>
         <td>
-            <input type="date" id="festival_date_from" name="festival_date_from" class="form-control" value=<?php echo $festival->getDatum_Od($pdo);?>>
+            <input type="date" id="festival_date_from" name="festival_date_from" class="form-control" placeholder=<?php echo $festival->getDatum_Od($pdo);?>>
         </td>
         <td>
             <input type="date" id="festival_date_to" name="festival_date_to" class="form-control" value=<?php echo $festival->getDatum_Do($pdo);?>>

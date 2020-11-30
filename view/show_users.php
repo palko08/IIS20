@@ -24,7 +24,7 @@ $query = $serv->getAccounts();
         $name = $serv->getName($row["login"]);
        ?>
 
-    <form name="change_user" method="post" action='update_users.php?login=<?php echo $row["login"]?>&id=<?php echo $row["registrovany_ID"]?>'>
+    <form name="change_user" method="post" action='update_users.php?type=admin&login=<?php echo $row["login"]?>&id=<?php echo $row["registrovany_ID"]?>'>
     <tr><td> <a name="id" class="no_color_change_link" id="user_id"><?php echo $row["registrovany_ID"]?></a></td>
         <td><input name="email" type="email" id="user_email" placeholder="<?php echo $row["email"]?>"></td>
         <td><input name="name" type="text"id="user_name" placeholder="<?php echo $name?>"></td>
@@ -32,9 +32,9 @@ $query = $serv->getAccounts();
         <td> <input name="password" type="password" placeholder="password" id="user_password" ></td>
         <td><div class="form-group">
                 <select name="opravnenie" class="custom-select">
-                    <option selected="0"><?php echo $row["level_opravnenia"]?></option>
+                    <option selected=<?php echo $row["level_opravnenia"]?>><?php echo $row["level_opravnenia"]?></option>
                     <option value="poradatel">poradatel</option>
-                    <option value="pokladní">pokladní</option>
+                    <option value="pokladni">pokladní</option>
                     <option value="divak">divak</option>
                     <option value="admin">admin</option>
                 </select>

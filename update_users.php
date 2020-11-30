@@ -7,7 +7,10 @@ require 'classClovek.php';
 session_start();
 $pdo = connect_db();
 $serv = new AccountService();
-$person = $serv->getAccount($_SESSION['user']);
+if ($_GET['type'] == "admin")
+    $person = $serv->getAccount($_GET['login']);
+else
+    $person = $serv->getAccount($_SESSION['user']);
 $registrovany = new Registrovany();
 $clovek = new Clovek();
 
@@ -44,6 +47,15 @@ if ($_POST['password'] != '') {
 	}
 }
 
-header("Location: profile.php");
+if ($_POST['opravnenie'] != '') {
+    if ($registrovany->setLevel_opravnenia($pdo, $_POST['opravnenie']) == 1) {
+        throw new Exception("Nepodarilo sa zmenit opravnenie");
+    }
+}
+
+if ($_GET['type'] == "admin")
+    header("Location: admin.php");
+else
+    header("Location: profile.php");
 die;
 ?>

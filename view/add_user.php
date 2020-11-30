@@ -3,17 +3,16 @@
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nového užívateľa</h2>
-        <form name="add_user" action="account_insert.php" method="post" class="form-container" target="dummyframe">
+        <form name="add_user" action="account_insert.php?type=admin" method="post" class="form-container" target="dummyframe">
             <input type="text" placeholder="login" name="login" id="add_user_login" required>
             <input type="text" placeholder="meno" name="meno" id="add_user_name" required>
             <input type="password" placeholder="password" name="password" id="add_user_psw" required>
             <input type="email" placeholder="email@email.com" name="email" id="add_user_email">
-            <select class="custom-select">
-                <option value="">Vybrať level oprávnenia</option>
-                <option value="0">admin</option>
-                <option value="1">poradatel</option>
-                <option value="2">pokladní</option>
-                <option value="3">divák</option>
+            <select name="opravnenie" class="custom-select">
+                <option value="admin">admin</option>
+                <option value="poradatel">poradatel</option>
+                <option value="pokladni">pokladní</option>
+                <option value="divak">divák</option>
             </select>
             <br>
             <button type="submit" class="btn btn-info" value="Register" onClick="window.location.reload();">Pridať</button>

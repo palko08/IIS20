@@ -4,6 +4,7 @@ require_once 'services.php';
 require_once 'classFestival.php';
 require_once 'classInterpret.php';
 require_once 'classVstupenka.php';
+require_once 'classPodium.php';
 
 $id = '';
 $type = $_GET['type'];
@@ -51,6 +52,22 @@ switch ($type) {
             throw new Exception('Problem pri odstranovani vstupenkya');
         }
         header("Location: cart.php");
+        die;
+
+    case 'VYSTUPENIE':
+        $podium = new Podium();
+        if($podium->initExistingPodium($pdo, $id) == -1){
+            throw new Exception('nenaslo sa podium s danym id.');
+        }
+        $interpret = new Interpret();
+        if($interpret->initExistingInterpret($pdo, $_POST['interpret_vystu']) == -1){
+            throw new Exception('nenaslo sa interpret s danym id.');
+        }
+
+        if ($interpret->deleteVystupenie($pdo, $podium->getID()) == -1){
+            throw new Exception("epodarilo sa odstranit vystupenei");
+        }
+        header("Location: view/create_lineup.php?id=".$_GET['redirect']);
         die;
 }
 

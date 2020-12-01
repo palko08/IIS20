@@ -1,6 +1,7 @@
  <?php
 require "../classInterpret.php";
 require "../classFestival.php";
+require "../classPodium.php";
 require_once "../connect_db.php";
 require_once "../controller.php";
 require_once "../common.php";
@@ -64,8 +65,8 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                             else {
                                 echo '<option value="">none</option>';
                             }
-                            foreach ($interpretArray as $interpret){
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
+                            foreach ($interpretArray as $inter){
+                                echo '<option value="'.$inter->getID($pdo).'">'.$inter->getNazov($pdo).'</option>';
                             }
                             echo '
                             <option value="">none</option>
@@ -85,7 +86,7 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
 $pdo = connect_db();
 $interpret = new Interpret();
 $festival = new Festival();
-$interpretArray = getInterpretsForFestival($pdo, $_GET['id']);
+$interpretArray = $interpret->getAllInterpret($pdo);
 $podiumArray = getPodiaForFestival($pdo, $_GET['id']);
 $festival->initExistingFestival($pdo,$_GET['id']);
 $datumOd = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Od($pdo));
@@ -121,6 +122,32 @@ make_head();
             <input type="datetime-local" name="timeslot" required>
             <button type="submit" class="btn btn-danger" id="add-podium">Pridat interpreta</button>
         </form>
+        <h4>Odstranit vystupenie</h4>
+                <?php
+                echo "<table>";
+                foreach ($podiumArray as $podium) {
+                    ?>
+                    <form action="../delete.php?type=VYSTUPENIE&id=<?php echo $podium->getID();?>&redirect=<?php echo $festival->getID();?>" method="post" name="del_vystupenie"> <?php
+                    echo "<tr><td>".$podium->getNazov($pdo)."</td>";
+                    $vystupenia = $podium->getVystupenia($pdo);
+                    echo "<td><select name='interpret_vystu'>";
+                    foreach ($vystupenia as $vystupenie) {
+                        $interpret = new Interpret();
+                        if ($interpret->initExistingInterpret($pdo,$vystupenie[0]) == -1){
+                            throw new exception("interpreta sa nepodarilo najst");
+                        }
+                        $interpret_meno = $interpret->getNazov($pdo);
+                        echo "<option value='".$interpret->getID()."'>".$podium->getNazov($pdo) ."/".
+                            $interpret->getNazov($pdo)."/".$podium->getCas_vystupenia($pdo,$interpret->getID())."</option>";
+                    } ?>
+                    </select></td>
+                    <td><button type="submit" id="add-podium">Odstranit vystupenie</button></td>
+                    </tr>
+                    </form>
+            <?php
+                }
+                echo "</table>";
+                ?>
         <h4>VYTVORIŤ ROZPIS</h4>
         <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php

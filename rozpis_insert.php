@@ -7,7 +7,7 @@ require_once "controller.php";
 $pdo = connect_db();
 $interpret = new Interpret();
 $festival = new Festival();
-$interpretArray = getInterpretsForFestival($pdo, $_GET['id']);
+$interpretArray = $interpret->getAllInterpret($pdo);
 $podiumArray = getPodiaForFestival($pdo, $_GET['id']);
 $festival->initExistingFestival($pdo,$_GET['id']);
 $datumOd = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Od($pdo));

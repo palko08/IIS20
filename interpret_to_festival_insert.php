@@ -6,7 +6,8 @@ require_once "connect_db.php";
 $pdo = connect_db();
 
 $interpret_id = $_POST['interpret'];
-$festival_id = $_POST['festival'];
+$festival_id = $_GET['id'];
+$podium_id = $_POST['podium'];
 
 if (!empty($interpret_id) || !empty($festival_id)){
     $interpret = new Interpret();
@@ -19,5 +20,8 @@ if (!empty($interpret_id) || !empty($festival_id)){
     if ($interpret->initExistingInterpret($pdo, $interpret_id) == -1) {
         throw new Exception("interpet nenajdeni");
     }
-    //TODO
+
+    $interpret->addVystupenie($pdo, $podium_id, $_POST['timeslot']);
 }
+header("Location: view/create_lineup.php?id=".$festival_id);
+die;

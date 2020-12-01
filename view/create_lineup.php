@@ -96,6 +96,27 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
         <input name="podium_add" type="text" placeholder="Názov">
         <button type="submit" class="btn btn-danger" id="add-podium">Pridat podium</button>
         </form>
+        <h4>Pridata interpreta na festival</h4>
+        <form action="../interpret_to_festival_insert.php?id=<?php echo $_GET['id'];?>" method="post" name="add_interpret">
+            <select class="custom-select" name="podium" id='podium' required>
+                <option value="">Vybrať podium</option>
+                <?php
+                foreach ($podiumArray as $podium) {
+                    echo "<option value='".$podium->getID()."'>".$podium->getNazov($pdo)."</option>";
+                }
+                ?>
+            </select>
+            <select class="custom-select" name="interpret" required>
+                <option value="">Vybrať Interpreta</option>
+                <?php
+                foreach ($interpretArray as $interpret) {
+                    echo "<option value='".$interpret->getID()."'>".$interpret->getNazov($pdo)."</option>";
+                }
+                ?>
+            </select>
+            <input type="datetime-local" name="timeslot" required>
+            <button type="submit" class="btn btn-danger" id="add-podium">Pridat interpreta</button>
+        </form>
         <h4>VYTVORIŤ ROZPIS</h4>
         <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php

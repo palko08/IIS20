@@ -32,7 +32,6 @@ $interprets = get_interprets($pdo);
                 }
                 ?>
             </select>
-            <div class="result"><p  id="icecream"></p></div>
             <select class="custom-select" name="interpret" required>
                 <option value="">Vybrať Interpreta</option>
                 <?php

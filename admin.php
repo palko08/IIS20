@@ -47,11 +47,6 @@ if ($person['level_opravnenia'] == 'admin') {
     require("view/add_user.php");
     ?>
 </div>
-    <div class="form-popup" id="add_interpret_festival">
-        <?php
-        require_once ("view/add_interpret_to_festival.php");
-        ?>
-    </div>
     <?php
 }
 ?>

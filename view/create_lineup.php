@@ -3,6 +3,8 @@ require "../classInterpret.php";
 require "../classFestival.php";
 require_once "../connect_db.php";
 require_once "../controller.php";
+require_once "../common.php";
+
 
 function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
     for ($i = $datumOd['day']; $i <= $datumDo['day']; $i++) {
@@ -88,7 +90,9 @@ $podiumArray = getPodiaForFestival($pdo, $_GET['id']);
 $festival->initExistingFestival($pdo,$_GET['id']);
 $datumOd = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Od($pdo));
 $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
+make_head();
 ?>
+ <body>
 <div class="create_lineup">
     <div class="centering">
         <h4>Pridat podia</h4>
@@ -127,4 +131,4 @@ $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
         </form>
     </div>
 </div>
-
+ </body>

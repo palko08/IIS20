@@ -21,11 +21,13 @@ if (!empty($interpret_id) || !empty($festival_id)){
     $datumDo = $festival->getDatum_Do($pdo);
 
     if ($_POST['timeslot'] < $datumOd || $_POST['timeslot'] > $datumDo){
-        throw new Exception("Datum je mimo zadany cas.");
+        echo "<p>Vystupenie mimo datum konania festivalu!</p>";
+        die;
     }
 
     if ($interpret->initExistingInterpret($pdo, $interpret_id) == -1) {
-        throw new Exception("interpet nenajdeni");
+        echo "<p>interpet nenajdeni!</p>";
+        die;
     }
 
     $interpret->addVystupenie($pdo, $podium_id, $_POST['timeslot']);

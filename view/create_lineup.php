@@ -26,6 +26,9 @@ make_head();
         <button type="submit" class="btn btn-danger" id="add-podium">Pridat podium</button>
         </form>
         <h4>Pridata interpreta na festival</h4>
+        <?php
+        try{
+        ?>
         <form action="../interpret_to_festival_insert.php?id=<?php echo $_GET['id'];?>" method="post" name="add_interpret">
             <select class="custom-select" name="podium" id='podium' required>
                 <option value="">Vybrať podium</option>
@@ -45,7 +48,11 @@ make_head();
             </select>
             <input type="datetime-local" name="timeslot" required>
             <button type="submit" class="btn btn-danger" id="add-podium">Pridat interpreta</button>
-        </form>
+        </form> <?php
+        }catch (Exception $e) {
+            echo "<p>Vystupenie mimo datum konania festivalu!</p>";
+        }
+        ?>
         <h4>Odstranit vystupenie</h4>
                 <?php
                 echo "<table>";

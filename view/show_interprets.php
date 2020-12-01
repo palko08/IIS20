@@ -24,7 +24,7 @@ $interprets = get_interprets($pdo);
     <tbody>
     <?php
     foreach ($interprets as $interpret){
-
+        $festivals_ids = get_interpret_festivals($pdo,$interpret);
     ?>
     <form name="change_interpret" method="post" action="update_interprets.php?id=<?php echo $interpret->getID();?>">
     <tr>
@@ -44,8 +44,7 @@ $interprets = get_interprets($pdo);
             <div class="form-group">
                 <select class="custom-select" multiple>
                     <?php
-                    //TODO print festivaly
-                    //print_zanre($interpret,$pdo,"multiple");
+                    print_festivals($festivals_ids,$pdo);
                     ?>
                 </select>
         </td>

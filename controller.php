@@ -243,6 +243,36 @@ function print_zanre($obj, $pdo, $style)
             echo "<option value=".$zaner->getID().">".$zaner->getZaner_nazov($pdo)."</option>";
     }
 }
+function get_interpret_festivals($pdo,$obj){
+    $vystupenia = $obj->getVystupenia($pdo);
+    $podium = new Podium();
+    $festival = new Festival();
+    $festivals = array();
+    foreach ($vystupenia as $row) {
+        if ($podium->initExistingPodium($pdo, $row[0]) == -1) {
+            throw new exception ("nenasli sme v datbazke dany row");
+        }
+
+        if ($festival->initExistingFestival($pdo, $podium->getFestival_ID($pdo)) == -1) {
+            throw new exception ("nenasli sme v datbazke dany row");
+        }
+        array_push($festivals, $festival->getID());
+
+    }
+
+    return array_unique($festivals);
+}
+
+function print_festivals($obj, $pdo)
+{
+    foreach ($obj as $row) {
+        $festival = new Festival();
+        if ($festival->initExistingFestival($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+        echo "<option value=".$festival->getID().">".$festival->getNazov($pdo)."</option>";
+    }
+}
 
 function get_vystupenia($pdo,$obj){
 

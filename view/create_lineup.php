@@ -121,6 +121,32 @@ make_head();
             <input type="datetime-local" name="timeslot" required>
             <button type="submit" class="btn btn-danger" id="add-podium">Pridat interpreta</button>
         </form>
+        <h4>Odstranit vystupenie</h4>
+                <?php
+                echo "<table>";
+                foreach ($podiumArray as $podium) {
+                    ?>
+                    <form action="../delete.php?type=VYSTUPENIE&id=<?php echo $podium->getID();?>&redirect=<?php echo $festival->getID();?>" method="post" name="del_vystupenie"> <?php
+                    echo "<tr><td>".$podium->getNazov($pdo)."</td>";
+                    $vystupenia = $podium->getVystupenia($pdo);
+                    echo "<td><select name='interpret_vystu'>";
+                    foreach ($vystupenia as $vystupenie) {
+                        $interpret = new Interpret();
+                        if ($interpret->initExistingInterpret($pdo,$vystupenie[0]) == -1){
+                            throw new exception("interpreta sa nepodarilo najst");
+                        }
+                        $interpret_meno = $interpret->getNazov($pdo);
+                        echo "<option value='".$interpret->getID()."'>".$podium->getNazov($pdo) ."/".
+                            $interpret->getNazov($pdo)."/".$podium->getCas_vystupenia($pdo,$interpret->getID())."</option>";
+                    } ?>
+                    </select></td>
+                    <td><button type="submit" id="add-podium">Odstranit vystupenie</button></td>
+                    </tr>
+                    </form>
+            <?php
+                }
+                echo "</table>";
+                ?>
         <h4>VYTVORIŤ ROZPIS</h4>
         <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php

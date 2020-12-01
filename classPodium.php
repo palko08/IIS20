@@ -140,7 +140,7 @@ class Podium{
      *  @return Array dat, pri nenajdeni by hodnota mala byt NULL
      */
     function getVystupenia($pdo){
-        $select = $pdo->prepare("SELECT interpret_ID AND cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
+        $select = $pdo->prepare("SELECT interpret_ID, cas_vystupenia FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
         $select->execute([$this->podiumID]);
         return $select->fetchAll();
     }

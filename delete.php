@@ -60,7 +60,7 @@ switch ($type) {
             throw new Exception('nenaslo sa podium s danym id.');
         }
         $interpret = new Interpret();
-        if($podium->initExistingPodium($pdo, $_POST['interpret_vystu']) == -1){
+        if($interpret->initExistingInterpret($pdo, $_POST['interpret_vystu']) == -1){
             throw new Exception('nenaslo sa interpret s danym id.');
         }
 

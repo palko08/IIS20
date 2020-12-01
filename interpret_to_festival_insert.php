@@ -17,6 +17,13 @@ if (!empty($interpret_id) || !empty($festival_id)){
         throw new Exception("festival nenajdeny");
     }
 
+    $datumOd = $festival->getDatum_Od($pdo);
+    $datumDo = $festival->getDatum_Do($pdo);
+
+    if ($_POST['timeslot'] < $datumOd || $_POST['timeslot'] > $datumDo){
+        throw new Exception("Datum je mimo zadany cas.");
+    }
+
     if ($interpret->initExistingInterpret($pdo, $interpret_id) == -1) {
         throw new Exception("interpet nenajdeni");
     }

@@ -36,10 +36,10 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                     }
                     echo'
                 </tr>
-                </thead>';
+                </thead>
+                <tbody>';
                 foreach ($podiumArray as $podium) {
                 echo '
-                <tbody>
                 <tr>
                     <td class="borders"><b>'.$podium->getNazov($pdo).'</b></td>';
                     for ($k = 0; $k < $cnt; $k++) {
@@ -57,27 +57,21 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                                 $cas = $datumDo;
                                 $cas['hour'] = $k;
                             }
-                            echo '<select name="select_interprets_timeslots'.$cas['day'].$cas['hour'].$podium->getNazov($pdo).'">';
                             $interpret = getInterpretForTime($pdo, $cas, $podium->getID());
                             if ($interpret != NULL) {
-                                echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';
+                                echo '<p>'.$interpret->getNazov($pdo).'</p>';
                             }
                             else {
-                                echo '<option value="">none</option>';
-                            }
-                            foreach ($interpretArray as $inter){
-                                echo '<option value="'.$inter->getID($pdo).'">'.$inter->getNazov($pdo).'</option>';
+                                echo '<p>none</p>';
                             }
                             echo '
-                            <option value="">none</option>
-                        </select>
                     </td>';
                     }
                     echo '
-                </tr>
-                </tbody>';
+                </tr>';
             }
             echo '
+                </tbody>
             </table>
     ';
     }
@@ -149,13 +143,10 @@ make_head();
                 echo "</table>";
                 ?>
         <h4>VYTVORIŤ ROZPIS</h4>
-        <form action="../rozpis_insert.php?id=<?php echo $_GET['id'] ?>" class="add_timeslots" method="post">
             <?php
                 createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo);
             ?>
-            <button class="btn btn-success" id="confirm-lineup">Potvrdiť rozpis</button>
-            <button type="submit" class="btn btn-danger" id="remove-lineup">Zrušiť</button>
-        </form>
+            <button type="submit" class="btn btn-danger" id="remove-lineup" onclick="window.location.href='../admin.php'">Zrušiť</button>
     </div>
 </div>
  </body>

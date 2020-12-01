@@ -10,6 +10,7 @@ $zanre = get_zanre($pdo);
 <div class="jumbotron">
     <div class="span8 centering">
         <h2>Pridať nový festival</h2>
+        <p>Datum musi byt v tvare YYYY-MM-DD HH-00-00</p>
         <form action="festival_insert.php" class="form-container" method="post">
             <table class="center">
                 <tr>

@@ -1,13 +1,13 @@
 USE xpalko08;
 
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok)
-VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', 15.00, "Niekde26", 3.8, "./img/lir.jpg");
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok)
-VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', 12.55, "Dakde44", "./img/lir2.jpg");
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok)
-VALUES("festival3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', 20.00, "Tuto17", "./img/lir.jpg");
-INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok)
-VALUES("festival4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', 25.80, "Ulica7", 4.1, "./img/lir3.jpg");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok, popis)
+VALUES("festival1", 100, '2020-11-05 18:00:00', '2020-11-06 02:00:00', 15.00, "Niekde26", 3.8, "./img/lir.jpg", "popis festivalu 1");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok, popis)
+VALUES("festival2", 500, '2020-10-25 20:00:00', '2020-10-26 10:00:00', 12.55, "Dakde44", "./img/lir2.jpg", "popis festivalu 2");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, obrazok, popis)
+VALUES("festival3", 2500, '2020-11-02 20:30:00', '2020-11-03 16:30:00', 20.00, "Tuto17", "./img/lir.jpg", "popis festivalu 3");
+INSERT INTO Festival(nazov, kapacita, datum_Od, datum_Do, cena, adresa, hodnotenie, obrazok, popis)
+VALUES("festival4", 5000, '2020-11-14 22:00:00', '2020-11-16 02:00:00', 25.80, "Ulica7", 4.1, "./img/lir3.jpg", "popis festivalu 4");
 
 INSERT INTO Podium(festival_ID, nazov)
 VALUES(1, "podium1");

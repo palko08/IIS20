@@ -41,9 +41,7 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                     <td class="borders"><b>'.$podium->getNazov($pdo).'</b></td>';
                     for ($k = 0; $k < $cnt; $k++) {
                     echo '
-                    <td>
-                        <select name="select_interprets_timeslots'.$k.'">
-                            ';
+                    <td>    ';
                             $cas = $datumOd;
                             if ($i == $datumOd['day']) {
                                 $cas['hour'] += $k;
@@ -56,6 +54,7 @@ function createDays($pdo,$interpretArray,$podiumArray,$datumOd,$datumDo){
                                 $cas = $datumDo;
                                 $cas['hour'] = $k;
                             }
+                            echo '<select name="select_interprets_timeslots'.$cas['day'].$cas['hour'].$podium->getNazov($pdo).'">';
                             $interpret = getInterpretForTime($pdo, $cas, $podium->getID());
                             if ($interpret != NULL) {
                                 echo '<option value="'.$interpret->getID($pdo).'">'.$interpret->getNazov($pdo).'</option>';

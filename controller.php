@@ -399,4 +399,37 @@ function get_email($ticket,$pdo){
 
     return $customer->getEmail($pdo);
 }
+
+function deleteInterpretForTime($pdo, $dateTime, $podium_id){
+    if (getInterpretForTime($pdo,$dateTime,$podium_id) != NULL) {
+        try {
+            $datestr = $dateTime['year'] . "-" . $dateTime['month'] . "-" . $dateTime['day'] . " " . $dateTime['hour'] . ":" . $dateTime['minute'] . ":" . $dateTime['second'];
+            $date = strtotime($datestr);
+            $stmt = $pdo->prepare('DELETE FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ? AND cas_vystupenia = ?');
+            $stmt->execute([$podium_id,date('Y-m-d H:i:s', $date)]);
+        } catch (PDOException $e) {
+            echo $e->getMessage() . "<br>";
+            return 1;
+        }
+        return 0;
+    }
+}
+
+function insertInterpretForTime($pdo, $dateTime, $podium_id, $interpret_id){
+    if (deleteInterpretForTime($pdo, $dateTime, $podium_id) == 1){
+        return 1;
+    }
+
+    try {
+        $insert = $pdo->prepare("INSERT INTO Interpret_vystupuje_na_Podium VALUES (?,?,?)");
+        $datestr = $dateTime['year'] . "-" . $dateTime['month'] . "-" . $dateTime['day'] . " " . $dateTime['hour'] . ":" . $dateTime['minute'] . ":" . $dateTime['second'];
+        $date = strtotime($datestr);
+        $insert->execute([$interpret_id, $podium_id, date('Y-m-d H:i:s', $date)]);
+    } catch (PDOException $e) {
+        echo $e->getMessage() . "<br>";
+        return 1;
+    }
+
+    return 0;
+}
 ?>

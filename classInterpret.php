@@ -317,7 +317,7 @@ class Interpret{
         return 0;
     }
 
-    function deleteVystupenie($pdo, $interpret_ID){
+    function deleteVystupenie($pdo, $podium_ID){
         $testID = $pdo->prepare("SELECT podium_ID FROM Podium WHERE podium_ID = ?");
         $testID->execute([$podium_ID]);
         if($testID->rowCount() == 0){

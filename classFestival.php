@@ -162,6 +162,18 @@ class Festival{
     	return $select->fetchColumn();
     }
 
+    function getPodia($pdo){
+        $select = $pdo->prepare("SELECT podium_ID FROM Podium WHERE festival_ID = ?");
+        $select->execute([$this->festivalID]);
+        return $select->fetchAll();
+    }
+
+    function getVystupenia($pdo, $podium){
+        $select = $pdo->prepare("SELECT interpret_ID FROM Interpret_vystupuje_na_Podium WHERE podium_ID = ?");
+        $select->execute([$podium]);
+        return $select->fetchAll();
+    }
+
     /**
      *  @brief Funkcie pre vytahovanie dat z databazy
      *

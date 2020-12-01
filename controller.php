@@ -301,6 +301,40 @@ function get_vystupenia($pdo,$obj){
     }
 }
 
+function get_vystupenia_festival($pdo,$obj){
+
+    $vystupenia = $obj->getPodia($pdo);
+    $podium = new Podium();
+    foreach ($vystupenia as $row) {
+
+        if ($podium->initExistingPodium($pdo, $row[0]) == -1) {
+            echo "nenasli sme v datbazke dany row<br>";
+        }
+
+        $interpreti = $obj->getVystupenia($pdo,$row[0]);
+        $interpret = new Interpret();
+
+        foreach ($interpreti as $row2) {
+
+            if ($interpret->initExistingInterpret($pdo, $row2[0]) == -1) {
+                echo "nenasli sme v datbazke dany row<br>";
+            }
+    
+            $datum = date_parse_from_format('Y-m-d H:i:s', $podium->getCas_vystupenia($pdo, $interpret->getID()));
+            echo "<tr><td>" . $interpret->getNazov($pdo) . "</td>";
+            echo "<td>" . $podium->getNazov($pdo) . "</td>";
+            echo "<td>" . $datum['day'] . "." . $datum['month'] . "." . $datum['year'] . "</td>";
+            if($datum['minute'] == 0){
+                echo "<td>" . $datum['hour'] . "." . $datum['minute']."0". "</td></tr>";
+            }else{
+                echo "<td>" . $datum['hour'] . "." . $datum['minute']. "</td></tr>";
+            }
+
+        }
+        
+    }
+}
+
 function print_clenov($obj,$pdo){
     $clenovia = $obj->getClenov($pdo);
     foreach ($clenovia as $row){

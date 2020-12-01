@@ -61,6 +61,23 @@ make_header();
         </p>
         </div>
     </div>
+    <div class="row">
+        <div class="interpret-festivals">
+            <table>
+                <thead>
+                <th>Interpret</th>
+                <th>Pódium</th>
+                <th>Dátum</th>
+                <th>Čas</th>
+                </thead>
+                <tbody>
+                <?php
+                get_vystupenia_festival($pdo,$festival);?>
+                </tbody>
+                </table>
+            </p>
+        </div>
+    </div>
 </div>
 </body>
 

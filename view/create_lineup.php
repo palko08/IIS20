@@ -16,6 +16,7 @@ $datumOd = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Od($pdo));
 $datumDo = date_parse_from_format('Y-m-d H:i:s', $festival->getDatum_Do($pdo));
 make_head();
 ?>
+<meta http-equiv="refresh" content="600;url=logout.php" />
  <link rel="stylesheet" href="css/create_lineup.css">
  <body>
 <div class="create_lineup">

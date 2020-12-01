@@ -168,19 +168,19 @@ INSERT INTO Clovek(meno)
 VALUES("meno32");
 
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(1, "email1", "login1", "$2y$10$kU5n3a6KnxqJAOlDN4NcB.72iEbwrTduCabT3RiC/eOIoDsgHhN3C", 'admin');
+VALUES(1, "email1", "admin", "$2y$10$3qkuTf07Sybb8SPEsUAg9e3WoKVNcZjQKS8n2XqjgrQrWRZm60ptO", 'admin');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(2, "email2", "login2", "$2y$10$pMbd.7vOq4KkDCjofBZ5dugvzzeNwrdS1YNwkp7s5/zsH7CF.lYjW", 'poradatel');
+VALUES(2, "email2", "poradatel", "$2y$10$245O6xIZIFWbQUYYeyBUwOQJQoFoAv6C5JTR1uHzoj19LumNprPjW", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(3, "email3", "login3", "$2y$10$PxEnJOhy3Nge/gAOEL2VQuOH4dPw3BwSBaS1pzNWeN3lZgi2RXdau", 'poradatel');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(4, "email4", "login4", "$2y$10$4lwD0MnH2u5mtm1g4gUB0uhlzptByByignVdywfJtBfvlY1vTs4QG", 'pokladni');
+VALUES(4, "email4", "pokladni", "$2y$10$2MsqzEKMkCmrdKnw7VMcUuS4ztl6Sge2CsCcxdBvb0gtrH0Pk0h6O", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(5, "email5", "login5", "$2y$10$KvX4C40k.8uZHeW0ArDa9e4zr6Ewna7pfmYJ5dfb7m3unS8/7a4ju", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(6, "email6", "login6", "$2y$10$IlfV25k1SXLR2IaJa4MSee/49a1LmBFE6UzcOagIk2sJqhCkjahDG", 'pokladni');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
-VALUES(7, "email7", "login7", "$2y$10$DUWuFYnqTwKcWhJwScdtN.nMvl9ROsLg5rdcXAktnh38X6cux54ze", 'divak');
+VALUES(7, "email7", "divak", "$2y$10$jByJY.rQEQatBOUzf05gW.1LUkRV54WCzi0BypsAeXOGd4t/gfxVS", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)
 VALUES(8, "email8", "login8", "$2y$10$eWbkklOGdNWw9J5bpUHD1OCey9/gIXpsSuKdP.qzOQxjrzkzrwguC", 'divak');
 INSERT INTO Registrovany(registrovany_ID, email, login, heslo, level_opravnenia)

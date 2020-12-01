@@ -85,15 +85,14 @@
 
 <h3>Databáze</h3>
 
-Zde vložte grafické schéma relační databáze (tabulek v databázi).
+<img src="ER_diagram.png"/>
 
 <h2>Instalace</h2>
 
-Stručně popište: 
 <ul>
-<li>postup instalace na server,</li>
-<li>softwarové požadavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
+<li>Po extrakcii archívu je potrebné len priradiť potrebné oprávnenia. Na servery EVA je doporučené nasledovať pokyny na <a href="https://www.fit.vut.cz/units/cvt/faq/.cs">FAQ</a> bod 13</li>
+<li>Pre správny chod stránky sa vyžaduje PHP verzia 7.3. Verzia MySQL na servery EVA je dostačujúca. Inštalácia iných softwarov nie je potrebná.</li>
+<li>Inicializácia databázy prebieha cez phpMyAdmin na servery EVA. Pri využití vlastného účtu na servery EVA je potrebné prepísať v SQL skriptoch na prvom riadku názov databázy, aby sa zhodovala s vašim účtom. Databáza sa inicializuje skriptom create_tables.sql a testovacie dáta sa do nej vkladajú skriptom insert_mock_data.sql. Na dropnutie databázy sa použije skript drop_tables.sql.</li>
 </ul>
 
 <h2>Známé problémy</h2>

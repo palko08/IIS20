@@ -17,7 +17,6 @@ else {
     <link rel="stylesheet" href="view/css/admin_page.css">
 <body>
 <?php
-if ($person['level_opravnenia'] == 'poradatel' || $person['level_opravnenia'] == 'admin' ) {
 require("view/admin_body.php");
 ?>
 <div class="form-popup" id="add_tickets_admin">
@@ -25,6 +24,7 @@ require("view/admin_body.php");
     require("view/add_ticket_admin.php");
     ?>
 </div>
+<?php if ($person['level_opravnenia'] == 'poradatel' || $person['level_opravnenia'] == 'admin' ) { ?>
 <div class="form-popup" id="add_festivals">
     <?php
     require("view/add_festival.php");

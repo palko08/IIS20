@@ -25,7 +25,8 @@ make_head();
         <input name="podium_add" type="text" placeholder="Názov">
         <button type="submit" class="btn btn-danger" id="add-podium">Pridat podium</button>
         </form>
-        <h4>Pridata interpreta na festival</h4>
+        <h4>Pridat interpreta na festival</h4>
+        <h5>Hodina musi byt HH:00 aby sa zobrazila v tabulke nizsie.</h5>
         <?php
         try{
         ?>
